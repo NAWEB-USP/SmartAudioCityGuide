@@ -1,0 +1,58 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="SmartAudioApp.RouteMap"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+shell:SystemTray.IsVisible="True" xmlns:my="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+
+        <!--Panorama item one-->
+        <Grid Name="Menu" Width="472" Margin="0,0,0,0">
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/PanoramaBackground.png"/>
+            </Grid.Background>
+            <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="0,17,0,0">
+                <TextBlock x:Name="ApplicationTitle" Text="Smart Audio" Style="{StaticResource PhoneTextNormalStyle}" FontSize="24" Height="51" Margin="12,0,8,0" Foreground="Black" />
+                <TextBlock x:Name="PageTitle" Text="Route Map" Margin="9,-7,0,0" Style="{StaticResource PhoneTextNormalStyle}" Height="73" FontSize="48" Foreground="Black" />
+            </StackPanel>
+            <my:Map CredentialsProvider="At48uqJw8iwp0FOZl8lT1mW3sw26dylKaJMjD_mThDoDzLvUx6v9jMZ7eX7Vuam_" Height="617" HorizontalAlignment="Left" Margin="0,150,0,0" Name="mapR" VerticalAlignment="Top" Width="472" IsHitTestVisible="False">
+                <my:MapItemsControl x:Name="mapControlR" Margin="0,0,-46,-297"  />
+            </my:Map>
+        </Grid>
+    </Grid>
+
+
+</phone:PhoneApplicationPage>

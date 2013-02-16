@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0ADC45AC-CAD8-4F79-8518-A280BB3B756B}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartAudioApp</RootNamespace>
+    <AssemblyName>SmartAudioApp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+        pt-BR;
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>SmartAudioApp.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>SmartAudioApp.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AgiliTrain.PhoneyTools">
+      <HintPath>..\packages\PhoneyTools.1.0.10\lib\AgiliTrain.PhoneyTools.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientLibraryBase">
+      <HintPath>..\packages\ClientLibraryBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Community.CsharpSqlite.WP">
+      <HintPath>..\packages\Community.CsharpSqlite.WP.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.0.24\lib\sl4-windowsphone71\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Maps, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>..\packages\SilverlightToolkitWP.4.2011.12.14\lib\sl3-wp\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="SpeechRecognitionClientLibrary">
+      <HintPath>..\packages\SpeechRecognitionClientLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Device" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Servicemodel.Web" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
+    <Reference Include="mscorlib.extensions" />
+    <Reference Include="TranslatorService.Speech">
+      <HintPath>..\packages\TranslatorService.Speech.1.3.1\lib\sl4-wp71\TranslatorService.Speech.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddRoutePlace.xaml.cs">
+      <DependentUpon>AddRoutePlace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommentAndLocation.cs" />
+    <Compile Include="Comments.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="FacebookLoginPage.xaml.cs">
+      <DependentUpon>FacebookLoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalPositioningSystemForMap.cs" />
+    <Compile Include="HelpModeContact.xaml.cs">
+      <DependentUpon>HelpModeContact.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListRoute.xaml.cs">
+      <DependentUpon>ListRoute.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="MyGPS.cs" />
+    <Compile Include="HawaiiClient.cs" />
+    <Compile Include="Locations.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyMicrophone.cs" />
+    <Compile Include="MyPhone.cs" />
+    <Compile Include="Properties.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources.pt-BR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.pt-BR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RouteMap.xaml.cs">
+      <DependentUpon>RouteMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Routes.cs" />
+    <Compile Include="SelectTheVisionProblem.xaml.cs">
+      <DependentUpon>SelectTheVisionProblem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SendMessage.xaml.cs">
+      <DependentUpon>SendMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServicesReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ShowUser.xaml.cs">
+      <DependentUpon>ShowUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sound.cs" />
+    <Compile Include="Route.xaml.cs">
+      <DependentUpon>Route.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeOfComments.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="AddRoutePlace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FacebookLoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpModeContact.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListRoute.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RouteMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Route.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectTheVisionProblem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SendMessage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ShowUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServicesReference\configuration91.svcinfo" />
+    <None Include="Service References\ServicesReference\configuration.svcinfo" />
+    <None Include="Service References\ServicesReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.addComentAndSoundToLocationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.addNewUserForAppResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.existAUserForThatIdPhoneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.getAcessTokenByPhoneIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.getFacebookIdByPhoneIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.getNameByPhoneIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.getSoundCommentFromLocationAndTypeOfCommentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.getSoundCommentFromLocationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.getTesteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.getUserByPhoneIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.sendEmailForFolloUserByWindowsPhoneIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.updateLoctionForUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServicesReference\WebServices1.disco" />
+    <None Include="Service References\ServicesReference\WebServices11.disco" />
+    <None Include="Service References\ServicesReference\Webservices2.disco" />
+    <Content Include="ServiceReferences.ClientConfig" />
+    <None Include="Service References\ServicesReference\WebServices1.wsdl" />
+    <None Include="Service References\ServicesReference\WebServices11.wsdl" />
+    <None Include="Service References\ServicesReference\Webservices2.wsdl" />
+    <Resource Include="Images\PanoramaBackground.png" />
+    <Content Include="Sounds\en\address.wav" />
+    <Content Include="Sounds\en\calcrota.wav" />
+    <Content Include="Sounds\en\changedexplore.wav" />
+    <Content Include="Sounds\en\changednormal.wav" />
+    <Content Include="Sounds\en\confirm.wav" />
+    <Content Include="Sounds\en\error.wav" />
+    <Content Include="Sounds\en\explore.wav" />
+    <Content Include="Sounds\en\friend.wav" />
+    <Content Include="Sounds\en\friendmode.wav" />
+    <Content Include="Sounds\en\internet.wav" />
+    <Content Include="Sounds\en\listen.wav" />
+    <Content Include="Sounds\en\login.wav" />
+    <Content Include="Sounds\en\login_mode.wav" />
+    <Content Include="Sounds\en\map.wav" />
+    <Content Include="Sounds\en\menu.wav" />
+    <Content Include="Sounds\en\messagesuccess.wav" />
+    <Content Include="Sounds\en\nextpage.wav" />
+    <Content Include="Sounds\en\no.wav" />
+    <Content Include="Sounds\en\nocontacts.wav" />
+    <Content Include="Sounds\en\noplaces.wav" />
+    <Content Include="Sounds\en\normal.wav" />
+    <Content Include="Sounds\en\partiallySighted.wav" />
+    <Content Include="Sounds\en\pleasewait.wav" />
+    <Content Include="Sounds\en\previouspage.wav" />
+    <Content Include="Sounds\en\recording.wav" />
+    <Content Include="Sounds\en\recordingend.wav" />
+    <Content Include="Sounds\en\register.wav" />
+    <Content Include="Sounds\en\registerwithfb.wav" />
+    <Content Include="Sounds\en\route.wav" />
+    <Content Include="Sounds\en\routemap.wav" />
+    <Content Include="Sounds\en\routemode.wav" />
+    <Content Include="Sounds\en\selectlocation.wav" />
+    <Content Include="Sounds\en\selectvisiontypemenu.wav" />
+    <Content Include="Sounds\en\success.wav" />
+    <Content Include="Sounds\en\textinput.wav" />
+    <Content Include="Sounds\en\totalBlindness.wav" />
+    <Content Include="Sounds\en\usespeech.wav" />
+    <Content Include="Sounds\en\welcome.wav" />
+    <Resource Include="Images\ApplicationIcon.png" />
+    <Resource Include="Images\Background.png" />
+    <Content Include="Sounds\en\where.wav" />
+    <Content Include="Sounds\en\yes.wav" />
+    <Content Include="Sounds\en\locationlist.wav" />
+    <Content Include="Sounds\pt\address.wav" />
+    <Content Include="Sounds\pt\calcrota.wav" />
+    <Content Include="Sounds\pt\changedexplore.wav" />
+    <Content Include="Sounds\pt\changednormal.wav" />
+    <Content Include="Sounds\pt\confirm.wav" />
+    <Content Include="Sounds\pt\error.wav" />
+    <Content Include="Sounds\pt\explore.wav" />
+    <Content Include="Sounds\pt\friend.wav" />
+    <Content Include="Sounds\pt\friendmode.wav" />
+    <Content Include="Sounds\pt\internet.wav" />
+    <Content Include="Sounds\pt\listen.wav" />
+    <Content Include="Sounds\pt\locationlist.wav" />
+    <Content Include="Sounds\pt\login.wav" />
+    <Content Include="Sounds\pt\login_mode.wav" />
+    <Content Include="Sounds\pt\map.wav" />
+    <Content Include="Sounds\pt\menu.wav" />
+    <Content Include="Sounds\pt\messagesuccess.wav" />
+    <Content Include="Sounds\pt\nextpage.wav" />
+    <Content Include="Sounds\pt\no.wav" />
+    <Content Include="Sounds\pt\nocontacts.wav" />
+    <Content Include="Sounds\pt\noplaces.wav" />
+    <Content Include="Sounds\pt\normal.wav" />
+    <Content Include="Sounds\pt\partiallySighted.wav" />
+    <Content Include="Sounds\pt\pleasewait.wav" />
+    <Content Include="Sounds\pt\previouspage.wav" />
+    <Content Include="Sounds\pt\recording.wav" />
+    <Content Include="Sounds\pt\recordingend.wav" />
+    <Content Include="Sounds\pt\register.wav" />
+    <Content Include="Sounds\pt\registerlocation.wav" />
+    <Content Include="Sounds\pt\registerwithfb.wav" />
+    <Content Include="Sounds\pt\route.wav" />
+    <Content Include="Sounds\pt\routemap.wav" />
+    <Content Include="Sounds\pt\selectlocation.wav" />
+    <Content Include="Sounds\pt\selectvisiontypemenu.wav" />
+    <Content Include="Sounds\pt\success.wav" />
+    <Content Include="Sounds\pt\textinput.wav" />
+    <Content Include="Sounds\pt\totalBlindness.wav" />
+    <Content Include="Sounds\pt\usespeech.wav" />
+    <Content Include="Sounds\pt\welcome.wav" />
+    <Content Include="Sounds\pt\where.wav" />
+    <Content Include="Sounds\pt\yes.wav" />
+    <Content Include="Sounds\pt\routemode.wav" />
+    <Content Include="Sounds\en\registerlocation.wav" />
+    <Content Include="SplashScreenImage.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.pt-BR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.pt-BR.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServicesReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>

@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "follow";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string hash =(string) Request.Params["hash"];
+}
+<script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAGoS0KO3Er9pZz0jFQ_IzpglKiknmmibs&sensor=true" type="text/javascript"></script>
+<div id="map_canvas" style="width: 960px; height: 600px" style="margin-bottom:100px;">
+</div>
+
+<script type="text/javascript">
+    getLocationFirst();
+
+    var int = self.setInterval(function () { getLocation() }, 2000);
+    var actualLatitude = 0;
+    var actualLongitude = 0;
+    var map;
+    var lastMarker;
+
+    function showPosition(lat,long) {
+        var mapOptions = {
+            center: new google.maps.LatLng(lat, long),
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById('map_canvas'),
+          mapOptions);
+    }
+
+    function getLocationFirst() {
+        geocoder = new google.maps.Geocoder();
+        $.ajax({
+            url: "getLatitudeFrom",
+            type: 'get',
+            dataType: 'html',
+            async: false,
+            data: "hash=@hash",
+            success: function (data) {
+                actualLatitude = data;
+            }
+        });
+
+        $.ajax({
+            url: "getLongitudeFrom",
+            type: 'get',
+            dataType: 'html',
+            async: false,
+            data: "hash=@hash",
+            success: function (data) {
+                actualLongitude = data;
+            }
+        });
+        showPosition(actualLatitude,actualLongitude);
+    }
+
+    function getLocation() {
+        geocoder = new google.maps.Geocoder();
+        $.ajax({
+            url: "getLatitudeFrom",
+            type: 'get',
+            dataType: 'html',
+            async: false,
+            data: "hash=@hash",
+            success: function (data) {
+                actualLatitude = data;
+            }
+        });
+
+        $.ajax({
+            url: "getLongitudeFrom",
+            type: 'get',
+            dataType: 'html',
+            async: false,
+            data: "hash=@hash",
+            success: function (data) {
+                actualLongitude = data;
+            }
+        });
+
+        var lat = parseFloat(actualLatitude);
+        var lng = parseFloat(actualLongitude);
+        
+        var latlng = new google.maps.LatLng(lat, lng);
+
+        geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+            if (lastMarker != null)
+                lastMarker.setMap(null);
+
+            if (results[1]) {
+                marker = new google.maps.Marker({
+                    position: latlng,
+                    map: map
+                });
+                lastMarker = marker;
+            }
+        });
+    }
+   
+</script>

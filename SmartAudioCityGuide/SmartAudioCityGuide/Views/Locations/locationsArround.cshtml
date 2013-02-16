@@ -1,0 +1,22 @@
+﻿@using SmartAudioCityGuide.Models;
+@{
+    List<Locations> locations = (List<Locations>)ViewData["locations"];
+}
+
+<script type="text/javascript">
+    @{
+        if(locations != null)
+        {
+            foreach(Locations location in locations)
+            {
+                <text>
+                var position = new google.maps.LatLng(@location.latitude,@location.longitude );
+                marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+                </text>
+            }
+        }
+    }
+</script>

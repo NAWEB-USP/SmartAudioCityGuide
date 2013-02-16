@@ -1,0 +1,73 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="SmartAudioApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True" xmlns:my="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps">
+
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+
+        <!--Panorama control-->
+        <controls:Panorama Name="panorama" Margin="0,0,0,0" MaxHeight="768" Background="White">
+
+
+            <!--Panorama item one-->
+            <controls:PanoramaItem Header="{Binding Path=Resources.map, Source={StaticResource LocalizedStrings}}" Width="472" Margin="0" Height="768" Foreground="Black">
+                <ListBox Margin="0,-135,47,-67" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="715">
+                    <ListBoxItem Margin="0,0,0,-714">
+                        <my:Map CredentialsProvider="At48uqJw8iwp0FOZl8lT1mW3sw26dylKaJMjD_mThDoDzLvUx6v9jMZ7eX7Vuam_" Height="648" HorizontalAlignment="Left" Margin="0,63,0,0" Name="map" VerticalAlignment="Top" Width="430" IsHitTestVisible="False">
+                            <my:MapItemsControl x:Name="mapControl" Height="646" Width="430" Margin="0,0,0,0" Loaded="mapControl_Loaded" />
+                        </my:Map>
+                    </ListBoxItem>
+                    <Button Width="446" Height="736" Margin="0,-23,0,0" Opacity="0" Hold="map_Hold" />
+                 </ListBox>
+            </controls:PanoramaItem>
+            <!--Panorama item two-->
+            <controls:PanoramaItem Header="Menu" Name="Menu" Width="472" Margin="0" Foreground="Black" >
+                <ListBox Margin="0,0,47,19" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <ListBoxItem Content="{Binding Path=Resources.login, Source={StaticResource LocalizedStrings}}" Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#1080DD" Width="360" IsHitTestVisible="True" MouseEnter="sound_login" Hold="holdLogin" />
+                    <ListBoxItem Content="{Binding Path=Resources.route, Source={StaticResource LocalizedStrings}}" Height="100"  Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#F09609" Width="360" IsHitTestVisible="True" MouseEnter="sound_route" Hold="holdRoute" />
+                    <ListBoxItem Content="{Binding Path=Resources.friend, Source={StaticResource LocalizedStrings}}" Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#E51400" Width="360" IsHitTestVisible="True" MouseEnter="sound_help" Hold="holdHelp" />
+                    <ListBoxItem Content="{Binding Path=Resources.explore, Source={StaticResource LocalizedStrings}}" Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#339933" Width="360" IsHitTestVisible="True" MouseEnter="sound_mode" Hold="holdMode" Name="mode"/>
+                    <ListBoxItem Content="{Binding Path=Resources.where, Source={StaticResource LocalizedStrings}}" Height="99" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#FF2D2D2D" Width="360" IsHitTestVisible="True" MouseEnter="sound_Where" Hold="holdWhere"/>
+                </ListBox>
+            </controls:PanoramaItem>
+        </controls:Panorama>
+         </Grid>
+
+</phone:PhoneApplicationPage>

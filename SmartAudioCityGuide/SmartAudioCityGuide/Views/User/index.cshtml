@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using SmartAudioCityGuide.Models;
+<h2>My Locations: </h2>
+@{
+    List<Comments> commentsOfUser = new List<Comments>();
+    commentsOfUser = (List<Comments>)ViewData["commentsFromUser"];
+}
+
+<table id="list-locations">
+    <thead>
+        <tr>
+            <th>
+                <a>&nbsp;&nbsp;&nbsp;Description</a>
+            </th>
+            <th>
+                 <a>&nbsp;&nbsp;&nbsp;Edit</a>
+            </th>
+            <th>
+                 <a>&nbsp;&nbsp;&nbsp;Delete</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (Comments comment in commentsOfUser)
+    {
+        <tr>
+            <th>
+                @comment.description
+            </th>
+            <th>
+                @Html.ActionLink("Edit", "../Comment/editComment", new { idComment = comment.id })
+            </th>
+            <th>
+                 @Html.ActionLink("Delete", "../Comment/deleteComment", new { commentId = comment.id })
+            </th>
+        </tr>
+        
+     }
+    </tbody>
+</table>

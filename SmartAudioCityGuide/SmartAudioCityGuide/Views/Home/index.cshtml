@@ -1,0 +1,43 @@
+﻿@model SmartAudioCityGuide.Models.Users
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="video" ><iframe width="854" height="510" src="http://www.youtube.com/embed/h5NHkI3eLaQ"  frameborder="0" allowfullscreen="true"></iframe></div>
+<section id="content">
+		<div class="wrapper">
+			<div class="wrapper">
+				<div class="box bot pad_bot2">
+					<div class="pad">
+						<article class="col1">
+							<h2>Smart Audio City Guide ?</h2>
+							<p>The Smart Audio City Guide is a social network-based voice systems integrated with databases of geo-referencing and mobile devices to assist visually impaired people in urban mobility.</p>
+							<p>The audio information will be added to the system, which means that any user who wants to work can provide information about any place in town, which then can be used by any other user of the system. By using the Smart Audio City Guide people with visual impairments will be able to obtain information about the environment in which they operate, thus aiding in the movement of the user and providing a greater knowledge about the environment.</p>		
+                        </article>
+						<article class="col2 pad_left1">
+							<div class="wrapper">
+                            <h2>Log In</h2>
+                                @Html.ValidationMessage("authentication")
+                                @using (Html.BeginForm("connect", "User"))
+                                {
+                                    <p>@Html.ValidationMessageFor(m=>m.userName)</p>
+                                    <p>@Html.LabelFor(m => m.userName)</p>
+                                    <p>@Html.TextBoxFor(m => m.userName, new { @id = "inputText" })</p>
+    
+                                    <p>@Html.ValidationMessageFor(m=>m.password)</p>
+                                    <p>@Html.LabelFor(m=>m.password)</p>
+                                    <p >@Html.PasswordFor(m => m.password, new { @id = "inputText" })</p>
+    
+                                    <p>@Html.ActionLink("Register", "register", "User")</p>
+                                    <input type="submit" value="Log In" title="Log In"  id="logInFirstPage"/> 
+                                }
+                                <p></p>
+                                </div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>

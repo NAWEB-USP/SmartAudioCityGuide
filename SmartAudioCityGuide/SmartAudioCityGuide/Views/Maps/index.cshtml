@@ -1,0 +1,234 @@
+﻿<script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAGoS0KO3Er9pZz0jFQ_IzpglKiknmmibs&sensor=true" type="text/javascript"></script>
+ 
+@using SmartAudioCityGuide.Models;
+@using SmartAudioCityGuide.Controllers;
+@using SmartAudioCityGuide.Services;
+@{
+    SmartAudioCityGuide.Models.Users userSession = new SmartAudioCityGuide.Models.Users();
+    LocationServices locationsServices = new LocationServices();
+}
+
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    SelectList selectList = (SelectList)ViewData["selectList"];
+    List<Locations> locations2 = (List<Locations>)locationsServices.findAllLocations();
+}
+
+<br />
+<input id="searchTextField" type="text" size="50" placeholder="Where are you going?"/>
+<div id="map_canvas" style="width: 960px; height: 600px">
+</div>
+<script type="text/javascript">
+
+    var map;
+    var lastMarker;
+    function initialize() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        }
+    }
+
+    function showPosition(position) {
+        geocoder = new google.maps.Geocoder();
+        var positionJson = JSON.stringify(position, null, 2);
+
+        $.get("Maps/positionOfUser", {
+            posUser: positionJson
+        });  
+
+        var mapOptions = {
+            center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById('map_canvas'),
+          mapOptions);
+          
+        var lat = parseFloat(position.coords.latitude);
+        var lng = parseFloat(position.coords.longitude);
+        var latlng = new google.maps.LatLng(lat, lng);
+                
+        geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    marker = new google.maps.Marker({
+                        position: latlng,
+                        map: map
+                    });
+                    $.get("Maps/youAreAt", {
+                        street: results[1].formatted_address
+                    });    
+                    infowindow.setContent(results[1].formatted_address);
+                    infowindow.open(map, marker);
+                }
+            } else {
+                alert("Geocoder failed due to: " + status);
+            }
+        });
+        var input = document.getElementById('searchTextField');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
+        autocomplete.bindTo('bounds', map);
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+            map: map
+        });
+
+        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+            infowindow.close();
+            var place = autocomplete.getPlace();
+
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+                map.setZoom(17);
+            } else {
+                var latJson = JSON.stringify(place.geometry.location.lat(), null, 2);
+                var lngJson = JSON.stringify(place.geometry.location.lng(), null, 2);                
+                map.setCenter(place.geometry.location);
+                map.setZoom(17);  // Why 17? Because it looks good.
+            }
+
+            var image = new google.maps.MarkerImage(
+              place.icon,
+              new google.maps.Size(71, 71),
+              new google.maps.Point(0, 0),
+              new google.maps.Point(17, 34),
+              new google.maps.Size(35, 35));
+            marker.setIcon(image);
+            marker.setPosition(place.geometry.location);
+            $.get("/Locations/currentLocation", {
+                lat: latJson,
+                lng: lngJson
+            });
+            var address = '';
+            if (place.address_components) {
+                $.get("Maps/youAreAt", {
+                    street: place.formatted_address
+                });   
+                address = [(place.address_components[0] &&
+                        place.address_components[0].short_name || ''),
+                       (place.address_components[1] &&
+                        place.address_components[1].short_name || ''),
+                       (place.address_components[2] &&
+                        place.address_components[2].short_name || '')
+                      ].join(' ');
+            }
+
+            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+            infowindow.open(map, marker);
+        });
+        @{
+            List<Locations> locations = (List<Locations>)locationsServices.findAllLocations();
+       }
+
+
+        @{
+            if (userSession.currentUser != null)
+            {
+                <text>
+                    google.maps.event.addListener(map, 'click', function (event) {
+                        addCommentAdnMarker(event.latLng);
+                    });
+                </text>
+            }
+        }
+
+        @{
+            if (locations != null)
+            {
+                <text>
+                i = 0;
+                var marker = new Array();
+                </text>
+                foreach (Locations location in locations)
+                {
+                    <text>
+                    var position = new google.maps.LatLng(@location.latitude,@location.longitude );
+                    var markerI = new google.maps.Marker({
+                            position: position,
+                            map: map
+                        });
+                    marker.push(markerI);
+                    i++;
+
+                    google.maps.event.addListener(markerI, 'click', function() {
+                        var latJson = JSON.stringify(markerI.position.lat(), null, 2);
+                        var lngJson = JSON.stringify(markerI.position.lng(), null, 2);
+
+                        var url =  "/Locations/tellAboutLocation?lat="+latJson + "&lng="+lngJson;
+                        window.location.replace(url);
+                    });
+
+                    </text>
+                }
+            }
+        }
+
+    }
+
+    function addCommentAdnMarker(location) {
+        if (lastMarker != null)
+            lastMarker.setMap(null);
+
+        marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+        lastMarker = marker;
+
+        var latJson = JSON.stringify(location.lat(), null, 2);
+        var lngJson = JSON.stringify(location.lng(), null, 2);
+        $.get("/Locations/currentLocation", {
+                lat: latJson,
+                lng: lngJson
+        }); 
+        $('#addComment').show();
+    }
+
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+        }
+    }
+
+    
+    window.onload = function () {
+        initialize();
+        $('#addComment').hide();
+        $('#locations').hide();
+    }
+</script>
+
+<script>
+@{if (userSession.currentUser == null)
+  {
+        <text>
+            <script type="text/javascript">
+                initialize();
+                window.location.reload();
+            </script>
+        </text>
+    }
+}
+</script>
+@{
+    if (userSession.currentUser != null)
+    {
+<div id="addComment">
+    @Html.Partial("../Locations/addComment")
+</div>
+    }
+}

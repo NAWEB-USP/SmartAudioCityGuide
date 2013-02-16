@@ -1,0 +1,20 @@
+﻿@model SmartAudioCityGuide.Models.Comments
+@{
+    ViewBag.Title = "edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int idComment = (int)ViewData["commentId"];
+    SelectList selectList = (SelectList)ViewData["selectList"];
+}
+
+<h2>Edit Comment</h2>
+
+@{
+    using (Html.BeginForm("editCommentWithId", "Comment", new { commentId = idComment }))
+    {
+            <p>@Html.LabelFor(m => m.description)</p>
+            <p>@Html.TextAreaFor(m => m.description, 5, 32,
+                new RouteValueDictionary(new { @class = "resizer" }))</p>
+            <p>@Html.DropDownList("selectList", selectList, "--Select One--")</p>
+            <input type="submit" value="Comment" title="Comment"  id="logInFirstPage"/>
+    }
+}

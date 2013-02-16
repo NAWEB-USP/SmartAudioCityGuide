@@ -1,0 +1,26 @@
+﻿@model SmartAudioCityGuide.Models.Users
+@{
+    ViewBag.Title = "addUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Register</h2>
+@using (Html.BeginForm("register", "User"))
+{
+    <p>@Html.ValidationMessageFor(m => m.name)</p>
+    <p>@Html.LabelFor(m => m.name)</p>
+    <p>@Html.TextBoxFor(m => m.name, new { @id = "inputText" })</p>
+    
+    <p>@Html.ValidationMessageFor(m => m.userName)</p>
+    <p>@Html.LabelFor(m => m.userName)</p>
+    <p>@Html.TextBoxFor(m => m.userName, new { @id = "inputText" })</p>
+    
+    <p>@Html.ValidationMessageFor(m => m.password)</p>
+    <p>@Html.LabelFor(m => m.password)</p>
+    <p>@Html.PasswordFor(m => m.password, new { @id = "inputText" })</p>
+    
+    <p>@Html.ValidationMessage("confirmPassword")</p>
+    <p>@Html.Label("Confirm password:")</p>
+    <p>@Html.Password("confirmPassword",null, new { @id = "inputText" })</p>
+    
+    <input type="submit" value="Register" title="Register" id="logInFirstPage" />
+}

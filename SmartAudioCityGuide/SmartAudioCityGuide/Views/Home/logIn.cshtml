@@ -1,0 +1,22 @@
+﻿@model SmartAudioCityGuide.Models.Users
+@{
+    ViewBag.Title = "logIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Log In</h2>
+    @Html.ValidationMessage("authentication")
+    @using (Html.BeginForm("connect", "User"))
+    {
+        <p>@Html.ValidationMessageFor(m=>m.userName)</p>
+        <p>@Html.LabelFor(m => m.userName)</p>
+        <p>@Html.TextBoxFor(m => m.userName, new { @id = "inputText" })</p>
+    
+        <p>@Html.ValidationMessageFor(m => m.password)</p>
+        <p>@Html.LabelFor(m => m.password)</p>
+        <p>@Html.PasswordFor(m => m.password, new { @id = "inputText" })</p>
+    
+        <p>@Html.ActionLink("Register", "register", "User")</p>
+        <input type="submit" value="Log In" title="Log In"  id="logInFirstPage"/> 
+    }
+</div>

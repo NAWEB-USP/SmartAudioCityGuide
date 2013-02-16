@@ -1,0 +1,46 @@
+﻿@model SmartAudioCityGuide.Models.Contacts
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Be in Contact</h2>
+
+
+<p>@Html.ValidationMessage("contact")</p>
+<p>Please be in contact with us to receive the news of the aplication and to be one of test users.</p>
+<div class="fb-like" data-href="http://ec2-177-71-137-221.sa-east-1.compute.amazonaws.com/smartaudiocityguide/Contact/index" data-send="true" data-layout="box_count" data-width="450" data-show-faces="true" data-action="recommend" data-font="trebuchet ms"></div>
+ <br /> <p></p><a href="https://twitter.com/intent/tweet?button_hashtag=SmartAudioCityGuide" class="twitter-hashtag-button" data-size="large" data-url="http://ec2-177-71-137-221.sa-east-1.compute.amazonaws.com/smartaudiocityguide">Tweet #SmartAudioCityGuide</a>
+<script>    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
+ <br />
+ <p></p>
+ @using (Html.BeginForm("add", "Contact"))
+ {
+    
+    <p>@Html.LabelFor(m => m.name)</p>
+    <p>@Html.TextBoxFor(m => m.name, new { @id = "inputText" })</p>
+    <p>@Html.ValidationMessageFor(m => m.name)</p>
+    
+    
+    <p>@Html.LabelFor(m => m.eMail)</p>
+    <p>@Html.TextBoxFor(m => m.eMail, new { @id = "inputText" })</p>
+     <p>@Html.ValidationMessageFor(m => m.eMail)</p>
+     
+    
+    <p>@Html.LabelFor(m => m.country)</p>
+    <p>@Html.TextBoxFor(m => m.country, new { @id = "inputText" })</p>
+     <p>@Html.ValidationMessageFor(m => m.country)</p>
+     
+    
+    <p>@Html.LabelFor(m => m.city)</p>
+    <p>@Html.TextBoxFor(m => m.city, new { @id = "inputText" })</p>
+     <p>@Html.ValidationMessageFor(m => m.city)</p>
+     
+    
+    <p>@Html.LabelFor(m => m.phone)</p>
+    <p>@Html.TextBoxFor(m => m.phone, new { @id = "inputText" })</p>
+     <p>@Html.ValidationMessageFor(m => m.phone)</p>
+     
+    
+    <input type="submit" value="Add Contact" title="Contact"  id="logInFirstPage"/> 
+ }

@@ -1,0 +1,12 @@
+﻿@model SmartAudioCityGuide.Models.Comments
+@{
+    SelectList selectList = (SelectList)ViewData["selectList"];    
+}
+@using (Html.BeginForm("addTextComment", "Comment"))
+{    
+    <p>@Html.LabelFor(m => m.description)</p>
+    <p>@Html.TextAreaFor(m => m.description, 5, 40,
+        new RouteValueDictionary(new { @class = "resizer" }))</p>
+    <p>@Html.DropDownList("selectList",selectList,"--Select One--")</p>
+    <input type="submit" value="Comment" title="Comment" id="logInFirstPage" />
+}

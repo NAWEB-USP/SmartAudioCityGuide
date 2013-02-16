@@ -1,0 +1,82 @@
+﻿@model SmartAudioCityGuide.Models.Comments
+@using SmartAudioCityGuide.Models
+@using SmartAudioCityGuide.Services;
+
+@{
+    ViewBag.Title = "Show Comments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    Users userSession = new Users();
+    
+}
+
+@{
+
+    if(userSession.currentUser != null)
+    {
+        using (Html.BeginForm("addTextCommentWithLocation", "Comment", new { locationId = ViewData["locationId"] }))
+        {    
+            <p>@Html.LabelFor(m => m.description)</p>
+            <p>@Html.TextAreaFor(m => m.description, 5,32,
+                new RouteValueDictionary(new { @class = "resizer" }))</p>
+            <input type="submit" value="Comment" title="Comment" />
+        }
+    }
+    List<Comments> comments = (List<Comments>)ViewData["comments"];
+    
+<table id="list-locations">
+    <thead>
+        <tr>
+            <th id="list-locations">
+                <a>Description</a>
+            </th>
+            <th id="list-locations">
+                 <a>Edit</a>
+            </th>
+            <th>
+                 <a>Delete</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (Comments comment in comments)
+    {
+        if (userSession.currentUser != null)
+        {
+            if (comment.userId == userSession.currentUser.id)
+            {
+            <tr>
+                <th>
+                    @comment.description
+                </th>
+                <th>
+                    @Html.ActionLink("Edit", "../Comment/editComment", new { idComment = comment.id })
+                </th>
+                <th>
+                     @Html.ActionLink("Delete", "../Comment/deleteComment", new { commentId = comment.id })
+                </th>
+            </tr>            }
+            else
+            {
+                <tr>
+                    <th>
+                        @comment.description
+                    </th>
+                </tr>
+            }
+        }
+        else
+        {
+             <tr>
+            <th>
+                @comment.description
+            </th>
+            </tr>
+        }
+    }
+    </tbody>
+    </table>
+
+}

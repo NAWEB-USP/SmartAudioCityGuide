@@ -1,0 +1,43 @@
+﻿<script type="text/javascript">
+    window.onload = function () {
+        initialize();
+    }
+
+    var map;
+    var lastMarker;
+    
+    function initialize() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        }
+    }
+
+    function showPosition(position) {
+        geocoder = new google.maps.Geocoder();
+        var positionJson = JSON.stringify(position, null, 2);
+
+        $.get("positionOfUser", {
+            posUser: positionJson
+        });        
+       
+    }
+
+
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+        }
+    }
+
+</script>

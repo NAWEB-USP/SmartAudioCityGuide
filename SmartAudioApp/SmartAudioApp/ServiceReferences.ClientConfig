@@ -1,0 +1,22 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="WebService1Soap" maxBufferSize="2147483647" maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="WebService1Soap1" maxBufferSize="2147483647" maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://localhost:41682/WebServices.asmx" binding="basicHttpBinding"
+                bindingConfiguration="WebService1Soap" contract="ServiceReferences.WebService1Soap"
+                name="WebService1Soap" />
+            <endpoint address="http://smartaudiocityguide.azurewebsites.net/Webservices.asmx"
+                binding="basicHttpBinding" bindingConfiguration="WebService1Soap1"
+                contract="ServicesReference.WebService1Soap" name="WebService1Soap1" />
+        </client>
+    </system.serviceModel>
+</configuration>

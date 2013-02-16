@@ -1,0 +1,405 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MicroTranslatorService.Speech</name>
+    </assembly>
+    <members>
+        <member name="T:MicroTranslatorService.Speech.SpeakStreamFormat">
+            <summary>
+            Specifies the audio format of the retrieved audio stream.
+            </summary>
+        </member>
+        <member name="F:MicroTranslatorService.Speech.SpeakStreamFormat.Wave">
+            <summary>
+            Uses the WAVE file format.
+            </summary>
+        </member>
+        <member name="F:MicroTranslatorService.Speech.SpeakStreamFormat.MP3">
+            <summary>
+            Uses the MP3 file format.
+            </summary>
+        </member>
+        <member name="T:MicroTranslatorService.Speech.SpeakStreamQuality">
+            <summary>
+            Specifies the audio quality of the retrieved audio stream.
+            </summary>
+        </member>
+        <member name="F:MicroTranslatorService.Speech.SpeakStreamQuality.MaxQuality">
+            <summary>
+            Uses the max available quality.
+            </summary>
+        </member>
+        <member name="F:MicroTranslatorService.Speech.SpeakStreamQuality.MinSize">
+            <summary>
+            Retrieves audio file with the minimum size.
+            </summary>
+        </member>
+        <member name="T:MicroTranslatorService.Speech.SpeechSynthesizer">
+            <summary>
+            The <strong>SpeechSynthesizer</strong> class provides methods to retrieve stream of file speaking text in various supported languages.
+            </summary>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.SpeechSynthesizer.#ctor">
+            <summary>
+            Initializes a new instance of the <strong>SpeechSynthesizer</strong> class.
+            </summary>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.SpeechSynthesizer.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <strong>SpeechSynthesizer</strong> class, using the specified Client ID and Client Secret.
+            </summary>
+            <param name="clientID">The Application Client ID.
+            </param>
+            <param name="clientSecret">The Application Client Secret.
+            </param>
+            <remarks>You must register your application on Azure DataMarket, https://datamarket.azure.com/developer/applications, to obtain the Client ID and Client Secret needed to use the service.
+            </remarks>
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientID"/>
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientSecret"/>        
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.SpeechSynthesizer.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <strong>SpeechSynthesizer</strong> class, using the specified Client ID and Client Secret and the desired language.
+            </summary>
+            <param name="clientID">The Application Client ID.
+            </param>
+            <param name="clientSecret">The Application Client Secret.
+            </param>
+            <param name="language">A string representing the supported language code to speak the text in.</param>
+            <remarks>You must register your application on Azure DataMarket, https://datamarket.azure.com/developer/applications, to obtain the Client ID and Client Secret needed to use the service.
+            </remarks>
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientID"/>
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientSecret"/>        
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStream(System.String)">
+            <summary>
+            Returns a stream of a file speaking the passed-in text in the language specified in the <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/> property. 
+            </summary>
+            <param name="text">A string containing a sentence to be spoken.</param>
+            <returns>A <see cref="T:System.IO.Stream"/> object that contains a wave-file speaking the passed-in text in the language specified in the <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/> property.</returns>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <term>The <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientID"/> or <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientSecret"/> properties haven't been set.</term>
+            <term>The <paramref name="text"/> parameter is longer than 1000 characters.</term>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="text"/> parameter is <strong>null</strong> or empty.</exception>
+            <remarks><para>This method will block until the <see cref="T:System.IO.Stream"/> object is returned.If you want to perform a non-blocking request for the stream and to be notified when the operation is completed, use the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String)"/> method instead.</para>
+            <para>For more information, go to http://msdn.microsoft.com/en-us/library/ff512420.aspx.
+            </para></remarks>
+            <seealso cref="T:System.IO.Stream"/>
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/> 
+            <seealso cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String)"/>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStream(System.String,System.String)">
+            <summary>
+            Returns a stream of a file speaking the passed-in text in the desired language. 
+            </summary>
+            <param name="text">A string containing a sentence to be spoken.</param>
+            <param name="language">A string representing the supported language codes to speak the text in.</param>
+            <returns>A <see cref="T:System.IO.Stream"/> object that contains a file speaking the passed-in text in the desired language.</returns>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <term>The <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientID"/> or <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientSecret"/> properties haven't been set.</term>
+            <term>The <paramref name="text"/> parameter is longer than 1000 characters.</term>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="text"/> parameter is <strong>null</strong> or empty.</exception>
+            <remarks><para>If <paramref name="language"/> parameter is <strong>null</strong> it will be used the language specified in the <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/> property.</para>
+            <para>This method will block until the <see cref="T:System.IO.Stream"/> object is returned. If you want to perform a non-blocking request for the stream and to be notified when the operation is completed, use the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String,System.String)"/> method instead.</para>
+            <para>For more information, go to http://msdn.microsoft.com/en-us/library/ff512420.aspx.
+            </para></remarks>
+            <seealso cref="T:System.IO.Stream"/>
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/>
+            <seealso cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String,System.String)"/>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String)">
+            <summary>
+            Returns a stream of a file speaking the passed-in text in the language specified in the <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/> property. 
+            </summary>
+            <param name="text">A string containing a sentence to be spoken.</param>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <term>The <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientID"/> or <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientSecret"/> properties haven't been set.</term>
+            <term>The <paramref name="text"/> parameter is longer than 1000 characters.</term>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="text"/> parameter is <strong>null</strong> or empty.</exception>
+            <remarks><para>This method perform a non-blocking request for the stream. When the operation completes, the <see cref="E:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamCompleted"/> event is raised.</para>
+            <para>For more information, go to http://msdn.microsoft.com/en-us/library/ff512420.aspx.
+            </para></remarks>
+            <seealso cref="T:System.IO.Stream"/>
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/>        
+            <seealso cref="E:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamCompleted"/>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String,System.String)">
+            <summary>
+            Returns a stream of a file speaking the passed-in text in the desired language. 
+            </summary>
+            <param name="text">A string containing a sentence to be spoken.</param>
+            <param name="language">A string representing the supported language codes to speak the text in.</param>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <term>The <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientID"/> or <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientSecret"/> properties haven't been set.</term>
+            <term>The <paramref name="text"/> parameter is longer than 1000 characters.</term>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="text"/> parameter is <strong>null</strong> or empty.</exception>
+            <remarks><para>This method perform a non-blocking request for the stream. When the operation completes, the <see cref="E:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamCompleted"/> event is raised.</para>
+            <para>For more information, go to http://msdn.microsoft.com/en-us/library/ff512420.aspx.
+            </para></remarks>
+            <seealso cref="T:System.IO.Stream"/>
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/>
+            <seealso cref="E:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamCompleted"/>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytes(System.String)">
+            <summary>
+            Returns a byte array containing the stream of a file speaking the passed-in text in the language specified in the <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/> property.
+            </summary>
+            <param name="text">A string containing a sentence to be spoken.</param>
+            <returns>A byte array that contains the stream of a wave-file speaking the passed-in text in the desired language.</returns>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <term>The <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientID"/> or <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientSecret"/> properties haven't been set.</term>
+            <term>The <paramref name="text"/> parameter is longer than 1000 characters.</term>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="text"/> parameter is <strong>null</strong> or empty.</exception>
+            <remarks><para>This method will block until the byte array is returned. If you want to perform a non-blocking request for the array and to be notified when the operation is completed, use the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesAsync(System.String)"/> method instead.</para>
+            <para>For more information, go to http://msdn.microsoft.com/en-us/library/ff512420.aspx.
+            </para></remarks>
+            <seealso cref="T:System.IO.Stream"/>
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytes(System.String,System.String)">
+            <summary>
+            Returns a byte array containing the stream of a file speaking the passed-in text in the desired language. 
+            </summary>
+            <param name="text">A string containing a sentence to be spoken.</param>
+            <param name="language">A string representing the supported language codes to speak the text in.</param>
+            <returns>A byte array that contains the stream of a wave-file speaking the passed-in text in the desired language.</returns>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <term>The <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientID"/> or <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientSecret"/> properties haven't been set.</term>
+            <term>The <paramref name="text"/> parameter is longer than 1000 characters.</term>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="text"/> parameter is <strong>null</strong> or empty.</exception>
+            <remarks><para>If <paramref name="language"/> parameter is <strong>null</strong> (<strong>Nothing</strong> in Visual Basic), it will be used the language specified in the <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/> property.</para>
+            <para>This method will block until the byte array is returned. If you want to perform a non-blocking request for the array and to be notified when the operation is completed, use the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesAsync(System.String,System.String)"/> method instead.</para>
+            <para>For more information, go to http://msdn.microsoft.com/en-us/library/ff512420.aspx.
+            </para></remarks>
+            <seealso cref="T:System.IO.Stream"/>
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesAsync(System.String)">
+            <summary>
+            Returns a byte array containing the stream of a wave-file speaking the passed-in text in the language specified in the <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/> property. 
+            </summary>
+            <param name="text">A string containing a sentence to be spoken.</param>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <term>The <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientID"/> or <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientSecret"/> properties haven't been set.</term>
+            <term>The <paramref name="text"/> parameter is longer than 1000 characters.</term>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="text"/> parameter is <strong>null</strong> or empty.</exception>
+            <remarks><para>This method perform a non-blocking request for the byte array. When the operation completes, the <see cref="E:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesCompleted"/> event is raised.</para>
+            <para>For more information, go to http://msdn.microsoft.com/en-us/library/ff512420.aspx.
+            </para></remarks>
+            <seealso cref="T:System.IO.Stream"/>
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/>        
+            <seealso cref="E:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesCompleted"/>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesAsync(System.String,System.String)">
+            <summary>
+            Returns a byte array containg the stream of a wave-file speaking the passed-in text in the desired language. 
+            </summary>
+            <param name="text">A string containing a sentence to be spoken.</param>
+            <param name="language">A string representing the supported language codes to speak the text in.</param>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <term>The <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientID"/> or <see cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientSecret"/> properties haven't been set.</term>
+            <term>The <paramref name="text"/> parameter is longer than 1000 characters.</term>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="text"/> parameter is <strong>null</strong> or empty.</exception>
+            <remarks><para>This method perform a non-blocking request for the byte array. When the operation completes, the <see cref="E:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamCompleted"/> event is raised.</para>
+            <para>For more information, go to http://msdn.microsoft.com/en-us/library/ff512420.aspx.
+            </para></remarks>
+            <seealso cref="T:System.IO.Stream"/>
+            <seealso cref="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language"/>
+            <seealso cref="E:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesCompleted"/>
+        </member>
+        <member name="E:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamCompleted">
+            <summary>
+            Occurs when an asynchronous request for a stream with speech completes.
+            </summary>
+            <seealso cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String,System.String)"/>
+        </member>
+        <member name="E:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesCompleted">
+            <summary>
+            Occurs when speeching of the text completes.
+            </summary>
+            <seealso cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesAsync(System.String,System.String)"/>
+        </member>
+        <member name="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientID">
+            <summary>
+            Gets or sets the Application Client ID.
+            </summary>
+            <remarks>
+            Go to https://datamarket.azure.com/developer/applications/ to register your application and obtain a Client ID.
+            </remarks>        
+        </member>
+        <member name="P:MicroTranslatorService.Speech.SpeechSynthesizer.ClientSecret">
+            <summary>
+            Gets or sets the Application Client ID.
+            </summary>
+            <remarks>
+            Go to https://datamarket.azure.com/developer/applications/ to register your application and obtain a Client Secret.
+            </remarks>
+        </member>
+        <member name="P:MicroTranslatorService.Speech.SpeechSynthesizer.Language">
+            <summary>
+            Gets or sets the string representing the supported language code to speak the text in.
+            </summary>
+        </member>
+        <member name="P:MicroTranslatorService.Speech.SpeechSynthesizer.Proxy">
+            <summary>
+            Gets or sets a <see cref="T:System.Net.WebProxy"/> class that contains the proxy definition to be used to send request over the Internet.
+            </summary>
+        </member>
+        <member name="P:MicroTranslatorService.Speech.SpeechSynthesizer.AudioFormat">
+            <summary>
+            Gets or sets the audio format of the retrieved audio stream. Currently, <strong>Wav</strong> and <strong>MP3</strong> are supported.
+            </summary>
+            <remarks>The default value is <strong>Wave</strong>.</remarks>        
+        </member>
+        <member name="P:MicroTranslatorService.Speech.SpeechSynthesizer.AudioQuality">
+            <summary>
+            Gets or sets the audio quality of the retrieved audio stream. Currently, MaxQuality and MinSize are supported.
+            </summary>
+            <remarks>
+            With <strong>MaxQuality</strong>, you can get the voice with the highest quality, and with <strong>MinSize</strong>, you can get the voices with the smallest size. The default value is <strong>MinSize</strong>.
+            </remarks>
+        </member>
+        <member name="T:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamEventHandler">
+            <summary>
+            Delegates of the event that is raised when the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String,System.String)"/> method completes.
+            </summary>
+            <param name="sender">The object that generates the event.</param>
+            <param name="e">An object of type <see cref="T:MicroTranslatorService.Speech.GetSpeakStreamEventArgs"/> that contains information related to the event.</param>
+        </member>
+        <member name="T:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesEventHandler">
+            <summary>
+            Delegates of the event that is raised when the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesAsync(System.String,System.String)"/> method completes.
+            </summary>
+            <param name="sender">The object that generates the event.</param>
+            <param name="e">An object of type <see cref="T:MicroTranslatorService.Speech.GetSpeakBytesEventArgs"/> that contains information related to the event.</param>
+        </member>
+        <member name="T:MicroTranslatorService.Speech.GetSpeakBytesEventArgs">
+            <summary>
+            Provides data for the <strong>GetSpeakBytesEventArgs</strong> event.
+            </summary>
+            <seealso cref="T:MicroTranslatorService.Speech.SpeechEventArgs"/>
+        </member>
+        <member name="T:MicroTranslatorService.Speech.SpeechEventArgs">
+            <summary>
+            Provides data for the <em>MethodName</em><strong>Completed</strong> event.
+            </summary>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.SpeechEventArgs.#ctor">
+            <summary>
+            Initializes a new instance of the <strong>SpeechEventArgs</strong> class.
+            </summary>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.SpeechEventArgs.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <strong>SpeechEventArgs</strong> class setting the specified <see cref="T:System.Exception"/> object.
+            </summary>
+            <param name="error">Any error that occurred during the asynchronous operation.</param>
+        </member>
+        <member name="P:MicroTranslatorService.Speech.SpeechEventArgs.Error">
+            <summary>
+            Gets a value indicating which error occurred during an asynchronous operation.
+            </summary>
+            <value>An <see cref="T:System.Exception"/> instance, if an error occurred during an asynchronous operation; otherwise a <strong>null</strong> reference (<strong>Nothing</strong> in Visual Basic).</value>
+            <remarks><para>If an exception is raised during an asynchronous operation, the class will assign the exception to the <see cref="P:MicroTranslatorService.Speech.SpeechEventArgs.Error"/> property. The client application's event-handler delegate should check the <see cref="P:MicroTranslatorService.Speech.SpeechEventArgs.Error"/> property before accessing any properties in a class derived from <see cref="T:MicroTranslatorService.Speech.SpeechEventArgs"/>.</para>
+            <para>The value of the <see cref="P:MicroTranslatorService.Speech.SpeechEventArgs.Error"></see> property is a <strong>null</strong> reference (<strong>Nothing</strong> in Visual Basic) if no error has been raised.</para></remarks>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.GetSpeakBytesEventArgs.#ctor">
+            <summary>
+            Initializes a new instance of the <strong>GetSpeakBytesEventArgs</strong> class.
+            </summary>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.GetSpeakBytesEventArgs.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <strong>GetSpeakBytesEventArgs</strong> class setting the specified <see cref="T:System.Exception"/> object.
+            </summary>
+            <param name="error">Any error that occurred during the asynchronous operation.</param>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.GetSpeakBytesEventArgs.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <strong>GetSpeakBytesEventArgs</strong> class using the specified <see cref="T:System.IO.Stream"/> object.
+            </summary>
+            <param name="data">A byte array containg the stream of a wave-file speaking the text passed to the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesAsync(System.String,System.String)"/> method.</param>
+            <seealso cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesAsync(System.String,System.String)"/>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.GetSpeakBytesEventArgs.#ctor(System.Byte[],System.Exception)">
+            <summary>
+            Initializes a new instance of the <strong>GetSpeakBytesEventArgs</strong> class using the specified byte array and <see cref="T:System.Exception"/>.
+            </summary>
+            <param name="data">A byte array containg the stream of a wave-file speaking the text passed to the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesAsync(System.String,System.String)"/> method.</param>
+            <param name="error">Any error that occurred during the asynchronous operation.</param>
+            <seealso cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesAsync(System.String,System.String)"/>
+        </member>
+        <member name="P:MicroTranslatorService.Speech.GetSpeakBytesEventArgs.Data">
+            <summary>
+            Gets a byte array containg the stream of a wave-file speaking the text passed to the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesAsync(System.String,System.String)"/> method.
+            </summary>
+            <value>A byte array object that contains a wave-file speaking the text passed to the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesAsync(System.String,System.String)"/> method.</value>
+            <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakBytesAsync(System.String,System.String)"/>
+        </member>
+        <member name="T:MicroTranslatorService.Speech.GetSpeakStreamEventArgs">
+            <summary>
+            Provides data for the <strong>GetSpeakStreamEventArgs</strong> event.
+            </summary>
+            <seealso cref="T:MicroTranslatorService.Speech.SpeechEventArgs"/>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.GetSpeakStreamEventArgs.#ctor">
+            <summary>
+            Initializes a new instance of the <strong>GetSpeakStreamEventArgs</strong> class.
+            </summary>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.GetSpeakStreamEventArgs.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <strong>GetSpeakStreamEventArgs</strong> class setting the specified <see cref="T:System.Exception"/> object.
+            </summary>
+            <param name="error">Any error that occurred during the asynchronous operation.</param>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.GetSpeakStreamEventArgs.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <strong>GetSpeakStreamEventArgs</strong> class using the specified <see cref="T:System.IO.Stream"/> object.
+            </summary>
+            <param name="stream">A <see cref="T:System.IO.Stream"/> object that contains a wave-file speaking the text passed to the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String,System.String)"/> method.</param>
+            <seealso cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String,System.String)"/>
+        </member>
+        <member name="M:MicroTranslatorService.Speech.GetSpeakStreamEventArgs.#ctor(System.IO.Stream,System.Exception)">
+            <summary>
+            Initializes a new instance of the <strong>GetSpeakStreamEventArgs</strong> class using the specified <see cref="T:System.IO.Stream"/> object and <see cref="T:System.Exception"/>.
+            </summary>
+            <param name="stream">A <see cref="T:System.IO.Stream"/> object that contains a wave-file speaking the text passed to the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String,System.String)"/> method.</param>
+            <param name="error">Any error that occurred during the asynchronous operation.</param>
+            <seealso cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String,System.String)"/>
+        </member>
+        <member name="P:MicroTranslatorService.Speech.GetSpeakStreamEventArgs.Stream">
+            <summary>
+            Gets a<see cref="T:System.IO.Stream"/> object that contains a wave-file speaking the text passed to the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String,System.String)"/> method.
+            </summary>
+            <value>A <see cref="T:System.IO.Stream"/> object that contains a wave-file speaking the text passed to the <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String,System.String)"/> method.</value>
+            <see cref="M:MicroTranslatorService.Speech.SpeechSynthesizer.GetSpeakStreamAsync(System.String,System.String)"/>
+        </member>
+    </members>
+</doc>
