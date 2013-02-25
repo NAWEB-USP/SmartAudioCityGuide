@@ -28,11 +28,13 @@ namespace SmartAudioApp
         private Sound sound = new Sound();
         private MyGPS myGPS = new MyGPS();
         private Database database = new Database();
+        private string itemSelected = "";
         public Route()
         {
             myMicrophone.initializeMicrophone();
             InitializeComponent();
             sound.play("routemode");
+            Menu.DoubleTap += DoubleTap;
             Thread.Sleep(500);
            
         }
@@ -47,13 +49,26 @@ namespace SmartAudioApp
         private void sound_Location(object sender, MouseEventArgs e)
         {
             sound.play("registerlocation");
+            itemSelected = "registerlocation";
         }
 
         private void sound_ListLocations(object sender, MouseEventArgs e)
         {
             sound.play("locationlist");
+            itemSelected = "locationlist";
         }
 
+        private void DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (itemSelected == "locationlist")
+            {
+                holdListLocations(sender, e);
+            }
+            if (itemSelected == "registerlocation")
+            {
+                holdOnAddLocation(sender, e);
+            }
+        }
         
         public void initializeGameTimer()
         {
@@ -67,8 +82,45 @@ namespace SmartAudioApp
             FrameworkDispatcher.Update();
         }
 
+        
+        private void holdOnAddLocation(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (myMicrophone.microphone.State == MicrophoneState.Stopped)
+            {
+                myMicrophone.streamMicrophone = new MemoryStream();
 
+                myMicrophone.microphone.BufferDuration = TimeSpan.FromMilliseconds(1000);
+                myMicrophone.bufferMicrophone = new byte[myMicrophone.microphone.GetSampleSizeInBytes(myMicrophone.microphone.BufferDuration)];
 
+                sound.play("recording");
+
+                Thread.Sleep(1000);
+
+                myMicrophone.microphone.Start();
+            }
+            else
+            {
+                holdOffAddLocation(sender, e);
+            }
+        }
+
+        private void holdOffAddLocation(object sender, System.Windows.Input.GestureEventArgs e)
+        {           
+            if (myMicrophone.microphone.State == MicrophoneState.Started)
+            {
+                myMicrophone.microphone.Stop();
+                sound.play("recordingend");
+
+                if (myMicrophone.streamMicrophone.Length != 0)
+                {
+                    (Application.Current as App).latShared = myGPS.actualLocation.Position.Location.Latitude;
+                    (Application.Current as App).lonShared = myGPS.actualLocation.Position.Location.Longitude;
+                    (Application.Current as App).myMicrophoneShare = myMicrophone;
+                    NavigationService.Navigate(new Uri("/AddRoutePlace.xaml", UriKind.Relative));
+
+                }
+            }
+        }
 
         private void addLocation(object sender, System.Windows.Input.GestureEventArgs e)
         {

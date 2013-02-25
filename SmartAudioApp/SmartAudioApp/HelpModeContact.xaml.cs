@@ -24,6 +24,7 @@ namespace SmartAudioApp
         private MyPhone myPhone = new MyPhone();
         private MyGPS myGPS = new MyGPS();
         private Sound sound = new Sound();
+        private string itemSelected = "";
         private List<Contact> contacts;
         private List<List<ListBoxItem>> listListBoxItens = new List<List<ListBoxItem>>();
         private ResourceManager resouceManager = new ResourceManager("SmartAudioApp.Resources", typeof(Resources).Assembly);
@@ -34,11 +35,28 @@ namespace SmartAudioApp
             InitializeComponent();
             getContacts();
             sound.play("friendmode");
+            Menu.DoubleTap += DoubleTap;
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             sound.play("menu");
+        }
+
+        private void DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (itemSelected == "previousPage")
+            {
+                listBoxItem_Page_DoubleTap();
+            }
+            else if (itemSelected == "nextPage")
+            {
+                listBoxItem_Page_DoubleTap();
+            }
+            else
+            {
+                listBoxItem_DoubleTap();
+            }
         }
 
         public void getContacts()
@@ -56,6 +74,7 @@ namespace SmartAudioApp
             contacts = e.Results.ToList();
             int colors = 0;
             int aux = 0;
+            int itensOnPage = 0;
 
             foreach (var result in e.Results)
             {
@@ -135,14 +154,78 @@ namespace SmartAudioApp
                 if (listListBoxItens.Count() != e.Results.Count() / 3 + 1)
                     listListBoxItens.Add(listBoxItens);
                 listBoxContact.ItemsSource = listListBoxItens[0];
+                while (listBoxContact.ItemsSource.GetEnumerator().MoveNext())
+                    itensOnPage++;
+
+                playSound("This page has  " + (itensOnPage) + " itens.");
             }
             else
             {
                 listBoxContact.ItemsSource = listBoxItens;
+                playSound("This page has  " + (listBoxItens.Count) + " itens.");
             }
         }
 
-        
+        void listBoxItem_Page_DoubleTap()
+        {
+            if (itemSelected == "previousPage")
+            {
+                if (currentPage == 0)
+                {
+                    playSound("Page " + (currentPage + 1) + " of " + listListBoxItens.Count);
+                }
+                else
+                {
+                    currentPage = currentPage - 1;
+                    if (listListBoxItens.Count > currentPage)
+                    {
+                        listBoxContact.ItemsSource = listListBoxItens[currentPage];
+                        playSound("Page " + (currentPage + 1) + " of " + listListBoxItens.Count);
+                    }
+                }
+            }
+            else if (itemSelected == "nextPage")
+            {
+                if (currentPage + 1 == listListBoxItens.Count)
+                {
+                    playSound("Page " + (currentPage + 1) + " of " + listListBoxItens.Count);
+                }
+                else
+                {
+                    currentPage = currentPage + 1;
+                    if (listListBoxItens.Count > currentPage)
+                    {
+                        listBoxContact.ItemsSource = listListBoxItens[currentPage];
+                        playSound("Page " + (currentPage + 1) + " of " + listListBoxItens.Count);
+                    }
+                }
+                return;
+            }
+        }
+
+        void listBoxItem_DoubleTap()
+        {
+            Contact contact = (from con in contacts
+                               where con.DisplayName == itemSelected
+                               select con).FirstOrDefault();
+            if (contact == null)
+            {
+                playSound("Contact not found.");
+                return;
+            }
+
+            if (contact.EmailAddresses.Count() == 0)
+            {
+                playSound("Email address not available.");
+                return;
+            }
+
+            WebService1SoapClient webService = new WebService1SoapClient();
+            updateUserLocation();
+            //webService.sendEmailForFolloUserByWindowsPhoneIdAsync(myPhone.serializedDeviceUniqueId(),contact.EmailAddresses.First().EmailAddress );
+            webService.sendEmailForFolloUserByWindowsPhoneIdAsync(myPhone.serializedDeviceUniqueId(), "greganatti@gmail.com");
+            playSound("success");
+        }
 
 
         void listBoxItem_Hold(object sender, System.Windows.Input.GestureEventArgs e)
@@ -219,10 +302,20 @@ namespace SmartAudioApp
         {
             ListBoxItem listBoxItem = (ListBoxItem)sender;
             if (listBoxItem.Content.ToString() == resouceManager.GetString("previousPage").ToString())
+            {
                 sound.play("previouspage");
+                itemSelected = "previousPage";
+            }
             else if (listBoxItem.Content.ToString() == resouceManager.GetString("nextPage").ToString())
+            {
                 sound.play("nextpage");
-            else playSound(listBoxItem.Content.ToString());
+                itemSelected = "nextPage";
+            }
+            else
+            {
+                playSound(listBoxItem.Content.ToString());
+                itemSelected = listBoxItem.Content.ToString();
+            }
                    
         }
 

@@ -41,7 +41,7 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
 
             <!--Panorama item one-->
-            <Grid Name="Menu" Width="472" Margin="0,0,0,0">
+            <Grid Name="Menu" Width="472" Margin="0,0,0,0" >
                 <Grid.Background>
                     <ImageBrush ImageSource="Images/PanoramaBackground.png"/>
                 </Grid.Background>
@@ -51,7 +51,7 @@
                 </StackPanel>
 
             <ListBox Margin="0,153,8,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.RowSpan="2">
-                <ListBoxItem Content="{Binding Path=Resources.registerLocation, Source={StaticResource LocalizedStrings}}" Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#1080DD" Width="360" IsHitTestVisible="True" MouseEnter="sound_Location" Hold="addLocation" />
+                <ListBoxItem Content="{Binding Path=Resources.registerLocation, Source={StaticResource LocalizedStrings}}" Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#1080DD" Width="360" IsHitTestVisible="True" MouseEnter="sound_Location" Hold="holdOnAddLocation"  />
                 <ListBoxItem Content="{Binding Path=Resources.locations, Source={StaticResource LocalizedStrings}}" Height="100"  Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#F09609" Width="360" IsHitTestVisible="True" MouseEnter="sound_ListLocations" Hold="holdListLocations" />
             </ListBox>
         </Grid>

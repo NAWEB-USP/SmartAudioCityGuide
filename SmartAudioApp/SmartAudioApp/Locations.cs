@@ -55,7 +55,7 @@ namespace SmartAudioApp
 
             string locationJson = location.serialize();
 
-            string uri = baseWebServer + "LocationsWebServices/searchLocations?location=" + locationJson + "&radius=1&windowsPhoneId=" + myPhone.serializedDeviceUniqueId() + "&code=wonders";
+            string uri = baseWebServer + "LocationsWebServices/searchLocations?location=" + locationJson + "&radius=2&windowsPhoneId=" + myPhone.serializedDeviceUniqueId() + "&code=wonders";
 
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uri);
 

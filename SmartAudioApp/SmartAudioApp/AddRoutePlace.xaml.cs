@@ -22,6 +22,7 @@ namespace SmartAudioApp
         private double lat;
         private double lon;
         private MyMicrophone myMicrophone;
+        private string itemSelected = "";
 
 
         public AddRoutePlace()
@@ -33,6 +34,23 @@ namespace SmartAudioApp
             this.lon = (Application.Current as App).lonShared;
             this.myMicrophone = (Application.Current as App).myMicrophoneShare;
             Thread.Sleep(500);
+            LayoutRoot.DoubleTap += DoubleTap;
+        }
+
+        private void DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (itemSelected == "yes")
+            {
+                yesHold(sender, e);
+            }
+            else if (itemSelected == "no")
+            {
+                noHold(sender, e);
+            }
+            else if (itemSelected == "listen")
+            {
+                listenAgainHold(sender, e);
+            }
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
@@ -44,16 +62,19 @@ namespace SmartAudioApp
         private void sound_yes(object sender, MouseEventArgs e)
         {
             sound.play("yes");
+            itemSelected = "yes";
         }
 
         private void sound_listenAgain(object sender, MouseEventArgs e)
         {
             sound.play("listen");
+            itemSelected = "listen";
         }
 
         private void sound_no(object sender, MouseEventArgs e)
         {
             sound.play("no");
+            itemSelected = "no";
         }
 
         private void listenAgainHold(object sender, System.Windows.Input.GestureEventArgs e)

@@ -27,14 +27,33 @@ namespace SmartAudioApp
         private MyGPS myGPS = new MyGPS();
         private int currentPage = 0;
         private SpeechSynthesizer speech = new SpeechSynthesizer("SmartAudioCityGuide", "Lz+vYpOFm6NTP83A9y0tPoX6ByJa06Q6yxHvoBsD0xo=");
+        private string itemSelected = "";
         
         public ListRoute()
         {
             sound.play("selectlocation");
             InitializeComponent();
             System.Threading.Thread.Sleep(1000);
+            Menu.DoubleTap += DoubleTap;
             getListOfPlaces();
         }
+
+        private void DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (itemSelected == "previousPage")
+            {
+                listBoxItem_Page_DoubleTap();
+            }
+            else if (itemSelected == "nextPage")
+            {
+                listBoxItem_Page_DoubleTap();
+            }
+            else
+            {
+                listBoxItem_DoubleTap();
+            }
+        }
+
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
@@ -161,6 +180,43 @@ namespace SmartAudioApp
             }
         }
 
+        void listBoxItem_Page_DoubleTap()
+        {
+            if (itemSelected == "previousPage")
+            {
+                if (currentPage == 0)
+                {
+                    playSound("Page " + (currentPage + 1) + " of " + listListBoxItens.Count);
+                }
+                else
+                {
+                    currentPage = currentPage - 1;
+                    if (listListBoxItens.Count > currentPage)
+                    {
+                        listBoxRoute.ItemsSource = listListBoxItens[currentPage];
+                        playSound("Page " + (currentPage + 1) + " of " + listListBoxItens.Count);
+                    }
+                }
+            }
+            else if (itemSelected == "nextPage")
+            {
+                if (currentPage + 1 == listListBoxItens.Count)
+                {
+                    playSound("Page " + (currentPage + 1) + " of " + listListBoxItens.Count);
+                }
+                else
+                {
+                    currentPage = currentPage + 1;
+                    if (listListBoxItens.Count > currentPage)
+                    {
+                        listBoxRoute.ItemsSource = listListBoxItens[currentPage];
+                        playSound("Page " + (currentPage + 1) + " of " + listListBoxItens.Count);
+                    }
+                }
+                return;
+            }
+        }
+
         void listBoxItemForPage_Hold(object sender, System.Windows.Input.GestureEventArgs e)
         {
             ListBoxItem listBoxItem = (ListBoxItem)sender;
@@ -202,19 +258,43 @@ namespace SmartAudioApp
             }
         }
 
+        void listBoxItem_DoubleTap()
+        {
+            try
+            {
+                coordinatesAndSound itemDatabase = database.findLocalDataBaseForLatLongAndSoundById(Convert.ToInt32(itemSelected));
+                (Application.Current as App).latShared = itemDatabase.lat;
+                (Application.Current as App).lonShared = itemDatabase.lon;
+                sound.play("calcrota");
+                NavigationService.Navigate(new Uri("/RouteMap.xaml", UriKind.Relative));
+            }
+            catch (Exception)
+            {
+                sound.play("error");
+            }
+
+        }
+
         void listBoxItem_MouseEnter(object sender, MouseEventArgs e)
         {
             ListBoxItem listBoxItem = (ListBoxItem)sender;
             if (listBoxItem.Content.ToString() == resouceManager.GetString("previousPage").ToString())
+            {
                 sound.play("previouspage");
+                itemSelected = "previousPage";
+            }
             else if (listBoxItem.Content.ToString() == resouceManager.GetString("nextPage").ToString())
+            {
                 sound.play("nextpage");
+                itemSelected = "nextPage";
+            }
             else
             {
                 coordinatesAndSound itemDatabase = database.findLocalDataBaseForLatLongAndSoundById(Convert.ToInt32(listBoxItem.Content));
                 byte[] soundOfText = convertStringToBytes(itemDatabase.sound);
                 SoundEffect soundEffect = new SoundEffect(soundOfText, 8000, AudioChannels.Stereo);
                 soundEffect.Play();
+                itemSelected = listBoxItem.Content.ToString();
             }
         }
 

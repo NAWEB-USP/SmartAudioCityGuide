@@ -44,7 +44,9 @@ namespace SmartAudioApp
         private string baseWebserver = Properties.getServerIP();
         private Comments comments;
         private Locations locations;
-
+        private string itemSelected = "";
+        private SpeechSynthesizer speech = new SpeechSynthesizer("SmartAudioCityGuide", "Lz+vYpOFm6NTP83A9y0tPoX6ByJa06Q6yxHvoBsD0xo=");
+      
         private WebService1SoapClient webService = new WebService1SoapClient(
         new BasicHttpBinding(BasicHttpSecurityMode.None)
         {
@@ -79,6 +81,8 @@ namespace SmartAudioApp
             sound.play("map");
 
             panorama.SelectionChanged += SelectionChanged;
+
+            Menu.DoubleTap += DoubleTap;
 
 
             Thread thread = new Thread(new ThreadStart((Action)(() =>
@@ -184,31 +188,61 @@ namespace SmartAudioApp
 
         }
 
+        private void DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if(itemSelected == "login")
+            {
+                holdLogin(sender,e);
+            }
+            else if (itemSelected == "route")
+            {
+                holdRoute(sender, e);
+            }
+            else if (itemSelected == "friend")
+            {
+                holdHelp(sender, e);
+            }
+            else if (itemSelected == "mode")
+            {
+                holdMode(sender, e);
+            }
+            else if (itemSelected == "where")
+            {
+                holdWhere(sender, e);
+            }
+
+        
+        }
 
         private void sound_login(object sender, MouseEventArgs e)
         {
             sound.play("login");
+            itemSelected = "login";
         }
-
+        
         private void sound_route(object sender, MouseEventArgs e)
         {
             sound.play("route");
+            itemSelected = "route";
         }
 
         private void sound_help(object sender, MouseEventArgs e)
         {
             sound.play("friend");
+            itemSelected = "friend";
         }
 
         private void sound_mode(object sender, MouseEventArgs e)
         {
             if ((Application.Current as App).idMessageType == 1) sound.play("explore");
             else sound.play("normal");
+            itemSelected = "mode";
         }
 
         private void sound_Where(object sender, MouseEventArgs e)
         {
             sound.play("where");
+            itemSelected = "where";
         }
 
         private void SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -365,7 +399,9 @@ namespace SmartAudioApp
             }
 
         }
-
-
+        private void playSound(string sound)
+        {
+            speech.SpeakAsync(sound, CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString());
+        }
     }
 }

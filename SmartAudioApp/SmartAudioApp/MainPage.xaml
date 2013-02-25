@@ -60,7 +60,7 @@
             <!--Panorama item two-->
             <controls:PanoramaItem Header="Menu" Name="Menu" Width="472" Margin="0" Foreground="Black" >
                 <ListBox Margin="0,0,47,19" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                    <ListBoxItem Content="{Binding Path=Resources.login, Source={StaticResource LocalizedStrings}}" Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#1080DD" Width="360" IsHitTestVisible="True" MouseEnter="sound_login" Hold="holdLogin" />
+                    <ListBoxItem Content="{Binding Path=Resources.login, Source={StaticResource LocalizedStrings}}" Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#1080DD" Width="360" IsHitTestVisible="True" MouseEnter="sound_login" Hold="holdLogin"   />
                     <ListBoxItem Content="{Binding Path=Resources.route, Source={StaticResource LocalizedStrings}}" Height="100"  Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#F09609" Width="360" IsHitTestVisible="True" MouseEnter="sound_route" Hold="holdRoute" />
                     <ListBoxItem Content="{Binding Path=Resources.friend, Source={StaticResource LocalizedStrings}}" Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#E51400" Width="360" IsHitTestVisible="True" MouseEnter="sound_help" Hold="holdHelp" />
                     <ListBoxItem Content="{Binding Path=Resources.explore, Source={StaticResource LocalizedStrings}}" Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#339933" Width="360" IsHitTestVisible="True" MouseEnter="sound_mode" Hold="holdMode" Name="mode"/>
