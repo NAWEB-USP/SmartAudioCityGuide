@@ -44,6 +44,19 @@ namespace SmartAudioCityGuide.Services
             return commentsFromUser;
         }
 
+        public List<Comments> findCommentsByPhoneId(string phoneId)
+        {
+            List<Comments> commentsFromUser = new List<Comments>();
+
+            commentsFromUser = (from comments in db.comments
+                                join user in db.users on comments.userId equals user.id
+                                where user.phoneId == phoneId
+                                select comments).ToList();
+
+            return commentsFromUser;
+
+        }
+
         public Comments findCommentByIdComment(int idComment)
         {
             Comments comment = new Comments();

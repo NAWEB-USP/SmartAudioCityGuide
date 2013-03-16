@@ -277,9 +277,8 @@
     <Content Include="Scripts\knockout-1.3.0beta.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
     <Content Include="WebServices.asmx" />
-    <Content Include="ClassDiagram1.cd" />
-    <Content Include="ClassDiagram2.cd" />
-    <Content Include="ClassDiagram3.cd" />
+    <None Include="Properties\PublishProfiles\smartAudioCityGuide - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\smartAudioCityGuide - Web Deploy.pubxml" />
     <None Include="Service References\GeocodeService\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -294,9 +293,9 @@
     <None Include="Service References\GeocodeService\geocode.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\GeocodeService\GeocodeService.wsdl" />
+    <None Include="Service References\GeocodeService\GeocodeService.wsdl" />
     <None Include="Service References\GeocodeService\GeocodeService.xsd" />
-    <Content Include="Service References\GeocodeService\GeocodeService1.wsdl" />
+    <None Include="Service References\GeocodeService\GeocodeService1.wsdl" />
     <None Include="Service References\GeocodeService\GeocodeService1.xsd" />
     <None Include="Service References\GeocodeService\GeocodeService2.xsd" />
     <None Include="Service References\GeocodeService\GeocodeService3.xsd" />
@@ -343,7 +342,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

@@ -11,6 +11,7 @@ namespace SmartAudioCityGuide.Services
         void addComment(Comments comment);
         List<Comments> findCommentByIdLocation(int idLocation);
         List<Comments> findCommentsByIdUser(int idUser);
+        List<Comments> findCommentsByPhoneId(string phoneId);
         Comments findCommentByIdComment(int idComment);
         void editCommentWithIdAndComment(int idComment, string description);
         void deleteComment(int idComment);

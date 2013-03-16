@@ -22,18 +22,22 @@ namespace SmartAudioCityGuide
     {
         private IUserLocationServices userLocationServices;
         private IUserServices userServices;
+        private ICommentServices commentServices;
         private CryptographyController cryptographyController = new CryptographyController();
         private EmailController emailController = new EmailController();
         private JavaScriptSerializer serializer = new JavaScriptSerializer();
 
         public WebService1()
         {
+            commentServices = new CommentServices(new SmartAudioCityGuideEntities());
             userLocationServices = new UserLocationServices(new SmartAudioCityGuideEntities());
             userServices = new UserServices(new SmartAudioCityGuideEntities());
         }
 
-        public WebService1(IUserLocationServices _userLocationServices, IUserServices _userServices)
+        public WebService1(IUserLocationServices _userLocationServices, IUserServices _userServices, 
+            ICommentServices _commentServices)
         {
+            commentServices = _commentServices;
             userLocationServices = _userLocationServices;
             userServices = _userServices;
         }
@@ -190,6 +194,15 @@ namespace SmartAudioCityGuide
 
             return user.name;
         }
+        [WebMethod]
+        public string getLvlByPhoneId(string phoneId)
+        {
+            List<Comments> comments = commentServices.findCommentsByPhoneId(phoneId);
+
+            return Convert.ToString(comments.Count/5 + 1);
+        }
+
+
         private string convertBytesToString(byte[] bytes)
         {
             string stringResult = "";
