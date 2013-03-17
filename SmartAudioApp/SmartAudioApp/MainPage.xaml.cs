@@ -32,6 +32,7 @@ using System.Globalization;
 using SmartAudioApp.ServicesReference;
 using System.ServiceModel;
 using System.Net.NetworkInformation;
+using Windows.Phone.Speech.Recognition;
 
 namespace SmartAudioApp
 {
@@ -399,6 +400,57 @@ namespace SmartAudioApp
             }
 
         }
+
+        private async void recognitionMethod(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            SpeechRecognizerUI recoWithUI = new SpeechRecognizerUI();
+            recoWithUI.Recognizer.Grammars.AddGrammarFromList("answer", new string[] { "Help", "Record", "Where", "Change mode", "Quick start", "Promotions" });
+            recoWithUI.Recognizer.AudioCaptureStateChanged += myRecognizer_AudioCaptureStateChanged;
+            SpeechRecognitionUIResult recoResult = await recoWithUI.RecognizeWithUIAsync();
+            if (recoResult.ResultStatus == SpeechRecognitionUIStatus.Succeeded)
+            {
+                if (recoResult.RecognitionResult.Text == "Where")
+                {
+                    holdWhere(sender, e);
+                }
+                else if (recoResult.RecognitionResult.Text == "Change mode")
+                {
+                    holdMode(sender, e);
+                }
+                else if (recoResult.RecognitionResult.Text == "Quick start")
+                {
+                    playSound("In that page you can touch for a time in the screen and make a mesage to another person and to finish the message you need to touch in the screen for a time again. After that, you will be at a confirmation page, which you have itens and to select these itens, you need to pass the finger from top to bottom and when you listen the item that you wana to select you need to double tap the screen. If you are on map, you can change to menu screen making a slice from left to right on screnn and you can select and chose the item passing the finger from top to bottom and if you wana to select the item you make a double tap on screen.");
+                }
+                else if (recoResult.RecognitionResult.Text == "Promotions")
+                {
+                    playSound("We have a promotion near here for 10% dicount Pizza Park, it is 0.5 km from here. If you wana to have the discount, only say you are a Smart Audio user.");
+                }
+                else if (recoResult.RecognitionResult.Text == "Help")
+                {
+                    playSound("Actions that can be made: Record, Where, Change Mode, Quick Start and Promotions");
+                }
+            }
+            else if (recoResult.ResultStatus == SpeechRecognitionUIStatus.Cancelled)
+            {
+                sound.play("map");
+            }
+
+        }
+
+        // Detect capture state changes and write the capture state to the text block.
+        void myRecognizer_AudioCaptureStateChanged(SpeechRecognizer sender, SpeechRecognizerAudioCaptureStateChangedEventArgs args)
+        {
+            if (args.State == SpeechRecognizerAudioCaptureState.Capturing)
+            {
+                playSound("Say an action or say help for more information");
+            }
+            else if (args.State == SpeechRecognizerAudioCaptureState.Inactive)
+            {
+                playSound("No word processing");
+            }
+        }
+
+
         private void playSound(string sound)
         {
             speech.SpeakAsync(sound, CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString());

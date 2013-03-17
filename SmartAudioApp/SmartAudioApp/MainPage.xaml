@@ -54,7 +54,7 @@
                             <my:MapItemsControl x:Name="mapControl" Height="646" Width="430" Margin="0,0,0,0" Loaded="mapControl_Loaded" />
                         </my:Map>
                     </ListBoxItem>
-                    <Button Width="446" Height="736" Margin="0,-23,0,0" Opacity="0" Hold="map_Hold" />
+                    <Button Width="446" Height="736" Margin="0,-23,0,0" Opacity="0" Hold="map_Hold" DoubleTap="recognitionMethod" />
                  </ListBox>
             </controls:PanoramaItem>
             <!--Panorama item two-->

@@ -268,6 +268,9 @@
     <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.getFacebookIdByPhoneIdResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.getLvlByPhoneIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServicesReference\SmartAudioApp.ServicesReference.getNameByPhoneIdResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -292,6 +295,7 @@
     <None Include="Service References\ServicesReference\WebServices1.disco" />
     <None Include="Service References\ServicesReference\WebServices11.disco" />
     <None Include="Service References\ServicesReference\Webservices2.disco" />
+    <Content Include="Images\ranking.png" />
     <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Service References\ServicesReference\WebServices1.wsdl" />
     <None Include="Service References\ServicesReference\WebServices11.wsdl" />

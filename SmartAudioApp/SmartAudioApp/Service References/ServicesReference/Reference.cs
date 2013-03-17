@@ -152,81 +152,6 @@ namespace SmartAudioApp.ServicesReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Locations", Namespace="http://tempuri.org/")]
-    public partial class Locations : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private int idField;
-        
-        private double longitudeField;
-        
-        private double latitudeField;
-        
-        private SmartAudioApp.ServicesReference.Locations currentLocationField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public double longitude {
-            get {
-                return this.longitudeField;
-            }
-            set {
-                if ((this.longitudeField.Equals(value) != true)) {
-                    this.longitudeField = value;
-                    this.RaisePropertyChanged("longitude");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public double latitude {
-            get {
-                return this.latitudeField;
-            }
-            set {
-                if ((this.latitudeField.Equals(value) != true)) {
-                    this.latitudeField = value;
-                    this.RaisePropertyChanged("latitude");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public SmartAudioApp.ServicesReference.Locations currentLocation {
-            get {
-                return this.currentLocationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.currentLocationField, value) != true)) {
-                    this.currentLocationField = value;
-                    this.RaisePropertyChanged("currentLocation");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Users", Namespace="http://tempuri.org/")]
     public partial class Users : object, System.ComponentModel.INotifyPropertyChanged {
         
@@ -420,6 +345,81 @@ namespace SmartAudioApp.ServicesReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Locations", Namespace="http://tempuri.org/")]
+    public partial class Locations : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int idField;
+        
+        private double longitudeField;
+        
+        private double latitudeField;
+        
+        private SmartAudioApp.ServicesReference.Locations currentLocationField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public double longitude {
+            get {
+                return this.longitudeField;
+            }
+            set {
+                if ((this.longitudeField.Equals(value) != true)) {
+                    this.longitudeField = value;
+                    this.RaisePropertyChanged("longitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public double latitude {
+            get {
+                return this.latitudeField;
+            }
+            set {
+                if ((this.latitudeField.Equals(value) != true)) {
+                    this.latitudeField = value;
+                    this.RaisePropertyChanged("latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public SmartAudioApp.ServicesReference.Locations currentLocation {
+            get {
+                return this.currentLocationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.currentLocationField, value) != true)) {
+                    this.currentLocationField = value;
+                    this.RaisePropertyChanged("currentLocation");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServicesReference.WebService1Soap")]
     public interface WebService1Soap {
@@ -438,11 +438,6 @@ namespace SmartAudioApp.ServicesReference {
         System.IAsyncResult BegingetSoundCommentFromLocationAndTypeOfComment(SmartAudioApp.ServicesReference.getSoundCommentFromLocationAndTypeOfCommentRequest request, System.AsyncCallback callback, object asyncState);
         
         SmartAudioApp.ServicesReference.getSoundCommentFromLocationAndTypeOfCommentResponse EndgetSoundCommentFromLocationAndTypeOfComment(System.IAsyncResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/getTeste", ReplyAction="*")]
-        System.IAsyncResult BegingetTeste(SmartAudioApp.ServicesReference.getTesteRequest request, System.AsyncCallback callback, object asyncState);
-        
-        SmartAudioApp.ServicesReference.getTesteResponse EndgetTeste(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/updateLoctionForUser", ReplyAction="*")]
         System.IAsyncResult BeginupdateLoctionForUser(SmartAudioApp.ServicesReference.updateLoctionForUserRequest request, System.AsyncCallback callback, object asyncState);
@@ -483,6 +478,11 @@ namespace SmartAudioApp.ServicesReference {
         System.IAsyncResult BegingetNameByPhoneId(SmartAudioApp.ServicesReference.getNameByPhoneIdRequest request, System.AsyncCallback callback, object asyncState);
         
         SmartAudioApp.ServicesReference.getNameByPhoneIdResponse EndgetNameByPhoneId(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/getLvlByPhoneId", ReplyAction="*")]
+        System.IAsyncResult BegingetLvlByPhoneId(SmartAudioApp.ServicesReference.getLvlByPhoneIdRequest request, System.AsyncCallback callback, object asyncState);
+        
+        SmartAudioApp.ServicesReference.getLvlByPhoneIdResponse EndgetLvlByPhoneId(System.IAsyncResult result);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -703,67 +703,6 @@ namespace SmartAudioApp.ServicesReference {
         
         public getSoundCommentFromLocationAndTypeOfCommentResponseBody(string getSoundCommentFromLocationAndTypeOfCommentResult) {
             this.getSoundCommentFromLocationAndTypeOfCommentResult = getSoundCommentFromLocationAndTypeOfCommentResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class getTesteRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="getTeste", Namespace="http://tempuri.org/", Order=0)]
-        public SmartAudioApp.ServicesReference.getTesteRequestBody Body;
-        
-        public getTesteRequest() {
-        }
-        
-        public getTesteRequest(SmartAudioApp.ServicesReference.getTesteRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class getTesteRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public SmartAudioApp.ServicesReference.Locations location;
-        
-        public getTesteRequestBody() {
-        }
-        
-        public getTesteRequestBody(SmartAudioApp.ServicesReference.Locations location) {
-            this.location = location;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class getTesteResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="getTesteResponse", Namespace="http://tempuri.org/", Order=0)]
-        public SmartAudioApp.ServicesReference.getTesteResponseBody Body;
-        
-        public getTesteResponse() {
-        }
-        
-        public getTesteResponse(SmartAudioApp.ServicesReference.getTesteResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class getTesteResponseBody {
-        
-        public getTesteResponseBody() {
         }
     }
     
@@ -1322,6 +1261,74 @@ namespace SmartAudioApp.ServicesReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getLvlByPhoneIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getLvlByPhoneId", Namespace="http://tempuri.org/", Order=0)]
+        public SmartAudioApp.ServicesReference.getLvlByPhoneIdRequestBody Body;
+        
+        public getLvlByPhoneIdRequest() {
+        }
+        
+        public getLvlByPhoneIdRequest(SmartAudioApp.ServicesReference.getLvlByPhoneIdRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getLvlByPhoneIdRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string phoneId;
+        
+        public getLvlByPhoneIdRequestBody() {
+        }
+        
+        public getLvlByPhoneIdRequestBody(string phoneId) {
+            this.phoneId = phoneId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getLvlByPhoneIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getLvlByPhoneIdResponse", Namespace="http://tempuri.org/", Order=0)]
+        public SmartAudioApp.ServicesReference.getLvlByPhoneIdResponseBody Body;
+        
+        public getLvlByPhoneIdResponse() {
+        }
+        
+        public getLvlByPhoneIdResponse(SmartAudioApp.ServicesReference.getLvlByPhoneIdResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getLvlByPhoneIdResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string getLvlByPhoneIdResult;
+        
+        public getLvlByPhoneIdResponseBody() {
+        }
+        
+        public getLvlByPhoneIdResponseBody(string getLvlByPhoneIdResult) {
+            this.getLvlByPhoneIdResult = getLvlByPhoneIdResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface WebService1SoapChannel : SmartAudioApp.ServicesReference.WebService1Soap, System.ServiceModel.IClientChannel {
     }
@@ -1461,6 +1468,25 @@ namespace SmartAudioApp.ServicesReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class getLvlByPhoneIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public getLvlByPhoneIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class WebService1SoapClient : System.ServiceModel.ClientBase<SmartAudioApp.ServicesReference.WebService1Soap>, SmartAudioApp.ServicesReference.WebService1Soap {
         
         private BeginOperationDelegate onBeginaddComentAndSoundToLocationDelegate;
@@ -1480,12 +1506,6 @@ namespace SmartAudioApp.ServicesReference {
         private EndOperationDelegate onEndgetSoundCommentFromLocationAndTypeOfCommentDelegate;
         
         private System.Threading.SendOrPostCallback ongetSoundCommentFromLocationAndTypeOfCommentCompletedDelegate;
-        
-        private BeginOperationDelegate onBegingetTesteDelegate;
-        
-        private EndOperationDelegate onEndgetTesteDelegate;
-        
-        private System.Threading.SendOrPostCallback ongetTesteCompletedDelegate;
         
         private BeginOperationDelegate onBeginupdateLoctionForUserDelegate;
         
@@ -1534,6 +1554,12 @@ namespace SmartAudioApp.ServicesReference {
         private EndOperationDelegate onEndgetNameByPhoneIdDelegate;
         
         private System.Threading.SendOrPostCallback ongetNameByPhoneIdCompletedDelegate;
+        
+        private BeginOperationDelegate onBegingetLvlByPhoneIdDelegate;
+        
+        private EndOperationDelegate onEndgetLvlByPhoneIdDelegate;
+        
+        private System.Threading.SendOrPostCallback ongetLvlByPhoneIdCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -1594,8 +1620,6 @@ namespace SmartAudioApp.ServicesReference {
         
         public event System.EventHandler<getSoundCommentFromLocationAndTypeOfCommentCompletedEventArgs> getSoundCommentFromLocationAndTypeOfCommentCompleted;
         
-        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> getTesteCompleted;
-        
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> updateLoctionForUserCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> sendEmailForFolloUserByWindowsPhoneIdCompleted;
@@ -1611,6 +1635,8 @@ namespace SmartAudioApp.ServicesReference {
         public event System.EventHandler<getUserByPhoneIdCompletedEventArgs> getUserByPhoneIdCompleted;
         
         public event System.EventHandler<getNameByPhoneIdCompletedEventArgs> getNameByPhoneIdCompleted;
+        
+        public event System.EventHandler<getLvlByPhoneIdCompletedEventArgs> getLvlByPhoneIdCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -1810,64 +1836,6 @@ namespace SmartAudioApp.ServicesReference {
                         idLocation,
                         idTypeOfComment,
                         code}, this.onEndgetSoundCommentFromLocationAndTypeOfCommentDelegate, this.ongetSoundCommentFromLocationAndTypeOfCommentCompletedDelegate, userState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult SmartAudioApp.ServicesReference.WebService1Soap.BegingetTeste(SmartAudioApp.ServicesReference.getTesteRequest request, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BegingetTeste(request, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        private System.IAsyncResult BegingetTeste(SmartAudioApp.ServicesReference.Locations location, System.AsyncCallback callback, object asyncState) {
-            SmartAudioApp.ServicesReference.getTesteRequest inValue = new SmartAudioApp.ServicesReference.getTesteRequest();
-            inValue.Body = new SmartAudioApp.ServicesReference.getTesteRequestBody();
-            inValue.Body.location = location;
-            return ((SmartAudioApp.ServicesReference.WebService1Soap)(this)).BegingetTeste(inValue, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SmartAudioApp.ServicesReference.getTesteResponse SmartAudioApp.ServicesReference.WebService1Soap.EndgetTeste(System.IAsyncResult result) {
-            return base.Channel.EndgetTeste(result);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        private void EndgetTeste(System.IAsyncResult result) {
-            SmartAudioApp.ServicesReference.getTesteResponse retVal = ((SmartAudioApp.ServicesReference.WebService1Soap)(this)).EndgetTeste(result);
-        }
-        
-        private System.IAsyncResult OnBegingetTeste(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            SmartAudioApp.ServicesReference.Locations location = ((SmartAudioApp.ServicesReference.Locations)(inValues[0]));
-            return this.BegingetTeste(location, callback, asyncState);
-        }
-        
-        private object[] OnEndgetTeste(System.IAsyncResult result) {
-            this.EndgetTeste(result);
-            return null;
-        }
-        
-        private void OngetTesteCompleted(object state) {
-            if ((this.getTesteCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.getTesteCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void getTesteAsync(SmartAudioApp.ServicesReference.Locations location) {
-            this.getTesteAsync(location, null);
-        }
-        
-        public void getTesteAsync(SmartAudioApp.ServicesReference.Locations location, object userState) {
-            if ((this.onBegingetTesteDelegate == null)) {
-                this.onBegingetTesteDelegate = new BeginOperationDelegate(this.OnBegingetTeste);
-            }
-            if ((this.onEndgetTesteDelegate == null)) {
-                this.onEndgetTesteDelegate = new EndOperationDelegate(this.OnEndgetTeste);
-            }
-            if ((this.ongetTesteCompletedDelegate == null)) {
-                this.ongetTesteCompletedDelegate = new System.Threading.SendOrPostCallback(this.OngetTesteCompleted);
-            }
-            base.InvokeAsync(this.onBegingetTesteDelegate, new object[] {
-                        location}, this.onEndgetTesteDelegate, this.ongetTesteCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2368,6 +2336,66 @@ namespace SmartAudioApp.ServicesReference {
                         phoneId}, this.onEndgetNameByPhoneIdDelegate, this.ongetNameByPhoneIdCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SmartAudioApp.ServicesReference.WebService1Soap.BegingetLvlByPhoneId(SmartAudioApp.ServicesReference.getLvlByPhoneIdRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BegingetLvlByPhoneId(request, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        private System.IAsyncResult BegingetLvlByPhoneId(string phoneId, System.AsyncCallback callback, object asyncState) {
+            SmartAudioApp.ServicesReference.getLvlByPhoneIdRequest inValue = new SmartAudioApp.ServicesReference.getLvlByPhoneIdRequest();
+            inValue.Body = new SmartAudioApp.ServicesReference.getLvlByPhoneIdRequestBody();
+            inValue.Body.phoneId = phoneId;
+            return ((SmartAudioApp.ServicesReference.WebService1Soap)(this)).BegingetLvlByPhoneId(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SmartAudioApp.ServicesReference.getLvlByPhoneIdResponse SmartAudioApp.ServicesReference.WebService1Soap.EndgetLvlByPhoneId(System.IAsyncResult result) {
+            return base.Channel.EndgetLvlByPhoneId(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        private string EndgetLvlByPhoneId(System.IAsyncResult result) {
+            SmartAudioApp.ServicesReference.getLvlByPhoneIdResponse retVal = ((SmartAudioApp.ServicesReference.WebService1Soap)(this)).EndgetLvlByPhoneId(result);
+            return retVal.Body.getLvlByPhoneIdResult;
+        }
+        
+        private System.IAsyncResult OnBegingetLvlByPhoneId(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string phoneId = ((string)(inValues[0]));
+            return this.BegingetLvlByPhoneId(phoneId, callback, asyncState);
+        }
+        
+        private object[] OnEndgetLvlByPhoneId(System.IAsyncResult result) {
+            string retVal = this.EndgetLvlByPhoneId(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OngetLvlByPhoneIdCompleted(object state) {
+            if ((this.getLvlByPhoneIdCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.getLvlByPhoneIdCompleted(this, new getLvlByPhoneIdCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void getLvlByPhoneIdAsync(string phoneId) {
+            this.getLvlByPhoneIdAsync(phoneId, null);
+        }
+        
+        public void getLvlByPhoneIdAsync(string phoneId, object userState) {
+            if ((this.onBegingetLvlByPhoneIdDelegate == null)) {
+                this.onBegingetLvlByPhoneIdDelegate = new BeginOperationDelegate(this.OnBegingetLvlByPhoneId);
+            }
+            if ((this.onEndgetLvlByPhoneIdDelegate == null)) {
+                this.onEndgetLvlByPhoneIdDelegate = new EndOperationDelegate(this.OnEndgetLvlByPhoneId);
+            }
+            if ((this.ongetLvlByPhoneIdCompletedDelegate == null)) {
+                this.ongetLvlByPhoneIdCompletedDelegate = new System.Threading.SendOrPostCallback(this.OngetLvlByPhoneIdCompleted);
+            }
+            base.InvokeAsync(this.onBegingetLvlByPhoneIdDelegate, new object[] {
+                        phoneId}, this.onEndgetLvlByPhoneIdDelegate, this.ongetLvlByPhoneIdCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -2483,19 +2511,6 @@ namespace SmartAudioApp.ServicesReference {
                 return _result;
             }
             
-            public System.IAsyncResult BegingetTeste(SmartAudioApp.ServicesReference.getTesteRequest request, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[1];
-                _args[0] = request;
-                System.IAsyncResult _result = base.BeginInvoke("getTeste", _args, callback, asyncState);
-                return _result;
-            }
-            
-            public SmartAudioApp.ServicesReference.getTesteResponse EndgetTeste(System.IAsyncResult result) {
-                object[] _args = new object[0];
-                SmartAudioApp.ServicesReference.getTesteResponse _result = ((SmartAudioApp.ServicesReference.getTesteResponse)(base.EndInvoke("getTeste", _args, result)));
-                return _result;
-            }
-            
             public System.IAsyncResult BeginupdateLoctionForUser(SmartAudioApp.ServicesReference.updateLoctionForUserRequest request, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
                 _args[0] = request;
@@ -2597,6 +2612,19 @@ namespace SmartAudioApp.ServicesReference {
             public SmartAudioApp.ServicesReference.getNameByPhoneIdResponse EndgetNameByPhoneId(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 SmartAudioApp.ServicesReference.getNameByPhoneIdResponse _result = ((SmartAudioApp.ServicesReference.getNameByPhoneIdResponse)(base.EndInvoke("getNameByPhoneId", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BegingetLvlByPhoneId(SmartAudioApp.ServicesReference.getLvlByPhoneIdRequest request, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = request;
+                System.IAsyncResult _result = base.BeginInvoke("getLvlByPhoneId", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public SmartAudioApp.ServicesReference.getLvlByPhoneIdResponse EndgetLvlByPhoneId(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                SmartAudioApp.ServicesReference.getLvlByPhoneIdResponse _result = ((SmartAudioApp.ServicesReference.getLvlByPhoneIdResponse)(base.EndInvoke("getLvlByPhoneId", _args, result)));
                 return _result;
             }
         }

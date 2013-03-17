@@ -277,7 +277,11 @@
     <Content Include="Scripts\knockout-1.3.0beta.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
     <Content Include="WebServices.asmx" />
+    <None Include="Properties\PublishProfiles\smartAudioCityGuide - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\smartAudioCityGuide - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\smartAudioCityGuide - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\smartAudioCityGuide - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\smartAudioCityGuide - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\smartAudioCityGuide - Web Deploy.pubxml" />
     <None Include="Service References\GeocodeService\Arrays.xsd">
       <SubType>Designer</SubType>

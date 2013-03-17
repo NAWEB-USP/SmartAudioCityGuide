@@ -17,12 +17,23 @@ namespace SmartAudioApp
     public partial class Login : PhoneApplicationPage
     {
         private Sound sound = new Sound();
+        private string itemSelected = "";
 
         public Login()
         {
             InitializeComponent();
             sound.play("login_mode");
+
+            Menu.DoubleTap += DoubleTap;
+
             Thread.Sleep(500);
+        }
+        private void DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (itemSelected == "registerwithfb")
+            {
+                registerWithFBHold(sender, e);
+            }
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
@@ -38,6 +49,7 @@ namespace SmartAudioApp
 
         private void registerWithFB(object sender, RoutedEventArgs e)
         {
+            itemSelected = "registerwithfb";
             sound.play("registerwithfb");
         }
 

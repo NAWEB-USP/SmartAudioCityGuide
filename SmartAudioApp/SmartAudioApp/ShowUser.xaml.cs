@@ -14,6 +14,7 @@ using SmartAudioApp.ServicesReference;
 using System.ServiceModel;
 using TranslatorService.Speech;
 using System.Globalization;
+using System.Windows.Media.Imaging;
 
 namespace SmartAudioApp
 {
@@ -22,6 +23,7 @@ namespace SmartAudioApp
         private Users user = new Users();
         private MyPhone myPhone = new MyPhone();
         private Sound sound = new Sound();
+        private int lvlOfUser = 1;
 
         private SpeechSynthesizer speech = new SpeechSynthesizer("SmartAudioCityGuide", "Lz+vYpOFm6NTP83A9y0tPoX6ByJa06Q6yxHvoBsD0xo=");
         private WebService1SoapClient webService = new WebService1SoapClient(
@@ -42,13 +44,33 @@ namespace SmartAudioApp
         {
             sound.play("menu");
         }
-            
+
+
         private void LoadFacebookData()
         {
             webService.getNameByPhoneIdAsync(myPhone.serializedDeviceUniqueId());
             webService.getNameByPhoneIdCompleted += new EventHandler<getNameByPhoneIdCompletedEventArgs>(webService_getNameByPhoneIdCompleted);
             webService.getAcessTokenByPhoneIdAsync(myPhone.serializedDeviceUniqueId());
             webService.getAcessTokenByPhoneIdCompleted += new EventHandler<getAcessTokenByPhoneIdCompletedEventArgs>(webService_getAcessTokenByPhoneIdCompleted);
+            webService.getFacebookIdByPhoneIdAsync(myPhone.serializedDeviceUniqueId());
+            webService.getFacebookIdByPhoneIdCompleted += new EventHandler<getFacebookIdByPhoneIdCompletedEventArgs>(webService_getFacebookIdByPhoneIdCompleted);
+            webService.getLvlByPhoneIdAsync(myPhone.serializedDeviceUniqueId());
+            webService.getLvlByPhoneIdCompleted += new EventHandler<getLvlByPhoneIdCompletedEventArgs>(webService_getLvlByPhoneIdCompleted);
+        }
+
+        void webService_getLvlByPhoneIdCompleted(object sender, getLvlByPhoneIdCompletedEventArgs e)
+        {
+            int numberOfComments = Convert.ToInt32(e.Result);
+            lvlOfUser = (numberOfComments / 5 + 1);
+            badgeLvlText.Text = e.Result;
+            levelOfUser.Content = "You are lvl " + lvlOfUser;
+        }
+
+        void webService_getFacebookIdByPhoneIdCompleted(object sender, getFacebookIdByPhoneIdCompletedEventArgs e)
+        {
+            user.idFacebook = e.Result;
+            BitmapImage bitmapImage = new BitmapImage(new Uri("http://graph.facebook.com/" + user.idFacebook + "/picture?width=120&height=120", UriKind.Absolute));
+            imageOfFacebook.Source = bitmapImage;
         }
 
         void webService_getAcessTokenByPhoneIdCompleted(object sender, getAcessTokenByPhoneIdCompletedEventArgs e)
@@ -64,7 +86,7 @@ namespace SmartAudioApp
 
         private void tellNameOfUser(object sender, MouseEventArgs e)
         {
-            
+
             speech.SpeakAsync("Hello " + user.name, CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString());
         }
 
@@ -73,10 +95,14 @@ namespace SmartAudioApp
             speech.SpeakAsync("Change user", CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString());
         }
 
+        private void tellLvlOfUser(object send, MouseEventArgs e)
+        {
+            speech.SpeakAsync("Your level is " + lvlOfUser, CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString());
+        }
+
         private void changeUserHold(object sender, System.Windows.Input.GestureEventArgs e)
         {
             NavigationService.Navigate(new Uri("/FacebookLoginPage.xaml", UriKind.Relative));
         }
-
     }
 }

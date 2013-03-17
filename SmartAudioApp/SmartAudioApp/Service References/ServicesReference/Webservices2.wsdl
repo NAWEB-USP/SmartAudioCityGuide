@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="addComentAndSoundToLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sound" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="comments" type="tns:Comments" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Comments">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="locationsId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="typeOfCommentsId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="archiveDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isText" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="sound" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="addComentAndSoundToLocationResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getSoundCommentFromLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idLocation" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSoundCommentFromLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSoundCommentFromLocationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSoundCommentFromLocationAndTypeOfComment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idLocation" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idTypeOfComment" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSoundCommentFromLocationAndTypeOfCommentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSoundCommentFromLocationAndTypeOfCommentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateLoctionForUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="windowsPhoneId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="latitude" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="longitude" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateLoctionForUserResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="sendEmailForFolloUserByWindowsPhoneId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="windowsPhoneId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendEmailForFolloUserByWindowsPhoneIdResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="addNewUserForApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idFacebook" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phoneId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="visionProblem" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addNewUserForAppResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="existAUserForThatIdPhone">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phoneId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="existAUserForThatIdPhoneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="existAUserForThatIdPhoneResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacebookIdByPhoneId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phoneId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacebookIdByPhoneIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFacebookIdByPhoneIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAcessTokenByPhoneId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phoneId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAcessTokenByPhoneIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAcessTokenByPhoneIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserByPhoneId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phoneId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserByPhoneIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserByPhoneIdResult" type="tns:Users" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Users">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="authenticate" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="hash" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="typeOfBlindness" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="idFacebook" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="acessTokenFacebook" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="phoneId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="currentUser" type="tns:Users" />
+          <s:element minOccurs="0" maxOccurs="1" name="currentLocation" type="tns:Locations" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Locations">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="latitude" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="currentLocation" type="tns:Locations" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getNameByPhoneId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phoneId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNameByPhoneIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getNameByPhoneIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLvlByPhoneId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phoneId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLvlByPhoneIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLvlByPhoneIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="addComentAndSoundToLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:addComentAndSoundToLocation" />
+  </wsdl:message>
+  <wsdl:message name="addComentAndSoundToLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:addComentAndSoundToLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSoundCommentFromLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:getSoundCommentFromLocation" />
+  </wsdl:message>
+  <wsdl:message name="getSoundCommentFromLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:getSoundCommentFromLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSoundCommentFromLocationAndTypeOfCommentSoapIn">
+    <wsdl:part name="parameters" element="tns:getSoundCommentFromLocationAndTypeOfComment" />
+  </wsdl:message>
+  <wsdl:message name="getSoundCommentFromLocationAndTypeOfCommentSoapOut">
+    <wsdl:part name="parameters" element="tns:getSoundCommentFromLocationAndTypeOfCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateLoctionForUserSoapIn">
+    <wsdl:part name="parameters" element="tns:updateLoctionForUser" />
+  </wsdl:message>
+  <wsdl:message name="updateLoctionForUserSoapOut">
+    <wsdl:part name="parameters" element="tns:updateLoctionForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendEmailForFolloUserByWindowsPhoneIdSoapIn">
+    <wsdl:part name="parameters" element="tns:sendEmailForFolloUserByWindowsPhoneId" />
+  </wsdl:message>
+  <wsdl:message name="sendEmailForFolloUserByWindowsPhoneIdSoapOut">
+    <wsdl:part name="parameters" element="tns:sendEmailForFolloUserByWindowsPhoneIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="addNewUserForAppSoapIn">
+    <wsdl:part name="parameters" element="tns:addNewUserForApp" />
+  </wsdl:message>
+  <wsdl:message name="addNewUserForAppSoapOut">
+    <wsdl:part name="parameters" element="tns:addNewUserForAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="existAUserForThatIdPhoneSoapIn">
+    <wsdl:part name="parameters" element="tns:existAUserForThatIdPhone" />
+  </wsdl:message>
+  <wsdl:message name="existAUserForThatIdPhoneSoapOut">
+    <wsdl:part name="parameters" element="tns:existAUserForThatIdPhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookIdByPhoneIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getFacebookIdByPhoneId" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookIdByPhoneIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getFacebookIdByPhoneIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAcessTokenByPhoneIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getAcessTokenByPhoneId" />
+  </wsdl:message>
+  <wsdl:message name="getAcessTokenByPhoneIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getAcessTokenByPhoneIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserByPhoneIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserByPhoneId" />
+  </wsdl:message>
+  <wsdl:message name="getUserByPhoneIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserByPhoneIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNameByPhoneIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getNameByPhoneId" />
+  </wsdl:message>
+  <wsdl:message name="getNameByPhoneIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getNameByPhoneIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLvlByPhoneIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getLvlByPhoneId" />
+  </wsdl:message>
+  <wsdl:message name="getLvlByPhoneIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getLvlByPhoneIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="addComentAndSoundToLocation">
+      <wsdl:input message="tns:addComentAndSoundToLocationSoapIn" />
+      <wsdl:output message="tns:addComentAndSoundToLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSoundCommentFromLocation">
+      <wsdl:input message="tns:getSoundCommentFromLocationSoapIn" />
+      <wsdl:output message="tns:getSoundCommentFromLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSoundCommentFromLocationAndTypeOfComment">
+      <wsdl:input message="tns:getSoundCommentFromLocationAndTypeOfCommentSoapIn" />
+      <wsdl:output message="tns:getSoundCommentFromLocationAndTypeOfCommentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateLoctionForUser">
+      <wsdl:input message="tns:updateLoctionForUserSoapIn" />
+      <wsdl:output message="tns:updateLoctionForUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendEmailForFolloUserByWindowsPhoneId">
+      <wsdl:input message="tns:sendEmailForFolloUserByWindowsPhoneIdSoapIn" />
+      <wsdl:output message="tns:sendEmailForFolloUserByWindowsPhoneIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addNewUserForApp">
+      <wsdl:input message="tns:addNewUserForAppSoapIn" />
+      <wsdl:output message="tns:addNewUserForAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="existAUserForThatIdPhone">
+      <wsdl:input message="tns:existAUserForThatIdPhoneSoapIn" />
+      <wsdl:output message="tns:existAUserForThatIdPhoneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookIdByPhoneId">
+      <wsdl:input message="tns:getFacebookIdByPhoneIdSoapIn" />
+      <wsdl:output message="tns:getFacebookIdByPhoneIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAcessTokenByPhoneId">
+      <wsdl:input message="tns:getAcessTokenByPhoneIdSoapIn" />
+      <wsdl:output message="tns:getAcessTokenByPhoneIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserByPhoneId">
+      <wsdl:input message="tns:getUserByPhoneIdSoapIn" />
+      <wsdl:output message="tns:getUserByPhoneIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNameByPhoneId">
+      <wsdl:input message="tns:getNameByPhoneIdSoapIn" />
+      <wsdl:output message="tns:getNameByPhoneIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLvlByPhoneId">
+      <wsdl:input message="tns:getLvlByPhoneIdSoapIn" />
+      <wsdl:output message="tns:getLvlByPhoneIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addComentAndSoundToLocation">
+      <soap:operation soapAction="http://tempuri.org/addComentAndSoundToLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSoundCommentFromLocation">
+      <soap:operation soapAction="http://tempuri.org/getSoundCommentFromLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSoundCommentFromLocationAndTypeOfComment">
+      <soap:operation soapAction="http://tempuri.org/getSoundCommentFromLocationAndTypeOfComment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateLoctionForUser">
+      <soap:operation soapAction="http://tempuri.org/updateLoctionForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEmailForFolloUserByWindowsPhoneId">
+      <soap:operation soapAction="http://tempuri.org/sendEmailForFolloUserByWindowsPhoneId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addNewUserForApp">
+      <soap:operation soapAction="http://tempuri.org/addNewUserForApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="existAUserForThatIdPhone">
+      <soap:operation soapAction="http://tempuri.org/existAUserForThatIdPhone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookIdByPhoneId">
+      <soap:operation soapAction="http://tempuri.org/getFacebookIdByPhoneId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAcessTokenByPhoneId">
+      <soap:operation soapAction="http://tempuri.org/getAcessTokenByPhoneId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserByPhoneId">
+      <soap:operation soapAction="http://tempuri.org/getUserByPhoneId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNameByPhoneId">
+      <soap:operation soapAction="http://tempuri.org/getNameByPhoneId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLvlByPhoneId">
+      <soap:operation soapAction="http://tempuri.org/getLvlByPhoneId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addComentAndSoundToLocation">
+      <soap12:operation soapAction="http://tempuri.org/addComentAndSoundToLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSoundCommentFromLocation">
+      <soap12:operation soapAction="http://tempuri.org/getSoundCommentFromLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSoundCommentFromLocationAndTypeOfComment">
+      <soap12:operation soapAction="http://tempuri.org/getSoundCommentFromLocationAndTypeOfComment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateLoctionForUser">
+      <soap12:operation soapAction="http://tempuri.org/updateLoctionForUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEmailForFolloUserByWindowsPhoneId">
+      <soap12:operation soapAction="http://tempuri.org/sendEmailForFolloUserByWindowsPhoneId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addNewUserForApp">
+      <soap12:operation soapAction="http://tempuri.org/addNewUserForApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="existAUserForThatIdPhone">
+      <soap12:operation soapAction="http://tempuri.org/existAUserForThatIdPhone" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookIdByPhoneId">
+      <soap12:operation soapAction="http://tempuri.org/getFacebookIdByPhoneId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAcessTokenByPhoneId">
+      <soap12:operation soapAction="http://tempuri.org/getAcessTokenByPhoneId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserByPhoneId">
+      <soap12:operation soapAction="http://tempuri.org/getUserByPhoneId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNameByPhoneId">
+      <soap12:operation soapAction="http://tempuri.org/getNameByPhoneId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLvlByPhoneId">
+      <soap12:operation soapAction="http://tempuri.org/getLvlByPhoneId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="http://smartaudiocityguide.azurewebsites.net/Webservices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="http://smartaudiocityguide.azurewebsites.net/Webservices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
