@@ -442,11 +442,11 @@ namespace SmartAudioApp
         {
             if (args.State == SpeechRecognizerAudioCaptureState.Capturing)
             {
-                playSound("Say an action or say help for more information");
+                //playSound("Say an action or say help for more information");
             }
             else if (args.State == SpeechRecognizerAudioCaptureState.Inactive)
             {
-                playSound("No word processing");
+                //playSound("No word processing");
             }
         }
 
