@@ -49,7 +49,7 @@
                 <TextBlock x:Name="PageTitle" Text="{Binding Path=Resources.loginmenu, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextNormalStyle}" Height="74" FontSize="48" Foreground="Black" />
             </StackPanel>
             <ListBox Margin="0,153,8,0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                <ListBoxItem Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#1080DD" Width="380" IsHitTestVisible="True" MouseEnter="registerWithFB" Hold="registerWithFBHold" >
+                <ListBoxItem Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#1BA1E2" Width="380" IsHitTestVisible="True" MouseEnter="registerWithFB" Hold="registerWithFBHold" >
                 <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />

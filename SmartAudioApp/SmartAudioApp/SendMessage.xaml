@@ -46,7 +46,7 @@
             <TextBlock x:Name="PageTitle" Text="{Binding Path=Resources.sendMessageTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextNormalStyle}" Height="53" FontSize="48" Foreground="Black" />
         </StackPanel>
         <ListBox Margin="0,153,8,0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-            <ListBoxItem Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#1080DDs" Width="360" IsHitTestVisible="True" MouseEnter="sound_yes" Hold="yesHold" >
+            <ListBoxItem Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#1BA1E2" Width="360" IsHitTestVisible="True" MouseEnter="sound_yes" Hold="yesHold" >
             <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -57,7 +57,7 @@
                 <Image Grid.Column="1" HorizontalAlignment="Right" Source="Images/Icons/yes-icon.png" Height="50" VerticalAlignment="Center" Margin="0,25,-272,23" />
             </Grid>
             </ListBoxItem>
-            <ListBoxItem Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#F09609s" Width="360" IsHitTestVisible="True" MouseEnter="sound_no" Hold="noHold">
+            <ListBoxItem Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#F0A30A" Width="360" IsHitTestVisible="True" MouseEnter="sound_no" Hold="noHold">
                 <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -68,7 +68,7 @@
                     <Image Grid.Column="1" HorizontalAlignment="Right" Source="Images/Icons/no-icon.png" Height="50" VerticalAlignment="Center" Margin="0,23,-281,25" RenderTransformOrigin="1.049,0.445" />
                 </Grid>
             </ListBoxItem>
-            <ListBoxItem Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#E51400" Width="360" IsHitTestVisible="True" MouseEnter="sound_listenAgain" Hold="listenAgainHold" >
+            <ListBoxItem Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#D80073" Width="360" IsHitTestVisible="True" MouseEnter="sound_listenAgain" Hold="listenAgainHold" >
                 <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
