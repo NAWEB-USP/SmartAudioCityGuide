@@ -130,10 +130,10 @@
     <value>      Change User</value>
   </data>
   <data name="explore" xml:space="preserve">
-    <value>      Explore mode</value>
+    <value>explore mode</value>
   </data>
   <data name="friend" xml:space="preserve">
-    <value>    Friend Support</value>
+    <value>friend support</value>
   </data>
   <data name="helpMode" xml:space="preserve">
     <value>Friend Support Mode</value>
@@ -148,7 +148,7 @@
     <value>Logged</value>
   </data>
   <data name="login" xml:space="preserve">
-    <value>Login</value>
+    <value>login</value>
   </data>
   <data name="loginmenu" xml:space="preserve">
     <value>Login</value>
@@ -190,13 +190,13 @@
     <value />
   </data>
   <data name="register" xml:space="preserve">
-    <value>               Register</value>
+    <value>Register</value>
   </data>
   <data name="registerfb" xml:space="preserve">
     <value>   Register with Facebook</value>
   </data>
   <data name="route" xml:space="preserve">
-    <value>           Route</value>
+    <value>route</value>
   </data>
   <data name="routemenu" xml:space="preserve">
     <value>Route</value>
@@ -220,7 +220,7 @@
     <value>Register your sight type</value>
   </data>
   <data name="where" xml:space="preserve">
-    <value>       Where am I?</value>
+    <value>where am I?</value>
   </data>
   <data name="yes" xml:space="preserve">
     <value>              Yes</value>

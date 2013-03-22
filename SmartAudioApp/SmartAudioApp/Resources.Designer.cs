@@ -106,7 +106,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to       Explore mode.
+        ///   Looks up a localized string similar to explore mode.
         /// </summary>
         public static string explore {
             get {
@@ -115,7 +115,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     Friend Support.
+        ///   Looks up a localized string similar to friend support.
         /// </summary>
         public static string friend {
             get {
@@ -169,7 +169,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login.
+        ///   Looks up a localized string similar to login.
         /// </summary>
         public static string login {
             get {
@@ -295,7 +295,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to                Register.
+        ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string register {
             get {
@@ -322,7 +322,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to            Route.
+        ///   Looks up a localized string similar to route.
         /// </summary>
         public static string route {
             get {
@@ -394,7 +394,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to        Where am I?.
+        ///   Looks up a localized string similar to where am I?.
         /// </summary>
         public static string where {
             get {
