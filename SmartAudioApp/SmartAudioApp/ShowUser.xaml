@@ -56,8 +56,28 @@
                 <Image Source="" Height="120" Width="120" Margin="50,20,20,20"  Name="imageOfFacebook"></Image>
                 <Image Source="/Images/ranking.png" Height="50" Width="50" Margin="130,-50,20,20" Name="badgeLvlImage" ></Image>
                 <TextBlock TextWrapping="Wrap" Text="11" Margin="145,-70,30,30" Width="30" Height="30" Name="badgeLvlText"/>
-                <ListBoxItem Content="" Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#1080DD" Width="380" IsHitTestVisible="True" MouseEnter="tellNameOfUser" Name="userFacebook" />
-                <ListBoxItem Content="" Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#F09609" Width="380" IsHitTestVisible="True" MouseEnter="tellLvlOfUser" Name="levelOfUser" />
+                <ListBoxItem  Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#1080DD" Width="380" IsHitTestVisible="True" MouseEnter="tellNameOfUser" >
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Margin="10,25,0,25" VerticalAlignment="Center" Text="" Name="userFacebook" />
+                        <Image Grid.Column="1" HorizontalAlignment="Right" Source="Images/Icons/star-icon.png" Height="60" VerticalAlignment="Center" Margin="0,25,-58,23" />
+                    </Grid>
+                </ListBoxItem>
+                <ListBoxItem Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#F09609" Width="380" IsHitTestVisible="True" MouseEnter="tellLvlOfUser" >
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Margin="10,25,0,25" VerticalAlignment="Center" Text="" Name="levelOfUser"  />
+                        <Image Grid.Column="1" HorizontalAlignment="Right" Source="Images/Icons/user-icon.png" Height="60" VerticalAlignment="Center" Margin="0,23,-65,17" />
+                    </Grid>
+                </ListBoxItem>
             </ListBox>
         </Grid>
     </Grid>

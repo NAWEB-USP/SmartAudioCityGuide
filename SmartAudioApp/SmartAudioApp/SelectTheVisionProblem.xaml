@@ -49,8 +49,28 @@
                 <TextBlock x:Name="PageTitle" Text="{Binding Path=Resources.visionProblemMenu, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextNormalStyle}" Height="74" FontSize="36" Foreground="Black" />
             </StackPanel>
             <ListBox Margin="0,153,8,0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                <ListBoxItem Content="{Binding Path=Resources.totallyBlind, Source={StaticResource LocalizedStrings}}" Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#1080DD" Width="380" IsHitTestVisible="True" MouseEnter="visionProblemTotallyBlind" Hold="holdVisionProblemTotallyBlind" />
-                <ListBoxItem Content="{Binding Path=Resources.partiallySighted, Source={StaticResource LocalizedStrings}}" Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#F09609" Width="380" IsHitTestVisible="True" MouseEnter="visionProblemPartialSighted" Hold="holdVisionProblemPartiallySighted"/>
+                <ListBoxItem Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#1080DD" Width="380" IsHitTestVisible="True" MouseEnter="visionProblemTotallyBlind" Hold="holdVisionProblemTotallyBlind" >
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Margin="10,25,0,25" VerticalAlignment="Center" Text="{Binding Path=Resources.totallyBlind, Source={StaticResource LocalizedStrings}}" />
+                        <Image Grid.Column="1" HorizontalAlignment="Right" Source="Images/Icons/friend-branco.png" Height="50" VerticalAlignment="Center" Margin="0,30,-145,18" />
+                    </Grid>
+                </ListBoxItem>
+                <ListBoxItem  Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#F09609" Width="380" IsHitTestVisible="True" MouseEnter="visionProblemPartialSighted" Hold="holdVisionProblemPartiallySighted">
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Margin="10,25,0,25" VerticalAlignment="Center" Text="{Binding Path=Resources.partiallySighted, Source={StaticResource LocalizedStrings}}" />
+                        <Image Grid.Column="1" HorizontalAlignment="Right" Source="Images/Icons/friend-branco.png" Height="50" VerticalAlignment="Center" Margin="0,30,-126,18" />
+                    </Grid>
+                </ListBoxItem>
             </ListBox>
         </Grid>
     </Grid>

@@ -62,8 +62,8 @@ namespace SmartAudioApp
         {
             int numberOfComments = Convert.ToInt32(e.Result);
             lvlOfUser = (numberOfComments / 5 + 1);
-            //badgeLvlText.Text = e.Result;
-            levelOfUser.Content = "You are lvl " + "11";
+            badgeLvlText.Text = lvlOfUser.ToString();
+            levelOfUser.Text = "you are lvl " + lvlOfUser;
         }
 
         void webService_getFacebookIdByPhoneIdCompleted(object sender, getFacebookIdByPhoneIdCompletedEventArgs e)
@@ -81,7 +81,7 @@ namespace SmartAudioApp
         void webService_getNameByPhoneIdCompleted(object sender, getNameByPhoneIdCompletedEventArgs e)
         {
             user.name = e.Result;
-            userFacebook.Content = "Hello " + user.name;
+            userFacebook.Text = "hello " + user.name;
         }
 
         private void tellNameOfUser(object sender, MouseEventArgs e)

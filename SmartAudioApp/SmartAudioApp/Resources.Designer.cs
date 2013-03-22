@@ -61,7 +61,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address.
+        ///   Looks up a localized string similar to address.
         /// </summary>
         public static string address {
             get {
@@ -70,7 +70,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add Route.
+        ///   Looks up a localized string similar to add route.
         /// </summary>
         public static string addRoute {
             get {
@@ -79,7 +79,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to             Cancel.
+        ///   Looks up a localized string similar to cancel.
         /// </summary>
         public static string cancel {
             get {
@@ -88,7 +88,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to       Change User.
+        ///   Looks up a localized string similar to change user.
         /// </summary>
         public static string changeUser {
             get {
@@ -97,7 +97,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm.
+        ///   Looks up a localized string similar to confirm.
         /// </summary>
         public static string confirm {
             get {
@@ -124,7 +124,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Friend Support Mode.
+        ///   Looks up a localized string similar to friend support mode.
         /// </summary>
         public static string helpMode {
             get {
@@ -133,7 +133,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to        Listen Again.
+        ///   Looks up a localized string similar to listen again.
         /// </summary>
         public static string listenagain {
             get {
@@ -142,7 +142,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select location.
+        ///   Looks up a localized string similar to select location.
         /// </summary>
         public static string listOfRoute {
             get {
@@ -151,7 +151,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to       Location list.
+        ///   Looks up a localized string similar to location list.
         /// </summary>
         public static string locations {
             get {
@@ -160,7 +160,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logged.
+        ///   Looks up a localized string similar to logged.
         /// </summary>
         public static string logged {
             get {
@@ -178,7 +178,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login.
+        ///   Looks up a localized string similar to login.
         /// </summary>
         public static string loginmenu {
             get {
@@ -187,7 +187,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to        Low vision.
+        ///   Looks up a localized string similar to low vision.
         /// </summary>
         public static string lowVision {
             get {
@@ -196,7 +196,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Map.
+        ///   Looks up a localized string similar to map.
         /// </summary>
         public static string map {
             get {
@@ -205,7 +205,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Menu.
+        ///   Looks up a localized string similar to menu.
         /// </summary>
         public static string menu {
             get {
@@ -214,7 +214,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Next page.
+        ///   Looks up a localized string similar to next page.
         /// </summary>
         public static string nextPage {
             get {
@@ -223,7 +223,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to               No.
+        ///   Looks up a localized string similar to no.
         /// </summary>
         public static string no {
             get {
@@ -232,7 +232,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to       Normal mode.
+        ///   Looks up a localized string similar to normal mode.
         /// </summary>
         public static string normal {
             get {
@@ -241,7 +241,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to       Partially sighted.
+        ///   Looks up a localized string similar to partially sighted.
         /// </summary>
         public static string partiallySighted {
             get {
@@ -250,7 +250,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to      People Around.
+        ///   Looks up a localized string similar to people around.
         /// </summary>
         public static string people {
             get {
@@ -268,7 +268,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Previous page.
+        ///   Looks up a localized string similar to previous page.
         /// </summary>
         public static string previousPage {
             get {
@@ -277,7 +277,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to    Receive Message.
+        ///   Looks up a localized string similar to receive message.
         /// </summary>
         public static string receive {
             get {
@@ -295,7 +295,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Register.
+        ///   Looks up a localized string similar to register.
         /// </summary>
         public static string register {
             get {
@@ -304,7 +304,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to    Register with Facebook.
+        ///   Looks up a localized string similar to facebook.
         /// </summary>
         public static string registerfb {
             get {
@@ -313,7 +313,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to   Register location.
+        ///   Looks up a localized string similar to register location.
         /// </summary>
         public static string registerLocation {
             get {
@@ -331,7 +331,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Route.
+        ///   Looks up a localized string similar to route.
         /// </summary>
         public static string routemenu {
             get {
@@ -340,7 +340,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Send message?.
+        ///   Looks up a localized string similar to send message?.
         /// </summary>
         public static string sendMessageTitle {
             get {
@@ -349,7 +349,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to               Text Input.
+        ///   Looks up a localized string similar to text Input.
         /// </summary>
         public static string textinput {
             get {
@@ -358,7 +358,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Smart Audio.
+        ///   Looks up a localized string similar to smart audio.
         /// </summary>
         public static string title {
             get {
@@ -367,7 +367,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to       Total blindness.
+        ///   Looks up a localized string similar to total blindness.
         /// </summary>
         public static string totallyBlind {
             get {
@@ -376,7 +376,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to    Use Speech Recognition.
+        ///   Looks up a localized string similar to use speech recognition.
         /// </summary>
         public static string usespeech {
             get {
@@ -385,7 +385,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Register your sight type.
+        ///   Looks up a localized string similar to register your sight type.
         /// </summary>
         public static string visionProblemMenu {
             get {
@@ -403,7 +403,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to               Yes.
+        ///   Looks up a localized string similar to yes.
         /// </summary>
         public static string yes {
             get {

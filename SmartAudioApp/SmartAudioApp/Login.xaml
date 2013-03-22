@@ -49,8 +49,18 @@
                 <TextBlock x:Name="PageTitle" Text="{Binding Path=Resources.loginmenu, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextNormalStyle}" Height="74" FontSize="48" Foreground="Black" />
             </StackPanel>
             <ListBox Margin="0,153,8,0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                <ListBoxItem Content="{Binding Path=Resources.registerfb, Source={StaticResource LocalizedStrings}}" Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#1080DD" Width="380" IsHitTestVisible="True" MouseEnter="registerWithFB" Hold="registerWithFBHold" />
-             </ListBox>
+                <ListBoxItem Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#1080DD" Width="380" IsHitTestVisible="True" MouseEnter="registerWithFB" Hold="registerWithFBHold" >
+                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Margin="10,25,0,25" VerticalAlignment="Center" Text="{Binding Path=Resources.registerfb, Source={StaticResource LocalizedStrings}}" />
+                        <Image Grid.Column="1" HorizontalAlignment="Right" Source="Images/Icons/facebook-icon.png" Height="60" VerticalAlignment="Center" Margin="0,18,-217,30" />
+                </Grid>
+                </ListBoxItem>
+            </ListBox>
         </Grid>
     </Grid>
 

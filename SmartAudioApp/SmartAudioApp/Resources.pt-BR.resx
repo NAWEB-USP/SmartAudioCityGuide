@@ -148,7 +148,7 @@
     <value>Logado</value>
   </data>
   <data name="login" xml:space="preserve">
-    <value>            Login</value>
+    <value>login</value>
   </data>
   <data name="loginmenu" xml:space="preserve">
     <value>Login</value>
@@ -160,7 +160,7 @@
     <value>Mapa</value>
   </data>
   <data name="menu" xml:space="preserve">
-    <value>Menu</value>
+    <value>menu</value>
   </data>
   <data name="nextPage" xml:space="preserve">
     <value>Próxima página</value>
@@ -196,7 +196,7 @@
     <value> Cadastrar com Facebook</value>
   </data>
   <data name="route" xml:space="preserve">
-    <value>            Rota</value>
+    <value>rota</value>
   </data>
   <data name="routemenu" xml:space="preserve">
     <value>Rota</value>
@@ -220,7 +220,7 @@
     <value>Registro do tipo de visão</value>
   </data>
   <data name="where" xml:space="preserve">
-    <value>       Onde estou?</value>
+    <value>onde estou?</value>
   </data>
   <data name="yes" xml:space="preserve">
     <value>             Sim</value>
