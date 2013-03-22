@@ -300,6 +300,7 @@
     <Content Include="Images\Icons\login-branco.png" />
     <Content Include="Images\Icons\route-branco.png" />
     <Content Include="Images\Icons\where-branco.png" />
+    <Content Include="Images\Icons\login-branco.png" />
     <Content Include="Images\ranking.png" />
     <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Service References\ServicesReference\WebServices1.wsdl" />
