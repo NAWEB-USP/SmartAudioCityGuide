@@ -118,120 +118,120 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="registerLocation" xml:space="preserve">
-    <value>     Registrar local</value>
+    <value>registrar local</value>
   </data>
   <data name="address" xml:space="preserve">
-    <value>Endereço</value>
+    <value>endereço</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>            Cancelar</value>
+    <value>cancelar</value>
   </data>
   <data name="changeUser" xml:space="preserve">
-    <value>     Mudar de usuário</value>
+    <value>mudar de usuário</value>
   </data>
   <data name="explore" xml:space="preserve">
-    <value>  Modo exploração</value>
+    <value>modo exploração</value>
   </data>
   <data name="friend" xml:space="preserve">
-    <value>    Ajuda do Amigo</value>
+    <value>ajuda do amigo</value>
   </data>
   <data name="helpMode" xml:space="preserve">
-    <value>Modo Ajuda do Amigo</value>
+    <value>modo ajuda do amigo</value>
   </data>
   <data name="listenagain" xml:space="preserve">
-    <value>  Ouvir novamente</value>
+    <value>ouvir novamente</value>
   </data>
   <data name="locations" xml:space="preserve">
-    <value>     Lista de locais</value>
+    <value>lista de locais</value>
   </data>
   <data name="logged" xml:space="preserve">
-    <value>Logado</value>
+    <value>logado</value>
   </data>
   <data name="login" xml:space="preserve">
     <value>login</value>
   </data>
   <data name="loginmenu" xml:space="preserve">
-    <value>Login</value>
+    <value>login</value>
   </data>
   <data name="lowVision" xml:space="preserve">
-    <value>       Baixa visão</value>
+    <value>baixa visão</value>
   </data>
   <data name="map" xml:space="preserve">
-    <value>Mapa</value>
+    <value>mapa</value>
   </data>
   <data name="menu" xml:space="preserve">
     <value>menu</value>
   </data>
   <data name="nextPage" xml:space="preserve">
-    <value>Próxima página</value>
+    <value>próxima página</value>
   </data>
   <data name="no" xml:space="preserve">
-    <value>             Não</value>
+    <value>não</value>
   </data>
   <data name="normal" xml:space="preserve">
-    <value>     Modo normal</value>
+    <value>modo normal</value>
   </data>
   <data name="partiallySighted" xml:space="preserve">
-    <value>       Visão parcial</value>
+    <value>visão parcial</value>
   </data>
   <data name="people" xml:space="preserve">
-    <value>  Pessoas ao Redor</value>
+    <value>pessoas ao redor</value>
   </data>
   <data name="peoplearoundmenu" xml:space="preserve">
     <value />
   </data>
   <data name="previousPage" xml:space="preserve">
-    <value>Pagina anterior</value>
+    <value>pagina anterior</value>
   </data>
   <data name="receive" xml:space="preserve">
-    <value>Receber Mensagem</value>
+    <value>receber mensagem</value>
   </data>
   <data name="receivemessagemenu" xml:space="preserve">
     <value />
   </data>
   <data name="register" xml:space="preserve">
-    <value>              Cadastrar</value>
+    <value>cadastrar</value>
   </data>
   <data name="registerfb" xml:space="preserve">
-    <value> Cadastrar com Facebook</value>
+    <value>cadastrar com facebook</value>
   </data>
   <data name="route" xml:space="preserve">
     <value>rota</value>
   </data>
   <data name="routemenu" xml:space="preserve">
-    <value>Rota</value>
+    <value>rota</value>
   </data>
   <data name="sendMessageTitle" xml:space="preserve">
-    <value>Enviar mensagem?</value>
+    <value>enviar mensagem?</value>
   </data>
   <data name="textinput" xml:space="preserve">
-    <value>          Entrada de texto</value>
+    <value>entrada de texto</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Smart Audio</value>
+    <value>smart audio</value>
   </data>
   <data name="totallyBlind" xml:space="preserve">
-    <value>        Cegueira total</value>
+    <value>cegueira total</value>
   </data>
   <data name="usespeech" xml:space="preserve">
-    <value>Usar reconhecimento de voz</value>
+    <value>usar reconhecimento de voz</value>
   </data>
   <data name="visionProblemMenu" xml:space="preserve">
-    <value>Registro do tipo de visão</value>
+    <value>registro do tipo de visão</value>
   </data>
   <data name="where" xml:space="preserve">
     <value>onde estou?</value>
   </data>
   <data name="yes" xml:space="preserve">
-    <value>             Sim</value>
+    <value>sim</value>
   </data>
   <data name="addRoute" xml:space="preserve">
-    <value>Adicionar Rota</value>
+    <value>adicionar rota</value>
   </data>
   <data name="listOfRoute" xml:space="preserve">
-    <value>Selecione o local</value>
+    <value>selecione o local</value>
   </data>
   <data name="confirm" xml:space="preserve">
-    <value>Confirmar</value>
+    <value>confirmar</value>
   </data>
 </root>

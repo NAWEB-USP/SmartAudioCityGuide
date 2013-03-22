@@ -79,7 +79,7 @@ namespace SmartAudioApp
                     {
                         listBoxItem = new ListBoxItem();
                         listBoxItem.Content = resouceManager.GetString("nextPage");
-                        listBoxItem.Background = new SolidColorBrush(Color.FromArgb(255, 45, 45, 45));
+                        listBoxItem.Background = HexToSolidColorBrush("FA6800");
                         listBoxItem.Margin = new Thickness(30, 00, 20, 20);
                         listBoxItem.Width = 380;
                         listBoxItem.Height = 100;
@@ -102,7 +102,7 @@ namespace SmartAudioApp
                         listBoxItens = new List<ListBoxItem>();
                         listBoxItem = new ListBoxItem();
                         listBoxItem.Content = resouceManager.GetString("previousPage");
-                        listBoxItem.Background = new SolidColorBrush(Color.FromArgb(255, 16, 128, 221));
+                        listBoxItem.Background = HexToSolidColorBrush("1BA1E2");
                         listBoxItem.Margin = new Thickness(30, 00, 20, 20);
                         listBoxItem.Width = 380;
                         listBoxItem.Height = 100;
@@ -126,15 +126,15 @@ namespace SmartAudioApp
 
                         if (colors == 1)
                         {
-                            listBoxItem.Background = new SolidColorBrush(Color.FromArgb(255, 250, 150, 9));
+                            listBoxItem.Background = HexToSolidColorBrush("F0A30A"); 
                         }
                         else if (colors == 2)
                         {
-                            listBoxItem.Background = new SolidColorBrush(Color.FromArgb(255, 229, 20, 0));
+                            listBoxItem.Background = HexToSolidColorBrush("D80073");
                         }
                         else if (colors == 3)
                         {
-                            listBoxItem.Background = new SolidColorBrush(Color.FromArgb(255, 51, 153, 51));
+                            listBoxItem.Background = HexToSolidColorBrush("60A817");
                             colors = 0;
                         }
 
@@ -308,6 +308,34 @@ namespace SmartAudioApp
             UnicodeEncoding encoder = new UnicodeEncoding();
             byte[] bytes = Convert.FromBase64String(stringResult);
             return bytes;
+        }
+
+        public static SolidColorBrush HexToSolidColorBrush(object value)
+        {
+            byte alpha;
+            byte pos = 0;
+
+            string hex = value.ToString().Replace("#", "");
+
+            if (hex.Length == 8)
+            {
+                alpha = System.Convert.ToByte(hex.Substring(pos, 2), 16);
+                pos = 2;
+            }
+            else
+            {
+                alpha = System.Convert.ToByte("ff", 16);
+            }
+
+            byte red = System.Convert.ToByte(hex.Substring(pos, 2), 16);
+
+            pos += 2;
+            byte green = System.Convert.ToByte(hex.Substring(pos, 2), 16);
+
+            pos += 2;
+            byte blue = System.Convert.ToByte(hex.Substring(pos, 2), 16);
+
+            return new SolidColorBrush(Color.FromArgb(alpha, red, green, blue));
         }
 
 

@@ -45,8 +45,8 @@ shell:SystemTray.IsVisible="True" xmlns:my="clr-namespace:Microsoft.Phone.Contro
                 <ImageBrush ImageSource="Images/PanoramaBackground.png"/>
             </Grid.Background>
             <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="0,17,0,0">
-                <TextBlock x:Name="ApplicationTitle" Text="Smart Audio" Style="{StaticResource PhoneTextNormalStyle}" FontSize="24" Height="51" Margin="12,0,8,0" Foreground="Black" />
-                <TextBlock x:Name="PageTitle" Text="Route Map" Margin="9,-7,0,0" Style="{StaticResource PhoneTextNormalStyle}" Height="73" FontSize="48" Foreground="Black" />
+                <TextBlock x:Name="ApplicationTitle" Text="smart audio" Style="{StaticResource PhoneTextNormalStyle}" FontSize="24" Height="51" Margin="12,0,8,0" Foreground="Black" />
+                <TextBlock x:Name="PageTitle" Text="route map" Margin="9,-7,0,0" Style="{StaticResource PhoneTextNormalStyle}" Height="73" FontSize="48" Foreground="Black" />
             </StackPanel>
             <my:Map CredentialsProvider="At48uqJw8iwp0FOZl8lT1mW3sw26dylKaJMjD_mThDoDzLvUx6v9jMZ7eX7Vuam_" Height="617" HorizontalAlignment="Left" Margin="0,150,0,0" Name="mapR" VerticalAlignment="Top" Width="472" IsHitTestVisible="False">
                 <my:MapItemsControl x:Name="mapControlR" Margin="0,0,-46,-297"  />
