@@ -295,6 +295,11 @@
     <None Include="Service References\ServicesReference\WebServices1.disco" />
     <None Include="Service References\ServicesReference\WebServices11.disco" />
     <None Include="Service References\ServicesReference\Webservices2.disco" />
+    <Content Include="Images\Icons\explore-branco.png" />
+    <Content Include="Images\Icons\friend-branco.png" />
+    <Content Include="Images\Icons\login-branco.png" />
+    <Content Include="Images\Icons\route-branco.png" />
+    <Content Include="Images\Icons\where-branco.png" />
     <Content Include="Images\ranking.png" />
     <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Service References\ServicesReference\WebServices1.wsdl" />

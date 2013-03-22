@@ -62,8 +62,8 @@ namespace SmartAudioApp
         {
             int numberOfComments = Convert.ToInt32(e.Result);
             lvlOfUser = (numberOfComments / 5 + 1);
-            badgeLvlText.Text = e.Result;
-            levelOfUser.Content = "You are lvl " + lvlOfUser;
+            //badgeLvlText.Text = e.Result;
+            levelOfUser.Content = "You are lvl " + "11";
         }
 
         void webService_getFacebookIdByPhoneIdCompleted(object sender, getFacebookIdByPhoneIdCompletedEventArgs e)

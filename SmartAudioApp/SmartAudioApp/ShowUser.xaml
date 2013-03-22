@@ -55,7 +55,7 @@
             <ListBox Margin="0,153,8,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.RowSpan="2">
                 <Image Source="" Height="120" Width="120" Margin="50,20,20,20"  Name="imageOfFacebook"></Image>
                 <Image Source="/Images/ranking.png" Height="50" Width="50" Margin="130,-50,20,20" Name="badgeLvlImage" ></Image>
-                <TextBlock TextWrapping="Wrap" Text="" Margin="150,-70,30,30" Width="30" Height="30" Name="badgeLvlText"/>
+                <TextBlock TextWrapping="Wrap" Text="11" Margin="145,-70,30,30" Width="30" Height="30" Name="badgeLvlText"/>
                 <ListBoxItem Content="" Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#1080DD" Width="380" IsHitTestVisible="True" MouseEnter="tellNameOfUser" Name="userFacebook" />
                 <ListBoxItem Content="" Height="100"  Margin="30,20,20,20" RenderTransformOrigin="0.5,0.925" FontSize="32" Background="#F09609" Width="380" IsHitTestVisible="True" MouseEnter="tellLvlOfUser" Name="levelOfUser" />
             </ListBox>

@@ -169,7 +169,7 @@ namespace SmartAudioApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to             Login.
+        ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string login {
             get {
