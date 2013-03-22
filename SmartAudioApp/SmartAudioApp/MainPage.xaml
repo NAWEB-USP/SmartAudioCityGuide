@@ -71,7 +71,7 @@
                             <Image Grid.Column="1" HorizontalAlignment="Right" Source="Images/Icons/login-branco.png" Height="50" VerticalAlignment="Center" Margin="189,0,-189,0" />
                         </Grid>
                     </ListBoxItem>
-                    <ListBoxItem Height="100"  Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#F09609" Width="360" IsHitTestVisible="True" MouseEnter="sound_route" Hold="holdRoute" >
+                    <ListBoxItem Height="100"  Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#F0A30A" Width="360" IsHitTestVisible="True" MouseEnter="sound_route" Hold="holdRoute" >
                         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -82,7 +82,7 @@
                             <Image Grid.Column="1" HorizontalAlignment="Right" Source="Images/Icons/route-branco.png" Height="50" VerticalAlignment="Center" Margin="0,25,-232,23" />
                         </Grid>
                     </ListBoxItem>
-                    <ListBoxItem  Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#E51400" Width="360" IsHitTestVisible="True" MouseEnter="sound_help" Hold="holdHelp" >
+                    <ListBoxItem  Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#D80073" Width="360" IsHitTestVisible="True" MouseEnter="sound_help" Hold="holdHelp" >
                         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -93,7 +93,7 @@
                             <Image Grid.Column="1" HorizontalAlignment="Right" Source="Images/Icons/friend-branco.png" Height="50" VerticalAlignment="Center" Margin="0,25,-72,23" />
                         </Grid>
                     </ListBoxItem>
-                    <ListBoxItem Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#339933" Width="360" IsHitTestVisible="True" MouseEnter="sound_mode" Hold="holdMode" Name="mode">
+                    <ListBoxItem Height="100" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#60A817" Width="360" IsHitTestVisible="True" MouseEnter="sound_mode" Hold="holdMode" Name="mode">
                         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -101,10 +101,10 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0" Margin="10,25,0,25" VerticalAlignment="Center" Text="{Binding Path=Resources.explore, Source={StaticResource LocalizedStrings}}" />
-                            <Image Grid.Column="1" HorizontalAlignment="Right" Source="Images/Icons/explore-branco.png" Height="50" VerticalAlignment="Center" Margin="0,25,-83,23" />
+                            <Image Grid.Column="1" HorizontalAlignment="Right" Source="Images/Icons/explore-branco.png" Height="50" VerticalAlignment="Center" Margin="0,27,-81,23" />
                         </Grid>
                     </ListBoxItem>
-                    <ListBoxItem Height="99" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#FF2D2D2D" Width="360" IsHitTestVisible="True" MouseEnter="sound_Where" Hold="holdWhere">
+                    <ListBoxItem Height="99" Margin="30,0,20,20" RenderTransformOrigin="0.5,0.925" FontSize="40" Background="#FA6800" Width="360" IsHitTestVisible="True" MouseEnter="sound_Where" Hold="holdWhere">
                         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
