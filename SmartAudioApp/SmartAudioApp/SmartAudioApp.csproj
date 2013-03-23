@@ -302,7 +302,9 @@
     <Content Include="Images\Icons\list-icon.png" />
     <Content Include="Images\Icons\listen-again-icon.png" />
     <Content Include="Images\Icons\login-branco.png" />
+    <Content Include="Images\Icons\next-icon.png" />
     <Content Include="Images\Icons\no-icon.png" />
+    <Content Include="Images\Icons\previous-icon.png" />
     <Content Include="Images\Icons\register-icon.png" />
     <Content Include="Images\Icons\route-branco.png" />
     <Content Include="Images\Icons\user-icon.png" />

@@ -339,13 +339,13 @@ namespace SmartAudioApp
             if ((Application.Current as App).idMessageType == 1)
             {
                 (Application.Current as App).idMessageType = 2;
-                mode.Content = SmartAudioApp.Resources.normal;
+                ((mode.Content as Grid).Children[0] as TextBlock).Text = SmartAudioApp.Resources.normal;
                 sound.play("changedexplore");
             }
             else
             {
                 (Application.Current as App).idMessageType = 1;
-                mode.Content = SmartAudioApp.Resources.explore;
+                ((mode.Content as Grid).Children[0] as TextBlock).Text = SmartAudioApp.Resources.explore;
                 sound.play("changednormal");
             }
             locations.getLocationsAround(); 

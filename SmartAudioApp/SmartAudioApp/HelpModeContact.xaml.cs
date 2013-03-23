@@ -16,6 +16,7 @@ using System.Threading;
 using System.Globalization;
 using SmartAudioApp.ServicesReference;
 using System.Resources;
+using System.Windows.Media.Imaging;
 
 namespace SmartAudioApp
 {
@@ -75,18 +76,57 @@ namespace SmartAudioApp
             int colors = 0;
             int aux = 0;
             int itensOnPage = 0;
+            Grid grid = new Grid();
+            ColumnDefinition columDefinition = new ColumnDefinition();
+            GridLength gridLength = new GridLength();
+            TextBlock textBlock = new TextBlock();
+            Image image = new Image();
 
             foreach (var result in e.Results)
             {
                 if (aux == 3)
                 {
                     listBoxItem = new ListBoxItem();
-                    listBoxItem.Content = resouceManager.GetString("nextPage");
+                    //listBoxItem.Content = resouceManager.GetString("nextPage").ToLower();
+
+                    grid = new Grid();
+                    columDefinition = new ColumnDefinition();
+                    gridLength =new GridLength(300);
+                    columDefinition.Width = gridLength;
+
+                    textBlock = new TextBlock();
+                    textBlock.Text = resouceManager.GetString("nextPage").ToLower();
+                    textBlock.Margin = new Thickness(10,25,0,25);
+                    textBlock.VerticalAlignment = VerticalAlignment.Center;
+
+                    image = new Image();
+                    image.HorizontalAlignment = HorizontalAlignment.Right;
+                    image.VerticalAlignment = VerticalAlignment.Center;
+                    image.Height = 40;
+                    image.Margin = new Thickness(10, 25, 0, 25);
+                    image.Source = new BitmapImage(new Uri("Images/Icons/next-icon.png", UriKind.Relative));
+
+                    columDefinition = new ColumnDefinition();
+                    gridLength = new GridLength(350);
+                    columDefinition.Width = gridLength;
+                    grid.ColumnDefinitions.Add(columDefinition);
+
+                    columDefinition = new ColumnDefinition();
+                    gridLength = new GridLength(80);
+                    columDefinition.Width = gridLength;
+                    grid.ColumnDefinitions.Add(columDefinition);
+
+                    grid.Children.Add(textBlock);
+                    grid.Children.Add(image);
+
+                    listBoxItem.Content = grid;
+
                     listBoxItem.Background = HexToSolidColorBrush("FA6800");
                     listBoxItem.Margin = new Thickness(30, 00, 20, 20);
                     listBoxItem.Width = 380;
                     listBoxItem.Height = 100;
                     listBoxItem.FontSize = 30;
+
 
                     listBoxItem.MouseEnter += new MouseEventHandler(listBoxItem_MouseEnter);
                     listBoxItem.Hold += new EventHandler<System.Windows.Input.GestureEventArgs>(listBoxItemForPage_Hold);
@@ -104,7 +144,41 @@ namespace SmartAudioApp
                 {
                     listBoxItens = new List<ListBoxItem>();
                     listBoxItem = new ListBoxItem();
-                    listBoxItem.Content = resouceManager.GetString("previousPage");
+                    //listBoxItem.Content = resouceManager.GetString("previousPage").ToLower();
+
+                    grid = new Grid();
+                    columDefinition = new ColumnDefinition();
+                    gridLength = new GridLength(300);
+
+                    columDefinition.Width = gridLength;
+
+                    textBlock = new TextBlock();
+                    textBlock.Text = resouceManager.GetString("previousPage").ToLower();
+                    textBlock.Margin = new Thickness(10, 25, 0, 25);
+                    textBlock.VerticalAlignment = VerticalAlignment.Center;
+
+                    image = new Image();
+                    image.HorizontalAlignment = HorizontalAlignment.Right;
+                    image.VerticalAlignment = VerticalAlignment.Center;
+                    image.Height = 40;
+                    image.Margin = new Thickness(10, 25, 0, 25);
+                    image.Source = new BitmapImage(new Uri("Images/Icons/previous-icon.png", UriKind.Relative));
+
+                    columDefinition = new ColumnDefinition();
+                    gridLength = new GridLength(350);
+                    columDefinition.Width = gridLength;
+                    grid.ColumnDefinitions.Add(columDefinition);
+
+                    columDefinition = new ColumnDefinition();
+                    gridLength = new GridLength(80);
+                    columDefinition.Width = gridLength;
+                    grid.ColumnDefinitions.Add(columDefinition);
+
+                    grid.Children.Add(textBlock);
+                    grid.Children.Add(image);
+
+                    listBoxItem.Content = grid;
+
                     listBoxItem.Background = HexToSolidColorBrush("1BA1E2");
                     listBoxItem.Margin = new Thickness(30, 00, 20, 20);
                     listBoxItem.Width = 380;
@@ -120,7 +194,37 @@ namespace SmartAudioApp
                 if (result.EmailAddresses.Count() != 0)
                 {
                     listBoxItem = new ListBoxItem();
-                    listBoxItem.Content = result.DisplayName;
+                    //listBoxItem.Content = result.DisplayName.ToLower();
+
+                    grid = new Grid();
+
+                    textBlock = new TextBlock();
+                    textBlock.Text = result.DisplayName.ToLower();
+                    textBlock.Margin = new Thickness(10, 25, 0, 25);
+                    textBlock.VerticalAlignment = VerticalAlignment.Center;
+
+                    image = new Image();
+                    image.HorizontalAlignment = HorizontalAlignment.Right;
+                    image.VerticalAlignment = VerticalAlignment.Center;
+                    image.Height = 50;
+                    image.Margin = new Thickness(10, 25, 0, 25);
+                    image.Source = new BitmapImage(new Uri("Images/Icons/friend-branco.png",UriKind.Relative));
+
+                    columDefinition = new ColumnDefinition();
+                    gridLength = new GridLength(350);
+                    columDefinition.Width = gridLength;
+                    grid.ColumnDefinitions.Add(columDefinition);
+
+                    columDefinition = new ColumnDefinition();
+                    gridLength = new GridLength(80);
+                    columDefinition.Width = gridLength;
+                    grid.ColumnDefinitions.Add(columDefinition);
+
+                    grid.Children.Add(textBlock);
+                    grid.Children.Add(image);
+
+                    listBoxItem.Content = grid;
+
                     listBoxItem.Margin = new Thickness(30, 00, 20, 20);
                     listBoxItem.Width = 380;
                     listBoxItem.Height = 100;
@@ -154,10 +258,12 @@ namespace SmartAudioApp
                 if (listListBoxItens.Count() != e.Results.Count() / 3 + 1)
                     listListBoxItens.Add(listBoxItens);
                 listBoxContact.ItemsSource = listListBoxItens[0];
+                /*
                 while (listBoxContact.ItemsSource.GetEnumerator().MoveNext())
                     itensOnPage++;
 
                 playSound("This page has  " + (itensOnPage) + " itens.");
+                 * */
             }
             else
             {
@@ -233,7 +339,7 @@ namespace SmartAudioApp
             ListBoxItem listBoxItem = (ListBoxItem)sender;
 
             Contact contact = (from con in contacts
-                               where con.DisplayName == listBoxItem.Content.ToString()
+                               where con.DisplayName.ToLower() == ((listBoxItem.Content as Grid).Children[0] as TextBlock).Text
                                select con).FirstOrDefault();
 
 
@@ -243,18 +349,18 @@ namespace SmartAudioApp
                 return;
             }
 
-            if (contact.EmailAddresses.Count() == 0 )
+            if (contact.EmailAddresses.Count() == 0)
             {
                 playSound("Email address not available.");
                 return;
             }
-            
+
             WebService1SoapClient webService = new WebService1SoapClient();
             updateUserLocation();
             //webService.sendEmailForFolloUserByWindowsPhoneIdAsync(myPhone.serializedDeviceUniqueId(),contact.EmailAddresses.First().EmailAddress );
             webService.sendEmailForFolloUserByWindowsPhoneIdAsync(myPhone.serializedDeviceUniqueId(), "greganatti@gmail.com");
             playSound("success");
-        
+
         }
 
 
@@ -262,7 +368,7 @@ namespace SmartAudioApp
         {
             ListBoxItem listBoxItem = (ListBoxItem)sender;
 
-            if (listBoxItem.Content.ToString() == resouceManager.GetString("previousPage").ToString())
+            if (((listBoxItem.Content as Grid).Children[0] as TextBlock).Text == resouceManager.GetString("previousPage").ToString())
             {
                 if (currentPage == 0)
                 {
@@ -278,7 +384,7 @@ namespace SmartAudioApp
                     }
                 }
             }
-            else if (listBoxItem.Content.ToString() == resouceManager.GetString("nextPage").ToString())
+            else if (((listBoxItem.Content as Grid).Children[0] as TextBlock).Text == resouceManager.GetString("nextPage").ToString())
             {
                 if (currentPage + 1 == listListBoxItens.Count)
                 {
@@ -301,22 +407,22 @@ namespace SmartAudioApp
         void listBoxItem_MouseEnter(object sender, MouseEventArgs e)
         {
             ListBoxItem listBoxItem = (ListBoxItem)sender;
-            if (listBoxItem.Content.ToString() == resouceManager.GetString("previousPage").ToString())
+            if (((listBoxItem.Content as Grid).Children[0] as TextBlock).Text == resouceManager.GetString("previousPage").ToString())
             {
                 sound.play("previouspage");
                 itemSelected = "previousPage";
             }
-            else if (listBoxItem.Content.ToString() == resouceManager.GetString("nextPage").ToString())
+            else if (((listBoxItem.Content as Grid).Children[0] as TextBlock).Text == resouceManager.GetString("nextPage").ToString())
             {
                 sound.play("nextpage");
                 itemSelected = "nextPage";
             }
             else
             {
-                playSound(listBoxItem.Content.ToString());
-                itemSelected = listBoxItem.Content.ToString();
+                playSound(((listBoxItem.Content as Grid).Children[0] as TextBlock).Text);
+                itemSelected = ((listBoxItem.Content as Grid).Children[0] as TextBlock).Text;
             }
-                   
+
         }
 
         private void playSound(string sound)
