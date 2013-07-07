@@ -98,7 +98,26 @@ namespace SmartAudioApp
         private void yesHold(object sender, System.Windows.Input.GestureEventArgs e)
         {
             sound.play("map");
-            commentLocation.sendCommentAndSoundToActualLocationToSave(" ", myMicrophone);
+            sound.play("messagesuccess");
+
+            Thread thread = new Thread(new ThreadStart((Action)(() =>
+            {
+                try
+                {
+                    Thread.Sleep(10000);
+                    sound.play("arvoresLindas");
+                    Thread.Sleep(10000);
+                    sound.play("historicoParqueTrianon");
+                }
+                catch
+                {
+                }
+            })));
+
+            thread.Start();
+
+            //Moq
+            //commentLocation.sendCommentAndSoundToActualLocationToSave(" ", myMicrophone);
             NavigationService.GoBack();
         }
 

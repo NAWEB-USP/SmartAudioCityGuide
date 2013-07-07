@@ -47,7 +47,7 @@ namespace SmartAudioApp
         private Locations locations;
         private string itemSelected = "";
         private SpeechSynthesizer speech = new SpeechSynthesizer("SmartAudioCityGuide", "Lz+vYpOFm6NTP83A9y0tPoX6ByJa06Q6yxHvoBsD0xo=");
-      
+
         private WebService1SoapClient webService = new WebService1SoapClient(
         new BasicHttpBinding(BasicHttpSecurityMode.None)
         {
@@ -59,15 +59,15 @@ namespace SmartAudioApp
         // Constructor
         public MainPage()
         {
-           /*
-            Database database = new Database();
-            LocalDataBaseForLatLongAndSound item = new LocalDataBaseForLatLongAndSound(1.0, 1.0, "!@312312");
-            database.createTableForLatLongAndSound();
-            int idItem = database.addItemAndReturnId(item);
-            database.getListItems();
-            database.findLocalDataBaseForLatLongAndSoundById(idItem);
-            database.removeLocalDataBaseForLatLongAndSound(idItem);
-            */
+            /*
+             Database database = new Database();
+             LocalDataBaseForLatLongAndSound item = new LocalDataBaseForLatLongAndSound(1.0, 1.0, "!@312312");
+             database.createTableForLatLongAndSound();
+             int idItem = database.addItemAndReturnId(item);
+             database.getListItems();
+             database.findLocalDataBaseForLatLongAndSoundById(idItem);
+             database.removeLocalDataBaseForLatLongAndSound(idItem);
+             */
 
             comments = new Comments(baseWebserver);
 
@@ -127,7 +127,7 @@ namespace SmartAudioApp
                                 {
                                     locationsAlreadySaid.Add(location.id);
 
-                                    comments.getCommentFromLocationIdAndTypeOfComment(location.id,(Application.Current as App).idMessageType);
+                                    comments.getCommentFromLocationIdAndTypeOfComment(location.id, (Application.Current as App).idMessageType);
                                 }
                             }
                         }
@@ -137,7 +137,9 @@ namespace SmartAudioApp
                 {
                 }
             })));
-            thread.Start();
+
+            //Moq 
+            //thread.Start();
         }
 
         /*public void onCompletedSpeechRecognition(SpeechServiceResult speechResult)
@@ -191,9 +193,9 @@ namespace SmartAudioApp
 
         private void DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            if(itemSelected == "login")
+            if (itemSelected == "login")
             {
-                holdLogin(sender,e);
+                holdLogin(sender, e);
             }
             else if (itemSelected == "route")
             {
@@ -211,8 +213,6 @@ namespace SmartAudioApp
             {
                 holdWhere(sender, e);
             }
-
-        
         }
 
         private void sound_login(object sender, MouseEventArgs e)
@@ -220,7 +220,7 @@ namespace SmartAudioApp
             sound.play("login");
             itemSelected = "login";
         }
-        
+
         private void sound_route(object sender, MouseEventArgs e)
         {
             sound.play("route");
@@ -263,6 +263,9 @@ namespace SmartAudioApp
 
         private void map_Hold(object sender, System.Windows.Input.GestureEventArgs e)
         {
+            //Moq
+            map_HoldMoq(sender, e);
+            return;
             /* Record the microphone */
             if (NetworkInterface.GetIsNetworkAvailable())
             {
@@ -300,8 +303,48 @@ namespace SmartAudioApp
             else sound.play("internet");
         }
 
+        private void map_HoldMoq(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            /* Record the microphone */
+            if (myMicrophone.microphone.State == MicrophoneState.Stopped)
+            {
+                myMicrophone.initializeMicrophone();
+                myMicrophone.streamMicrophone = new MemoryStream();
+
+                myMicrophone.microphone.BufferDuration = TimeSpan.FromMilliseconds(1000);
+                myMicrophone.bufferMicrophone = new byte[myMicrophone.microphone.GetSampleSizeInBytes(myMicrophone.microphone.BufferDuration)];
+
+                sound.play("recording");
+
+                Thread.Sleep(1000);
+
+                myMicrophone.microphone.Start();
+            }
+            /* Stop the record */
+            else if (myMicrophone.microphone.State == MicrophoneState.Started)
+            {
+                myMicrophone.microphone.Stop();
+                CommentAndLocation commentAndLocation = new CommentAndLocation(globalPositionSystemForMap, baseWebserver);
+                sound.play("recordingend");
+
+                //if (myMicrophone.streamMicrophone.Length != 0) SpeechService.RecognizeSpeechAsync(HawaiiClient.HawaiiApplicationId, SpeechService.DefaultGrammar , myMicrophone.streamMicrophone.ToArray(), onCompletedSpeechRecognition);
+                if (myMicrophone.streamMicrophone.Length != 0)
+                {
+                    (Application.Current as App).commentAndLocationShared = commentAndLocation;
+                    (Application.Current as App).myMicrophoneShare = myMicrophone;
+                    NavigationService.Navigate(new Uri("/SendMessage.xaml", UriKind.Relative));
+                }
+                myMicrophone.removeMicrophone();
+            }
+        }
+
+
         private void holdRoute(object sender, System.Windows.Input.GestureEventArgs e)
         {
+            //Moq 
+            holdRouteMoq(sender, e);
+            return;
+
             if (NetworkInterface.GetIsNetworkAvailable())
             {
                 NavigationService.Navigate(new Uri("/Route.xaml", UriKind.Relative));
@@ -309,16 +352,31 @@ namespace SmartAudioApp
             else sound.play("internet");
         }
 
-        
+        private void holdRouteMoq(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Route.xaml", UriKind.Relative));
+        }
+
+
         private void holdLogin(object sender, System.Windows.Input.GestureEventArgs e)
         {
+            //Moq
+            holdLoginMoq(sender,e);
+            return;
+
             if (NetworkInterface.GetIsNetworkAvailable())
             {
                 webService.existAUserForThatIdPhoneAsync(myPhone.serializedDeviceUniqueId());
                 webService.existAUserForThatIdPhoneCompleted += new EventHandler<existAUserForThatIdPhoneCompletedEventArgs>(webService_existAUserForThatIdPhoneCompleted);
             }
             else sound.play("internet");
-            
+        }
+
+
+        private void holdLoginMoq(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            webService.existAUserForThatIdPhoneAsync(myPhone.serializedDeviceUniqueId());
+            webService.existAUserForThatIdPhoneCompleted += new EventHandler<existAUserForThatIdPhoneCompletedEventArgs>(webService_existAUserForThatIdPhoneCompleted);
         }
 
         void webService_existAUserForThatIdPhoneCompleted(object sender, existAUserForThatIdPhoneCompletedEventArgs e)
@@ -333,7 +391,7 @@ namespace SmartAudioApp
             }
         }
 
-        
+
         private void holdMode(object sender, System.Windows.Input.GestureEventArgs e)
         {
             if ((Application.Current as App).idMessageType == 1)
@@ -348,11 +406,15 @@ namespace SmartAudioApp
                 ((mode.Content as Grid).Children[0] as TextBlock).Text = SmartAudioApp.Resources.explore;
                 sound.play("changednormal");
             }
-            locations.getLocationsAround(); 
+            locations.getLocationsAround();
         }
 
         private void holdHelp(object sender, System.Windows.Input.GestureEventArgs e)
         {
+            //Moq
+            holdHelpMoq(sender,e);
+            return;
+
             if (NetworkInterface.GetIsNetworkAvailable())
             {
                 NavigationService.Navigate(new Uri("/HelpModeContact.xaml", UriKind.Relative));
@@ -361,8 +423,17 @@ namespace SmartAudioApp
         }
 
 
+        private void holdHelpMoq(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/HelpModeContact.xaml", UriKind.Relative));
+        }
+
         private void holdWhere(object sender, System.Windows.Input.GestureEventArgs e)
         {
+            //Moq
+            holdWhereMoq();
+            return;
+
             if (NetworkInterface.GetIsNetworkAvailable())
             {
                 Thread thread = new Thread(new ThreadStart((Action)(() =>
@@ -382,14 +453,14 @@ namespace SmartAudioApp
                             Thread.Sleep(70);
                             esc--;
                         }
-                        if (routesServices.country == null || routesServices.city == null || esc<0)
+                        if (routesServices.country == null || routesServices.city == null || esc < 0)
                         {
                             sound.play("error");
                             return;
                         }
                         speech.SpeakAsync(routesServices.street, CultureInfo.CurrentCulture.ToString());
                     }
-                    catch(Exception)
+                    catch (Exception)
                     {
                     }
                 }))); thread.Start();
@@ -401,19 +472,25 @@ namespace SmartAudioApp
 
         }
 
+        private void holdWhereMoq()
+        {
+            sound.play("voceEstaNoParqueTrianon");
+        }
+
+
         private async void recognitionMethod(object sender, System.Windows.Input.GestureEventArgs e)
         {
             SpeechRecognizerUI recoWithUI = new SpeechRecognizerUI();
-            recoWithUI.Recognizer.Grammars.AddGrammarFromList("answer", new string[] { "Help", "Record", "Where", "Change mode", "Quick start", "Promotions" });
+            recoWithUI.Recognizer.Grammars.AddGrammarFromList("answer", new string[] { "Help", "Ajuda", "Record", "Gravar", "Where", "Onde", "Change mode", "Mudar modo", "Quick start", "Começo rápido", "Promoções", "Promotions" });
             recoWithUI.Recognizer.AudioCaptureStateChanged += myRecognizer_AudioCaptureStateChanged;
             SpeechRecognitionUIResult recoResult = await recoWithUI.RecognizeWithUIAsync();
             if (recoResult.ResultStatus == SpeechRecognitionUIStatus.Succeeded)
             {
-                if (recoResult.RecognitionResult.Text == "Where")
+                if (recoResult.RecognitionResult.Text == "Where" || recoResult.RecognitionResult.Text == "Onde")
                 {
                     holdWhere(sender, e);
                 }
-                else if (recoResult.RecognitionResult.Text == "Change mode")
+                else if (recoResult.RecognitionResult.Text == "Change mode" || recoResult.RecognitionResult.Text == "Mudar modo")
                 {
                     holdMode(sender, e);
                 }
@@ -428,6 +505,14 @@ namespace SmartAudioApp
                 else if (recoResult.RecognitionResult.Text == "Help")
                 {
                     playSound("Actions that can be made: Record, Where, Change Mode, Quick Start and Promotions");
+                }
+                else if (recoResult.RecognitionResult.Text == "Ajuda")
+                {
+                    playSound("Ações que podem ser feitas: Gravar, Onde, Mudar modo");
+                }
+                else if (recoResult.RecognitionResult.Text == "Gravar" || recoResult.RecognitionResult.Text == "Record")
+                {
+                    map_Hold(sender, e);
                 }
             }
             else if (recoResult.ResultStatus == SpeechRecognitionUIStatus.Cancelled)

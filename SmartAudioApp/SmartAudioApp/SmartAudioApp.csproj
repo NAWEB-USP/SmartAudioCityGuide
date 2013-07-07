@@ -319,6 +319,7 @@
     <None Include="Service References\ServicesReference\Webservices2.wsdl" />
     <Resource Include="Images\PanoramaBackground.png" />
     <Content Include="Sounds\en\address.wav" />
+    <Content Include="Sounds\en\arvoresLindas.wav" />
     <Content Include="Sounds\en\calcrota.wav" />
     <Content Include="Sounds\en\changedexplore.wav" />
     <Content Include="Sounds\en\changednormal.wav" />
@@ -327,11 +328,13 @@
     <Content Include="Sounds\en\explore.wav" />
     <Content Include="Sounds\en\friend.wav" />
     <Content Include="Sounds\en\friendmode.wav" />
+    <Content Include="Sounds\en\historicoParqueTrianon.wav" />
     <Content Include="Sounds\en\internet.wav" />
     <Content Include="Sounds\en\listen.wav" />
     <Content Include="Sounds\en\login.wav" />
     <Content Include="Sounds\en\login_mode.wav" />
     <Content Include="Sounds\en\map.wav" />
+    <Content Include="Sounds\en\mataAtlantica.wav" />
     <Content Include="Sounds\en\menu.wav" />
     <Content Include="Sounds\en\messagesuccess.wav" />
     <Content Include="Sounds\en\nextpage.wav" />
@@ -355,6 +358,7 @@
     <Content Include="Sounds\en\textinput.wav" />
     <Content Include="Sounds\en\totalBlindness.wav" />
     <Content Include="Sounds\en\usespeech.wav" />
+    <Content Include="Sounds\en\voceEstaNoParqueTrianon.wav" />
     <Content Include="Sounds\en\welcome.wav" />
     <Resource Include="Images\ApplicationIcon.png" />
     <Resource Include="Images\Background.png" />
@@ -362,6 +366,7 @@
     <Content Include="Sounds\en\yes.wav" />
     <Content Include="Sounds\en\locationlist.wav" />
     <Content Include="Sounds\pt\address.wav" />
+    <Content Include="Sounds\pt\arvoresLindas.wav" />
     <Content Include="Sounds\pt\calcrota.wav" />
     <Content Include="Sounds\pt\changedexplore.wav" />
     <Content Include="Sounds\pt\changednormal.wav" />
@@ -370,12 +375,14 @@
     <Content Include="Sounds\pt\explore.wav" />
     <Content Include="Sounds\pt\friend.wav" />
     <Content Include="Sounds\pt\friendmode.wav" />
+    <Content Include="Sounds\pt\historicoParqueTrianon.wav" />
     <Content Include="Sounds\pt\internet.wav" />
     <Content Include="Sounds\pt\listen.wav" />
     <Content Include="Sounds\pt\locationlist.wav" />
     <Content Include="Sounds\pt\login.wav" />
     <Content Include="Sounds\pt\login_mode.wav" />
     <Content Include="Sounds\pt\map.wav" />
+    <Content Include="Sounds\pt\mataAtlantica.wav" />
     <Content Include="Sounds\pt\menu.wav" />
     <Content Include="Sounds\pt\messagesuccess.wav" />
     <Content Include="Sounds\pt\nextpage.wav" />
@@ -399,6 +406,7 @@
     <Content Include="Sounds\pt\textinput.wav" />
     <Content Include="Sounds\pt\totalBlindness.wav" />
     <Content Include="Sounds\pt\usespeech.wav" />
+    <Content Include="Sounds\pt\voceEstaNoParqueTrianon.wav" />
     <Content Include="Sounds\pt\welcome.wav" />
     <Content Include="Sounds\pt\where.wav" />
     <Content Include="Sounds\pt\yes.wav" />

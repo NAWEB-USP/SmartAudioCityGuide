@@ -329,7 +329,9 @@ namespace SmartAudioApp
             WebService1SoapClient webService = new WebService1SoapClient();
             updateUserLocation();
             //webService.sendEmailForFolloUserByWindowsPhoneIdAsync(myPhone.serializedDeviceUniqueId(),contact.EmailAddresses.First().EmailAddress );
-            webService.sendEmailForFolloUserByWindowsPhoneIdAsync(myPhone.serializedDeviceUniqueId(), "greganatti@gmail.com");
+            
+            //Moq
+            //webService.sendEmailForFolloUserByWindowsPhoneIdAsync(myPhone.serializedDeviceUniqueId(), "greganatti@gmail.com");
             playSound("success");
         }
 
