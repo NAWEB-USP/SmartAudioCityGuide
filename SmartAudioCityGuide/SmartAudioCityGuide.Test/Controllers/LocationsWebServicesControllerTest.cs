@@ -126,7 +126,7 @@ namespace SmartAudioCityGuide.Test
             locations.Add(location);
             iCodeServices.Setup(m => m.findFirstCode()).Returns("code");
             iUserLocationServices.Setup(m => m.addUserLocation(It.IsAny<UserLocations>()));
-            iLocationServices.Setup(m=>m.findLocationsArround(It.IsAny<string>(),It.IsAny<string>(),It.IsAny<double>())).Returns(locations);
+            iLocationServices.Setup(m=>m.findLocationsAround(It.IsAny<string>(),It.IsAny<string>(),It.IsAny<double>())).Returns(locations);
             LocationsWebServicesController target = new LocationsWebServicesController(iLocationServices.Object, iCodeServices.Object, iUserLocationServices.Object, iCommentServices.Object);
             string locationString = "{'id':'1','longitude':'1','latitude':'1'}";  
             string radius = "1"; 

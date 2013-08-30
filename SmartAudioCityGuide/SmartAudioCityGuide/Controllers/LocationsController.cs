@@ -50,7 +50,7 @@ namespace SmartAudioCityGuide.Controllers
         {
             List<Locations> locations = new List<Locations>();
 
-            locations = locationServices.findLocationsArround(lat, lng, 3);
+            locations = locationServices.findLocationsAround(lat, lng, 3);
             return locations;
         }
 

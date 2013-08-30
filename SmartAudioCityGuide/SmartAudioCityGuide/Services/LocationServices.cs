@@ -6,7 +6,7 @@ using SmartAudioCityGuide.Models;
 
 namespace SmartAudioCityGuide.Services
 {
-    public class LocationServices :ILocationServices, IDisposable
+    public class LocationServices : ILocationServices, IDisposable
     {
         private SmartAudioCityGuideEntities db;
 
@@ -26,16 +26,15 @@ namespace SmartAudioCityGuide.Services
             db.SaveChanges();
         }
 
-        public List<Locations> findLocationsArround(string lat, string lng, double kilometers)
+        public List<Locations> findLocationsAround(string lat, string lng, double distance)
         {
             double doubleLat, doubleLon;
             doubleLat = Convert.ToDouble(lat);
             doubleLon = Convert.ToDouble(lng);
             List<Locations> locations = (from t in db.locations
-                                         where (t.latitude <= doubleLat + kilometers && t.latitude >= doubleLat - kilometers &&
-                                            t.longitude <= doubleLon + kilometers && t.longitude >= doubleLon - kilometers)
+                                         where (t.latitude <= doubleLat + distance && t.latitude >= doubleLat - distance &&
+                                            t.longitude <= doubleLon + distance && t.longitude >= doubleLon - distance)
                                          select t).ToList();
-
 
             return locations;
         }
@@ -51,13 +50,13 @@ namespace SmartAudioCityGuide.Services
             double epsilon = 0.0001;
             doubleLat = Convert.ToDouble(lat);
             doubleLon = Convert.ToDouble(lng);
-            
+
             List<Locations> locations = (from loc in db.locations
                                          select loc).ToList();
 
-            locations =     (from loc in locations
-                            where loc.latitude <= doubleLat + epsilon && loc.latitude >= doubleLat - epsilon
-                            select loc).ToList();
+            locations = (from loc in locations
+                         where loc.latitude <= doubleLat + epsilon && loc.latitude >= doubleLat - epsilon
+                         select loc).ToList();
 
             Locations location = (from loc in locations
                                   where loc.longitude <= doubleLon + epsilon && loc.longitude >= doubleLon - epsilon

@@ -70,7 +70,7 @@ namespace SmartAudioCityGuide.Test
             location.longitude = 20;
             location.id = 20;
             locations.Add(location);
-            iLocationServices.Setup(m => m.findLocationsArround(It.IsAny<String>(), It.IsAny<String>(), It.IsAny<Double>())).Returns(locations);
+            iLocationServices.Setup(m => m.findLocationsAround(It.IsAny<String>(), It.IsAny<String>(), It.IsAny<Double>())).Returns(locations);
             LocationsController target = new LocationsController(iLocationServices.Object,iCommentServices.Object);
             List <Locations> actual = target.locationsOf("10", "20");
             Assert.AreEqual(expected, actual);
@@ -98,7 +98,7 @@ namespace SmartAudioCityGuide.Test
             location.longitude = 20;
             location.id = 20;
             locations.Add(location);
-            iLocationServices.Setup(m => m.findLocationsArround(It.IsAny<String>(), It.IsAny<String>(), It.IsAny<Double>())).Returns(locations);
+            iLocationServices.Setup(m => m.findLocationsAround(It.IsAny<String>(), It.IsAny<String>(), It.IsAny<Double>())).Returns(locations);
             iCommentServices .Setup(m => m.findCommentByIdLocation(location.id)).Returns(comments);
             int idLocation = 20;
             LocationsController target = new LocationsController(iLocationServices.Object, iCommentServices.Object);

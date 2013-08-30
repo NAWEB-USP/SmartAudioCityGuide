@@ -66,7 +66,7 @@ namespace SmartAudioCityGuide.Controllers
             {
                 locationPassed = serializer.Deserialize<Locations>(location);
 
-                locationsResult = locationServices.findLocationsArround(locationPassed.latitude.ToString(), locationPassed.longitude.ToString(), Convert.ToDouble(radius));
+                locationsResult = locationServices.findLocationsAround(locationPassed.latitude.ToString(), locationPassed.longitude.ToString(), Convert.ToDouble(radius));
                 try
                 {
                     locationsResultJson = serializer.Serialize(locationsResult);
