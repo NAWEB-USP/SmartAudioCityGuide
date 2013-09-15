@@ -98,6 +98,7 @@ namespace SmartAudioApp
         private void yesHold(object sender, System.Windows.Input.GestureEventArgs e)
         {
             sound.play("map");
+            /*
             sound.play("messagesuccess");
 
             Thread thread = new Thread(new ThreadStart((Action)(() =>
@@ -115,9 +116,9 @@ namespace SmartAudioApp
             })));
 
             thread.Start();
-
+            */
             //Moq
-            //commentLocation.sendCommentAndSoundToActualLocationToSave(" ", myMicrophone);
+            commentLocation.sendCommentAndSoundToActualLocationToSave(" ", myMicrophone);
             NavigationService.GoBack();
         }
 

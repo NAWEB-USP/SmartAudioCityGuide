@@ -112,5 +112,24 @@ namespace SmartAudioCityGuide.Controllers
             return null;
         }
 
+        public ActionResult soundByComment(int id, string extension)
+        {
+            Comments comments = commentServices.findCommentByIdComment(id);
+            return File(convertStringToBytes(comments.sound), "audio/" + extension);
+
+        }
+
+        private byte[] convertStringToBytes(string stringResult)
+        {
+            string[] strings = stringResult.Split(';');
+            byte[] bytes = new byte[strings.Length];
+            int i = 0;
+            foreach (string s in strings)
+            {
+                bytes[i] = Convert.ToByte(s);
+                i++;
+            }
+            return bytes;
+        }
     }
 }

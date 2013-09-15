@@ -139,7 +139,7 @@ namespace SmartAudioApp
             })));
 
             //Moq 
-            //thread.Start();
+            thread.Start();
         }
 
         /*public void onCompletedSpeechRecognition(SpeechServiceResult speechResult)
@@ -264,8 +264,8 @@ namespace SmartAudioApp
         private void map_Hold(object sender, System.Windows.Input.GestureEventArgs e)
         {
             //Moq
-            map_HoldMoq(sender, e);
-            return;
+            //map_HoldMoq(sender, e);
+            //return;
             /* Record the microphone */
             if (NetworkInterface.GetIsNetworkAvailable())
             {
@@ -342,8 +342,8 @@ namespace SmartAudioApp
         private void holdRoute(object sender, System.Windows.Input.GestureEventArgs e)
         {
             //Moq 
-            holdRouteMoq(sender, e);
-            return;
+            //holdRouteMoq(sender, e);
+            //return;
 
             if (NetworkInterface.GetIsNetworkAvailable())
             {
@@ -361,8 +361,8 @@ namespace SmartAudioApp
         private void holdLogin(object sender, System.Windows.Input.GestureEventArgs e)
         {
             //Moq
-            holdLoginMoq(sender,e);
-            return;
+            //holdLoginMoq(sender,e);
+            //return;
 
             if (NetworkInterface.GetIsNetworkAvailable())
             {
@@ -412,8 +412,8 @@ namespace SmartAudioApp
         private void holdHelp(object sender, System.Windows.Input.GestureEventArgs e)
         {
             //Moq
-            holdHelpMoq(sender,e);
-            return;
+            //holdHelpMoq(sender,e);
+            //return;
 
             if (NetworkInterface.GetIsNetworkAvailable())
             {
@@ -431,8 +431,8 @@ namespace SmartAudioApp
         private void holdWhere(object sender, System.Windows.Input.GestureEventArgs e)
         {
             //Moq
-            holdWhereMoq();
-            return;
+            //holdWhereMoq();
+            //return;
 
             if (NetworkInterface.GetIsNetworkAvailable())
             {
