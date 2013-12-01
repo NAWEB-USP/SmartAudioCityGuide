@@ -22,6 +22,7 @@ namespace SmartAudioApp
 {
     public partial class HelpModeContact : PhoneApplicationPage
     {
+        #region .:.Propriedades.:.
         private MyPhone myPhone = new MyPhone();
         private MyGPS myGPS = new MyGPS();
         private Sound sound = new Sound();
@@ -31,6 +32,9 @@ namespace SmartAudioApp
         private ResourceManager resouceManager = new ResourceManager("SmartAudioApp.Resources", typeof(Resources).Assembly);
         private int currentPage = 0;
         private SpeechSynthesizer speech = new SpeechSynthesizer("SmartAudioCityGuide", "Lz+vYpOFm6NTP83A9y0tPoX6ByJa06Q6yxHvoBsD0xo=");
+        #endregion
+
+        #region .:.Inicializadores.:.
         public HelpModeContact()
         {
             InitializeComponent();
@@ -38,12 +42,16 @@ namespace SmartAudioApp
             sound.play("friendmode");
             Menu.DoubleTap += DoubleTap;
         }
+        #endregion
 
+        #region .:.Métodos Protected.:.
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             sound.play("menu");
         }
+        #endregion
 
+        #region .:.Métodos Privados.:.
         private void DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             if (itemSelected == "previousPage")
@@ -60,13 +68,6 @@ namespace SmartAudioApp
             }
         }
 
-        public void getContacts()
-        {
-            Contacts cons = new Contacts();
-
-            cons.SearchCompleted += new EventHandler<ContactsSearchEventArgs>(Contacts_SearchCompleted);
-            cons.SearchAsync(string.Empty, FilterKind.None, null);
-        }
 
         void Contacts_SearchCompleted(object sender, ContactsSearchEventArgs e)
         {
@@ -91,12 +92,12 @@ namespace SmartAudioApp
 
                     grid = new Grid();
                     columDefinition = new ColumnDefinition();
-                    gridLength =new GridLength(300);
+                    gridLength = new GridLength(300);
                     columDefinition.Width = gridLength;
 
                     textBlock = new TextBlock();
                     textBlock.Text = resouceManager.GetString("nextPage").ToLower();
-                    textBlock.Margin = new Thickness(10,25,0,25);
+                    textBlock.Margin = new Thickness(10, 25, 0, 25);
                     textBlock.VerticalAlignment = VerticalAlignment.Center;
 
                     image = new Image();
@@ -208,7 +209,7 @@ namespace SmartAudioApp
                     image.VerticalAlignment = VerticalAlignment.Center;
                     image.Height = 50;
                     image.Margin = new Thickness(10, 25, 0, 25);
-                    image.Source = new BitmapImage(new Uri("Images/Icons/friend-branco.png",UriKind.Relative));
+                    image.Source = new BitmapImage(new Uri("Images/Icons/friend-branco.png", UriKind.Relative));
 
                     columDefinition = new ColumnDefinition();
                     gridLength = new GridLength(350);
@@ -329,7 +330,7 @@ namespace SmartAudioApp
             WebService1SoapClient webService = new WebService1SoapClient();
             updateUserLocation();
             //webService.sendEmailForFolloUserByWindowsPhoneIdAsync(myPhone.serializedDeviceUniqueId(),contact.EmailAddresses.First().EmailAddress );
-            
+
             //Moq
             webService.sendEmailForFolloUserByWindowsPhoneIdAsync(myPhone.serializedDeviceUniqueId(), "greganatti@gmail.com");
             playSound("success");
@@ -427,28 +428,6 @@ namespace SmartAudioApp
 
         }
 
-        private void playSound(string sound)
-        {
-            speech.SpeakAsync(sound, CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString());
-        }
-
-
-        private void updateUserLocation()
-        {
-            string phoneId = myPhone.serializedDeviceUniqueId();
-            WebService1SoapClient webService = new WebService1SoapClient();
-            Thread thread = new Thread(new ThreadStart((Action)(() =>
-            {
-                while (true)
-                {
-                    Thread.Sleep(1000);
-                    webService.updateLoctionForUserAsync(phoneId, myGPS.actualLocation.Position.Location.Latitude, myGPS.actualLocation.Position.Location.Longitude);
-                }
-            })));
-
-            thread.Start();
-        }
-
         public static SolidColorBrush HexToSolidColorBrush(object value)
         {
             byte alpha;
@@ -476,5 +455,39 @@ namespace SmartAudioApp
 
             return new SolidColorBrush(Color.FromArgb(alpha, red, green, blue));
         }
+
+        private void playSound(string sound)
+        {
+            speech.SpeakAsync(sound, CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString());
+        }
+
+
+        private void updateUserLocation()
+        {
+            string phoneId = myPhone.serializedDeviceUniqueId();
+            WebService1SoapClient webService = new WebService1SoapClient();
+            Thread thread = new Thread(new ThreadStart((Action)(() =>
+            {
+                while (true)
+                {
+                    Thread.Sleep(1000);
+                    webService.updateLoctionForUserAsync(phoneId, myGPS.actualLocation.Position.Location.Latitude, myGPS.actualLocation.Position.Location.Longitude);
+                }
+            })));
+
+            thread.Start();
+        }
+
+        #endregion
+
+        #region .:.Métodos Públicos.:.
+        public void getContacts()
+        {
+            Contacts cons = new Contacts();
+
+            cons.SearchCompleted += new EventHandler<ContactsSearchEventArgs>(Contacts_SearchCompleted);
+            cons.SearchAsync(string.Empty, FilterKind.None, null);
+        }
+        #endregion
     }
 }

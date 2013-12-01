@@ -24,11 +24,17 @@ namespace SmartAudioApp
 {
     public partial class Route : PhoneApplicationPage
     {
+        #region .:.Propriedades.:.
+
         private MyMicrophone myMicrophone = new MyMicrophone();
         private Sound sound = new Sound();
         private MyGPS myGPS = new MyGPS();
         private Database database = new Database();
         private string itemSelected = "";
+
+        #endregion
+
+        #region .:.Propriedades.:.
         public Route()
         {
             myMicrophone.initializeMicrophone();
@@ -36,8 +42,11 @@ namespace SmartAudioApp
             sound.play("routemode");
             Menu.DoubleTap += DoubleTap;
             Thread.Sleep(500);
-           
+
         }
+        #endregion
+
+        #region .:.Métodos Protected.:.
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
@@ -45,7 +54,9 @@ namespace SmartAudioApp
             sound.play("menu");
         }
 
+        #endregion
 
+        #region .:.Métodos Privados.:.
         private void sound_Location(object sender, MouseEventArgs e)
         {
             sound.play("registerlocation");
@@ -165,6 +176,6 @@ namespace SmartAudioApp
         {
             NavigationService.Navigate(new Uri("/ListRoute.xaml", UriKind.Relative));
         }
-
+        #endregion
     }
 }

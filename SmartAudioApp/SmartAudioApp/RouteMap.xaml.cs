@@ -24,12 +24,11 @@ using System.Text.RegularExpressions;
 
 namespace SmartAudioApp
 {
-
-
     public delegate void ChangedEventHandler(object sender, EventArgs e);
 
     public partial class RouteMap : PhoneApplicationPage
     {
+        #region .:.Propriedades.:.
         private List<Routes> routes;
         private Sound sound = new Sound();
         private string address;
@@ -39,7 +38,9 @@ namespace SmartAudioApp
         private double currentLatitude, currentLongitude;
         private double epsilon = 5;
         bool endThread;
+        #endregion
 
+        #region .:.Inicializadores.:.
         public RouteMap()
         {
             InitializeComponent();
@@ -47,8 +48,9 @@ namespace SmartAudioApp
             endThread = false;
             getRoute();
         }
-
-
+        #endregion
+        
+        #region .:.Métodos Protected.:.
         protected virtual void OnChanged(EventArgs e)
         {
             if (Changed != null)
@@ -75,8 +77,9 @@ namespace SmartAudioApp
                 getRoute();
             }
         }
+        #endregion
 
-
+        #region .:.Métodos Privados.:.
         private void error()
         {
             sound.play("error");
@@ -310,6 +313,7 @@ namespace SmartAudioApp
                 NavigationService.GoBack();
             }
         }
+        #endregion
 
     }
 }

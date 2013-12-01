@@ -38,6 +38,7 @@ namespace SmartAudioApp
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        #region .:.Propriedades.:.
         private MyMicrophone myMicrophone = new MyMicrophone();
         private Sound sound = new Sound();
         private GlobalPositioningSystemForMap globalPositionSystemForMap;
@@ -55,8 +56,9 @@ namespace SmartAudioApp
             MaxBufferSize = 2147483647
         },
         new EndpointAddress(Properties.getServerIP() + "WebServices.asmx"));
+        #endregion
 
-        // Constructor
+        #region .:.Inicializadores.:.
         public MainPage()
         {
             /*
@@ -141,34 +143,9 @@ namespace SmartAudioApp
             //Moq 
             thread.Start();
         }
+        #endregion
 
-        /*public void onCompletedSpeechRecognition(SpeechServiceResult speechResult)
-        {
-            CommentAndLocation commentAndLocation = new CommentAndLocation(globalPositionSystemForMap, baseWebserver);
-
-            if (speechResult.Status != Status.Success)
-                return;
-
-            string str;
-            try
-            {
-                str = speechResult.SpeechResult.Items[0];
-            }
-            catch (Exception)
-            {
-                return;
-            }
-
-            if (str == "locate people")
-                sendRequestToLocatePeople();
-            else
-                commentAndLocation.sendCommentAndSoundToActualLocationToSave(str,myMicrophone);
-        }
-
-        public void sendRequestToLocatePeople()
-        {
-        }*/
-
+        #region .:.Métodos Públicos.:.
         public void initializeGameTimer()
         {
             GameTimer gameTimer = new GameTimer();
@@ -180,7 +157,9 @@ namespace SmartAudioApp
 
             FrameworkDispatcher.Update();
         }
-
+        #endregion
+        
+        #region .:.Métodos Privados.:.
         private void mapControl_Loaded(object sender, RoutedEventArgs e)
         {
             globalPositionSystemForMap = new GlobalPositioningSystemForMap(mapControl, map);
@@ -540,5 +519,34 @@ namespace SmartAudioApp
         {
             speech.SpeakAsync(sound, CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString());
         }
+
+        #endregion
+
+        /*public void onCompletedSpeechRecognition(SpeechServiceResult speechResult)
+        {
+            CommentAndLocation commentAndLocation = new CommentAndLocation(globalPositionSystemForMap, baseWebserver);
+
+            if (speechResult.Status != Status.Success)
+                return;
+
+            string str;
+            try
+            {
+                str = speechResult.SpeechResult.Items[0];
+            }
+            catch (Exception)
+            {
+                return;
+            }
+
+            if (str == "locate people")
+                sendRequestToLocatePeople();
+            else
+                commentAndLocation.sendCommentAndSoundToActualLocationToSave(str,myMicrophone);
+        }
+
+        public void sendRequestToLocatePeople()
+        {
+        }*/
     }
 }

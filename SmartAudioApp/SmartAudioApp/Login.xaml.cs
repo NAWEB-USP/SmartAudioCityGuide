@@ -16,9 +16,12 @@ namespace SmartAudioApp
 {
     public partial class Login : PhoneApplicationPage
     {
+        #region .:.Propriedades.:.
         private Sound sound = new Sound();
         private string itemSelected = "";
+        #endregion
 
+        #region .:.Inicializadores.:.
         public Login()
         {
             InitializeComponent();
@@ -28,17 +31,15 @@ namespace SmartAudioApp
 
             Thread.Sleep(500);
         }
+        #endregion
+
+        #region .:.Métodos Privados.:.
         private void DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             if (itemSelected == "registerwithfb")
             {
                 registerWithFBHold(sender, e);
             }
-        }
-
-        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
-        {
-            sound.play("menu");
         }
 
         private void register(object sender, RoutedEventArgs e)
@@ -57,5 +58,13 @@ namespace SmartAudioApp
         {
             NavigationService.Navigate(new Uri("/FacebookLoginPage.xaml", UriKind.Relative));
         }
+        #endregion
+
+        #region .:.Métodos Protected.:.
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            sound.play("menu");
+        }
+        #endregion
     }
 }

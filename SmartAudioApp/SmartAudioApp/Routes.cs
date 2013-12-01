@@ -19,6 +19,7 @@ namespace SmartAudioApp
     [DataContract]
     public class Routes
     {
+        #region .:.Propriedades.:.
         private string baseWebServer;
 
         public string coordinates = null;
@@ -50,13 +51,16 @@ namespace SmartAudioApp
         public bool routeDone= false;
 
         public List<Routes> route;
-
-
+        #endregion
+        
+        #region .:.Inicializadores.:.
         public Routes(string baseWebServer)
         {
             this.baseWebServer = baseWebServer;
         }
+        #endregion
 
+        #region .:.Métodos Públicos.:.
         public void getCoordinatesFromStreet(string address)
         {
             routeDone = false;
@@ -69,6 +73,34 @@ namespace SmartAudioApp
             webRequest.BeginGetResponse(new AsyncCallback(requestCallBackGetCoordinates), webRequest);
         }
 
+        public void getAddressFromCoordinates(string coordinates)
+        {
+            routeDone = false;
+            string localBaseWebServer;
+            localBaseWebServer = baseWebServer + "RouteServices/MakeReverseGeocodeRequest?coordinates=" + coordinates;
+
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(localBaseWebServer);
+
+            var webRequest = (HttpWebRequest)HttpWebRequest.Create(localBaseWebServer);
+            webRequest.BeginGetResponse(new AsyncCallback(requestCallBackGetAddressFromCoordinates), webRequest);
+        }
+
+        public void Route(string input)
+        {
+            string localBaseWebServer;
+            routeDone = false;
+            localBaseWebServer = baseWebServer + "RouteServices/coordinateRoute?input=" + input;
+
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(localBaseWebServer);
+
+            var webRequest = (HttpWebRequest)HttpWebRequest.Create(localBaseWebServer);
+            webRequest.BeginGetResponse(new AsyncCallback(requestCallBackRoute), webRequest);
+
+        }
+
+        #endregion
+
+        #region .:.Métodos Privados.:.
         private void requestCallBackGetCoordinates(IAsyncResult result)
         {
             try
@@ -90,18 +122,6 @@ namespace SmartAudioApp
             {
             }
 
-        }
-
-        public void getAddressFromCoordinates(string coordinates)
-        {
-            routeDone = false;
-            string localBaseWebServer;
-            localBaseWebServer = baseWebServer + "RouteServices/MakeReverseGeocodeRequest?coordinates=" + coordinates;
-
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(localBaseWebServer);
-
-            var webRequest = (HttpWebRequest)HttpWebRequest.Create(localBaseWebServer);
-            webRequest.BeginGetResponse(new AsyncCallback(requestCallBackGetAddressFromCoordinates), webRequest);
         }
 
         private void requestCallBackGetAddressFromCoordinates(IAsyncResult result)
@@ -132,18 +152,6 @@ namespace SmartAudioApp
 
         }
 
-        public void Route(string input)
-        {
-            string localBaseWebServer;
-            routeDone = false;
-            localBaseWebServer = baseWebServer + "RouteServices/coordinateRoute?input=" + input;
-
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(localBaseWebServer);
-
-            var webRequest = (HttpWebRequest)HttpWebRequest.Create(localBaseWebServer);
-            webRequest.BeginGetResponse(new AsyncCallback(requestCallBackRoute), webRequest);
-
-        }
 
         private void requestCallBackRoute(IAsyncResult result)
         {
@@ -171,6 +179,6 @@ namespace SmartAudioApp
             {
             }
         }
-
+        #endregion
     }
 }

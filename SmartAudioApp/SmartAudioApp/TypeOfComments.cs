@@ -15,6 +15,7 @@ namespace SmartAudioApp
     [DataContract]
     public class TypeOfComments
     {
+        #region .:.Prorpriedades.:.
         [DataMember]
         public int id;
 
@@ -23,5 +24,6 @@ namespace SmartAudioApp
 
         [DataMember]
         public string description;
+        #endregion
     }
 }

@@ -18,13 +18,15 @@ namespace SmartAudioApp
 {
     public partial class AddRoutePlace : PhoneApplicationPage
     {
+        #region .:.Prorpriedades.:.
         private Sound sound = new Sound();
         private double lat;
         private double lon;
         private MyMicrophone myMicrophone;
         private string itemSelected = "";
+        #endregion
 
-
+        #region .:.Inicializadores.:.
         public AddRoutePlace()
         {
             InitializeComponent();
@@ -36,7 +38,9 @@ namespace SmartAudioApp
             Thread.Sleep(500);
             LayoutRoot.DoubleTap += DoubleTap;
         }
+        #endregion
 
+        #region .:.Métodos Privados.:.
         private void DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             if (itemSelected == "yes")
@@ -52,13 +56,6 @@ namespace SmartAudioApp
                 listenAgainHold(sender, e);
             }
         }
-
-        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
-        {
-            sound.play("confirm");
-        }
-
-
         private void sound_yes(object sender, MouseEventArgs e)
         {
             sound.play("yes");
@@ -109,8 +106,14 @@ namespace SmartAudioApp
             sound.play("routemode");
             NavigationService.GoBack();
         }
+        #endregion
 
-
+        #region .:.Métodos Protected.:.
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            sound.play("confirm");
+        }
+        #endregion
 
     }
 }

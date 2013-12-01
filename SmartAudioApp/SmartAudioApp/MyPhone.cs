@@ -14,15 +14,23 @@ namespace SmartAudioApp
 {
     public class MyPhone
     {
+
+        #region .:.Propriedades.:.
+
         private byte[] deviceUniqueId;
 
+        #endregion
+
+        #region .:.Incializadores.:.
         public MyPhone()
         {
             object uniqueId;
             if (DeviceExtendedProperties.TryGetValue("DeviceUniqueId", out uniqueId))
                 deviceUniqueId = (byte[])uniqueId;
         }
+        #endregion
 
+        #region .:.Métodos Públicos.:.
         public string serializedDeviceUniqueId()
         {
             string serialized = "";
@@ -34,5 +42,6 @@ namespace SmartAudioApp
 
             return serialized;
         }
+        #endregion
     }
 }

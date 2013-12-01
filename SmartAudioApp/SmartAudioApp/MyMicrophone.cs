@@ -19,11 +19,19 @@ namespace SmartAudioApp
 {
     public class MyMicrophone
     {
+        #region .:.Propriedades
+
         public Microphone microphone = Microphone.Default;
         public byte[] bufferMicrophone;
         public MemoryStream streamMicrophone = new MemoryStream();
         public SoundEffect soundMicrophone;
 
+        #endregion
+
+        #region .:.Inicializadores.:.
+        #endregion
+
+        #region .:.Métodos Públicos.:.
         public void initializeMicrophone()
         {
             // Timer to simulate the XNA Game Studio game loop (Microphone is from XNA Game Studio)
@@ -43,12 +51,15 @@ namespace SmartAudioApp
             microphone.BufferReady -= new EventHandler<EventArgs>(microphone_BufferReady);
         }
 
+        #endregion 
+        
+        #region .:.Métodos Privados.:.
         private void microphone_BufferReady(object sender, EventArgs e)
         {
             microphone.GetData(bufferMicrophone);
             streamMicrophone.Write(bufferMicrophone, 0, bufferMicrophone.Length);
         }
-
+        #endregion
 
     }
 }

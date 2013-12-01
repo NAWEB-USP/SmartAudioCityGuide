@@ -20,6 +20,7 @@ namespace SmartAudioApp
 {
     public partial class ShowUser : PhoneApplicationPage
     {
+        #region.:.Propriedades.:.
         private Users user = new Users();
         private MyPhone myPhone = new MyPhone();
         private Sound sound = new Sound();
@@ -33,19 +34,24 @@ namespace SmartAudioApp
             MaxBufferSize = 2147483647
         },
         new EndpointAddress(Properties.getServerIP() + "WebServices.asmx"));
+        #endregion
 
+        #region.:.Inicializadores.:.
         public ShowUser()
         {
             InitializeComponent();
             LoadFacebookData();
         }
+        #endregion
 
+        #region.:.Métodos Protected.:.
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             sound.play("menu");
         }
+        #endregion
 
-
+        #region.:.Métodos Privados.:.
         private void LoadFacebookData()
         {
             webService.getNameByPhoneIdAsync(myPhone.serializedDeviceUniqueId());
@@ -104,5 +110,6 @@ namespace SmartAudioApp
         {
             NavigationService.Navigate(new Uri("/FacebookLoginPage.xaml", UriKind.Relative));
         }
+        #endregion
     }
 }

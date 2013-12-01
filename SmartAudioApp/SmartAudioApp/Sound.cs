@@ -18,14 +18,19 @@ namespace SmartAudioApp
 {
     public class Sound
     {
+        #region .:.Prorpriedades.:.
         private SoundEffectInstance sound;
         private string culture;
+        #endregion
 
+        #region .:.Inicializadores.:.
         public Sound()
         {
             culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
         }
+        #endregion
 
+        #region .:.Métodos Públicos.:.
         public void play(string soundName)
         {
             try
@@ -46,5 +51,6 @@ namespace SmartAudioApp
             {
             }
         }
+        #endregion
     }
 }

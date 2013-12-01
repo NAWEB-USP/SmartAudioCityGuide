@@ -13,17 +13,19 @@ namespace SmartAudioApp
 {
     public class Properties
     {
+        #region .:.Métodos Públicos.:.
         static public string getServerIP()
         {
-            //return "http://localhost:41682/";
+            return "http://localhost:41682/";
             //return "http://187.37.25.191:81/SmartAudioCityGuide/";
-            return "http://smartaudiocityguide.azurewebsites.net/";
+            //return "http://smartaudiocityguide.azurewebsites.net/";
         }
 
         static public string getEndPoint()
         {
-            //return "http://localhost:41682/Webservices.asmx";
-            return "http://smartaudiocityguide.azurewebsites.net/WebServices.asmx";
+            return "http://localhost:41682/Webservices.asmx";
+            //return "http://smartaudiocityguide.azurewebsites.net/WebServices.asmx";
         }
+        #endregion
     }
 }

@@ -19,11 +19,14 @@ namespace SmartAudioApp
 {
     public partial class SendMessage : PhoneApplicationPage
     {
+        #region .:.Propriedades.:.
         private Sound sound = new Sound();
         private CommentAndLocation commentLocation;
         private MyMicrophone myMicrophone;
         private string itemSelected = "";
+        #endregion
 
+        #region .:.Métodos Públicos.:.
         public SendMessage()
         {
             InitializeComponent();
@@ -34,7 +37,9 @@ namespace SmartAudioApp
             Thread.Sleep(500);
             LayoutRoot.DoubleTap += DoubleTap;
         }
+        #endregion
 
+        #region .:.Métodos Privados.:.
         private void DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             if (itemSelected == "yes")
@@ -121,8 +126,7 @@ namespace SmartAudioApp
             commentLocation.sendCommentAndSoundToActualLocationToSave(" ", myMicrophone);
             NavigationService.GoBack();
         }
-
-
+        #endregion
 
     }
 }

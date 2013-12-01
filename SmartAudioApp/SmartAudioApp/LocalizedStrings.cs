@@ -13,15 +13,19 @@ namespace SmartAudioApp
 {
     public class LocalizedStrings
     {
-        public LocalizedStrings()
-        {
-        }
-
+        #region .:.Propriedades.:.
         private static Resources localizedResources = new Resources();
-
         public Resources Resources
         {
             get { return localizedResources; }
         }
+        #endregion
+
+        #region .:.Inicializadores.:.
+        public LocalizedStrings()
+        {
+        }
+        #endregion
+
     }
 }

@@ -21,6 +21,7 @@ namespace SmartAudioApp
 {
     public partial class ListRoute : PhoneApplicationPage
     {
+        #region .:.Propriedades.:.
         private Database database = new Database();
         private List<List<ListBoxItem>> listListBoxItens = new List<List<ListBoxItem>>();
         private ResourceManager resouceManager = new ResourceManager("SmartAudioApp.Resources", typeof(Resources).Assembly);
@@ -29,7 +30,9 @@ namespace SmartAudioApp
         private int currentPage = 0;
         private SpeechSynthesizer speech = new SpeechSynthesizer("SmartAudioCityGuide", "Lz+vYpOFm6NTP83A9y0tPoX6ByJa06Q6yxHvoBsD0xo=");
         private string itemSelected = "";
-        
+        #endregion
+
+        #region .:.Inicializadores.:.
         public ListRoute()
         {
             sound.play("selectlocation");
@@ -38,27 +41,36 @@ namespace SmartAudioApp
             Menu.DoubleTap += DoubleTap;
             getListOfPlaces();
         }
+        #endregion
 
-        private void DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
+        #region .:.Métodos Públicos.:.
+
+        public static SolidColorBrush HexToSolidColorBrush(object value)
         {
-            if (itemSelected == "previousPage")
+            byte alpha;
+            byte pos = 0;
+
+            string hex = value.ToString().Replace("#", "");
+
+            if (hex.Length == 8)
             {
-                listBoxItem_Page_DoubleTap();
-            }
-            else if (itemSelected == "nextPage")
-            {
-                listBoxItem_Page_DoubleTap();
+                alpha = System.Convert.ToByte(hex.Substring(pos, 2), 16);
+                pos = 2;
             }
             else
             {
-                listBoxItem_DoubleTap();
+                alpha = System.Convert.ToByte("ff", 16);
             }
-        }
 
+            byte red = System.Convert.ToByte(hex.Substring(pos, 2), 16);
 
-        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
-        {
-            sound.play("routemode");
+            pos += 2;
+            byte green = System.Convert.ToByte(hex.Substring(pos, 2), 16);
+
+            pos += 2;
+            byte blue = System.Convert.ToByte(hex.Substring(pos, 2), 16);
+
+            return new SolidColorBrush(Color.FromArgb(alpha, red, green, blue));
         }
 
         public void getListOfPlaces()
@@ -231,7 +243,7 @@ namespace SmartAudioApp
 
                         if (colors == 1)
                         {
-                            listBoxItem.Background = HexToSolidColorBrush("F0A30A"); 
+                            listBoxItem.Background = HexToSolidColorBrush("F0A30A");
                         }
                         else if (colors == 2)
                         {
@@ -268,6 +280,24 @@ namespace SmartAudioApp
             }
         }
 
+        #endregion
+
+        #region .:.Métodos Privados.:.
+        private void DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (itemSelected == "previousPage")
+            {
+                listBoxItem_Page_DoubleTap();
+            }
+            else if (itemSelected == "nextPage")
+            {
+                listBoxItem_Page_DoubleTap();
+            }
+            else
+            {
+                listBoxItem_DoubleTap();
+            }
+        }
         void listBoxItem_Hold(object sender, System.Windows.Input.GestureEventArgs e)
         {
             try
@@ -342,7 +372,7 @@ namespace SmartAudioApp
                         playSound("Page " + (currentPage + 1) + " of " + listListBoxItens.Count);
                     }
                 }
-                
+
             }
             else if (((listBoxItem.Content as Grid).Children[0] as TextBlock).Text == resouceManager.GetString("nextPage").ToString())
             {
@@ -415,33 +445,15 @@ namespace SmartAudioApp
             return bytes;
         }
 
-        public static SolidColorBrush HexToSolidColorBrush(object value)
+
+        #endregion
+
+        #region .:.Métodos Privados.:.
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
-            byte alpha;
-            byte pos = 0;
-
-            string hex = value.ToString().Replace("#", "");
-
-            if (hex.Length == 8)
-            {
-                alpha = System.Convert.ToByte(hex.Substring(pos, 2), 16);
-                pos = 2;
-            }
-            else
-            {
-                alpha = System.Convert.ToByte("ff", 16);
-            }
-
-            byte red = System.Convert.ToByte(hex.Substring(pos, 2), 16);
-
-            pos += 2;
-            byte green = System.Convert.ToByte(hex.Substring(pos, 2), 16);
-
-            pos += 2;
-            byte blue = System.Convert.ToByte(hex.Substring(pos, 2), 16);
-
-            return new SolidColorBrush(Color.FromArgb(alpha, red, green, blue));
+            sound.play("routemode");
         }
+        #endregion
 
 
     }

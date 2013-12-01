@@ -16,6 +16,8 @@ namespace SmartAudioApp
 {
     public partial class FacebookLoginPage : PhoneApplicationPage
     {
+        #region .:.Propriedades.:.
+
         private const string AppId = "341770699195775";
         private Sound sound = new Sound();
 
@@ -32,17 +34,23 @@ namespace SmartAudioApp
         private Uri loginUrl;
         private readonly FacebookClient _fb = new FacebookClient();
 
+        #endregion
+
+        #region .:.Inicializadores.:.
         public FacebookLoginPage()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region .:.Métodos Protected.:.
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             sound.play("login_mode");
         }
+        #endregion
 
-
+        #region .:.Métodos Privados.:.
         private void webBrowser1_Loaded(object sender, RoutedEventArgs e)
         {
             loginUrl = GetFacebookLoginUrl(AppId, ExtendedPermissions);
@@ -123,5 +131,6 @@ namespace SmartAudioApp
             }
 
         }
+        #endregion
     }
 }

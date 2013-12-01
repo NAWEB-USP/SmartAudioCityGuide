@@ -20,17 +20,22 @@ namespace SmartAudioApp
 {
     public class CommentAndLocation
     {
+        #region .:.Propriedas.:.
         private GlobalPositioningSystemForMap globalPositionSystemForMap;
         private string baseWebServer;
         private Sound sound = new Sound();
         private Microphone mic = Microphone.Default;
+        #endregion
 
+        #region .:.Incializadores.:.
         public CommentAndLocation(GlobalPositioningSystemForMap globalPositionSystemForMap, string baseWebServer)
         {
             this.globalPositionSystemForMap = globalPositionSystemForMap;
             this.baseWebServer = baseWebServer;
         }
-        
+        #endregion
+
+        #region .:.Métodos Públicos.:.
         public void sendCommentAndActualLocationToSave(string description)
         {
             Locations location;
@@ -64,16 +69,6 @@ namespace SmartAudioApp
             var webRequest = (HttpWebRequest)HttpWebRequest.Create(uri);
             webRequest.BeginGetResponse(new AsyncCallback(requestCallBackSaveCommentAndLocation), webRequest);
         }
-
-        private void requestCallBackSaveCommentAndLocation(IAsyncResult result)
-        {
-            var webRequest = result.AsyncState as HttpWebRequest;
-            var response = (HttpWebResponse)webRequest.EndGetResponse(result);
-            var baseStream = response.GetResponseStream();
-
-            sound.play("success");
-        }
-
         public void sendCommentAndSoundToActualLocationToSave(string description, MyMicrophone myMicrophone)
         {
             Locations location;
@@ -106,11 +101,13 @@ namespace SmartAudioApp
             string commentJson = comment.serialize();
 
             var client = new WebService1SoapClient(new BasicHttpBinding(BasicHttpSecurityMode.None)
-                {MaxReceivedMessageSize = 2147483647, MaxBufferSize = 2147483647 
-                },new EndpointAddress(Properties.getEndPoint()));
+            {
+                MaxReceivedMessageSize = 2147483647,
+                MaxBufferSize = 2147483647
+            }, new EndpointAddress(Properties.getEndPoint()));
 
             client.addComentAndSoundToLocationAsync(locationJson, soundStream, commentWeb, "wonders");
-            client.addComentAndSoundToLocationCompleted +=new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(webService_addComentAndSoundToLocationCompleted);
+            client.addComentAndSoundToLocationCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(webService_addComentAndSoundToLocationCompleted);
 
         }
 
@@ -122,7 +119,17 @@ namespace SmartAudioApp
             }
 
         }
+        #endregion
 
+        #region .:.Métodos Privados.:.
+        private void requestCallBackSaveCommentAndLocation(IAsyncResult result)
+        {
+            var webRequest = result.AsyncState as HttpWebRequest;
+            var response = (HttpWebResponse)webRequest.EndGetResponse(result);
+            var baseStream = response.GetResponseStream();
+
+            sound.play("success");
+        }
         private void requestCallBackSaveCommentAndSoundToLocation(IAsyncResult result)
         {
             var webRequest = result.AsyncState as HttpWebRequest;
@@ -157,5 +164,7 @@ namespace SmartAudioApp
 
             return bytes;
         }
+        #endregion
+
     }
 }

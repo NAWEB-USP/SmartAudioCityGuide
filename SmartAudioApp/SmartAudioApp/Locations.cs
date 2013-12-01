@@ -19,6 +19,7 @@ namespace SmartAudioApp
     [DataContract]
     public class Locations
     {
+        #region .:.Propriedades.:.
         [DataMember]
         public int id = 0;
 
@@ -35,7 +36,9 @@ namespace SmartAudioApp
         private GlobalPositioningSystemForMap globalPositionSystemForMap;
 
         private string baseWebServer;
+        #endregion
 
+        #region .:.Inicializadores.:.
         public Locations(double longitude, double latitude)
         {
             this.latitude = latitude;
@@ -47,7 +50,9 @@ namespace SmartAudioApp
             this.globalPositionSystemForMap = globalPositionSystemForMap;
             this.baseWebServer = baseWebServer;
         }
+        #endregion
 
+        #region .:.Métodos Públicos.:.
         public void getLocationsAround()
         {
             Locations location = new Locations(globalPositionSystemForMap.actualLocation.Position.Location.Longitude, globalPositionSystemForMap.actualLocation.Position.Location.Latitude);
@@ -113,7 +118,9 @@ namespace SmartAudioApp
 
             return json;
         }
+        #endregion
 
+        #region .:.Métodos Privados.:.
         private string UTF8toASCII(string json)
         {
             while (true)
@@ -126,5 +133,6 @@ namespace SmartAudioApp
                 json = json.Remove(index, 1);
             }
         }
+        #endregion
     }
 }

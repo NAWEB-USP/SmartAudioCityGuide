@@ -15,18 +15,22 @@ namespace SmartAudioApp
 {
     public class GlobalPositioningSystemForMap
     {
+        #region .:.Propriedade.:.
         public GeoCoordinateWatcher actualLocation;
         public Pushpin userPushpin;
         private MapItemsControl mapControl = new MapItemsControl();
         private Map map = new Map();
+        #endregion
 
+        #region .:.Incializadores.:.
         public GlobalPositioningSystemForMap(MapItemsControl mapControl, Map map)
         {
             this.mapControl = mapControl;
             this.map = map;
         }
+        #endregion
 
-
+        #region .:.Métodos Públicos.:.
         public void initializeGeoCoordinateWatcher()
         {
             if (actualLocation == null)
@@ -60,7 +64,9 @@ namespace SmartAudioApp
             {
             }
         }
+        #endregion
 
+        #region .:.Métodos Privados.:.
         private void locationStatusChanged(object sender, GeoPositionStatusChangedEventArgs e)
         {
             if (e.Status == GeoPositionStatus.Ready)
@@ -87,6 +93,7 @@ namespace SmartAudioApp
             mapControl.Items.Add(pushpin);
             map.SetView(actualLocation.Position.Location, 17.0);
         }
+        #endregion
 
     }
 }

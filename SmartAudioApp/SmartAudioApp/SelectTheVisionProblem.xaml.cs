@@ -17,6 +17,7 @@ namespace SmartAudioApp
 {
     public partial class SelectTheVisionProblem : PhoneApplicationPage
     {
+        #region .:.Propriedades.:.
         private Sound sound = new Sound();
         private MyPhone myPhone = new MyPhone();
 
@@ -34,6 +35,9 @@ namespace SmartAudioApp
         },
         new EndpointAddress( Properties.getServerIP() + "WebServices.asmx" ) );
 
+        #endregion
+
+        #region .:.Métodos Protected.:.
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -44,12 +48,17 @@ namespace SmartAudioApp
             _phoneId = myPhone.serializedDeviceUniqueId();
 
         }
+        #endregion
+
+        #region .:.Métodos Públicos.:.
         public SelectTheVisionProblem()
         {
             sound.play("selectvisiontypemenu");
             InitializeComponent();
         }
+        #endregion
 
+        #region .:.Métodos Privados.:.
         private void visionProblemPartialSighted(object sender, RoutedEventArgs e)
         {
             sound.play("partiallySighted");
@@ -82,7 +91,7 @@ namespace SmartAudioApp
         {
 
         }
-
+        #endregion
 
     }
 }

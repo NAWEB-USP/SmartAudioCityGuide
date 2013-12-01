@@ -23,6 +23,7 @@ namespace SmartAudioApp
     [DataContract]
     public class Comments
     {
+        #region .:.Propriedade.:.
         [DataMember]
         public int id = 0;
 
@@ -57,6 +58,10 @@ namespace SmartAudioApp
 
         private Microphone mic = Microphone.Default;
 
+        #endregion
+
+        #region .:.Inicializadores.:.
+
         public Comments(string description, bool isText)
         {
             this.description = description;
@@ -68,6 +73,9 @@ namespace SmartAudioApp
             this.baseWebServer = baseWebServer;
         }
 
+        #endregion
+
+        #region .:.Métodos Públicos.:.
         public void getCommentFromLocationIdAndTypeOfComment(int locationId, int typeOfCommentId)
         {
             var client = new WebService1SoapClient(
@@ -143,6 +151,26 @@ namespace SmartAudioApp
             }
         }
 
+        public string serialize()
+        {
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(this.GetType());
+            MemoryStream ms = new MemoryStream();
+            serializer.WriteObject(ms, this);
+
+            byte[] jsonBytes = ms.ToArray();
+
+            ms.Close();
+
+            string json = UTF8Encoding.UTF8.GetString(jsonBytes, 0, jsonBytes.Length);
+
+            json = UTF8toASCII(json);
+
+            return json;
+        }
+
+        #endregion
+
+        #region .:.Métodos Privados.:.
         private void requestCallBackSoundComment(IAsyncResult result)
         {
             var webRequest = result.AsyncState as HttpWebRequest;
@@ -228,24 +256,6 @@ namespace SmartAudioApp
             Thread.Sleep(TimeSpan.FromSeconds(sound.Duration.Seconds + 1));
             playSound = true;
         }
-
-        public string serialize()
-        {
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(this.GetType());
-            MemoryStream ms = new MemoryStream();
-            serializer.WriteObject(ms, this);
-
-            byte[] jsonBytes = ms.ToArray();
-
-            ms.Close();
-
-            string json = UTF8Encoding.UTF8.GetString(jsonBytes, 0, jsonBytes.Length);
-
-            json = UTF8toASCII(json);
-
-            return json;
-        }
-
         private string UTF8toASCII(string json)
         {
             while (true)
@@ -283,5 +293,6 @@ namespace SmartAudioApp
             }
             return bytes;
         }
+        #endregion
     }
 }

@@ -14,13 +14,20 @@ namespace SmartAudioApp
 {
     public class MyGPS
     {
+        #region .:.Propriedades.:.
+
         public GeoCoordinateWatcher actualLocation;
 
+        #endregion
+
+        #region .:.Inicializadores.:.
         public MyGPS()
         {
             initializeGeoCoordinateWatcher();
         }
+        #endregion
 
+        #region .:.Métodos Públicos.:.
         public void initializeGeoCoordinateWatcher()
         {
             if (actualLocation == null)
@@ -36,8 +43,7 @@ namespace SmartAudioApp
             }
             actualLocation.Start();
         }
-
-
+        #endregion
 
     }
 }
